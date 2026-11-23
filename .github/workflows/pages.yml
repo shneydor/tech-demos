@@ -1,0 +1,81 @@
+name: Deploy gallery
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Build apps
+        run: |
+          set +e
+          mkdir -p _site
+          shopt -s nullglob
+          for dir in apps/*/; do
+            slug="$(basename "$dir")"
+            echo "::group::${slug}"
+            if [[ -f "${dir}package.json" ]]; then
+              echo "Building ${slug} with Bun"
+              if (
+                cd "$dir" &&
+                bun install &&
+                bun run build &&
+                test -d dist
+              ); then
+                mkdir -p "_site/${slug}"
+                cp -R "${dir}dist/." "_site/${slug}/"
+                echo "Published ${slug} from dist/"
+              else
+                echo "::warning::${slug} failed to build; skipping so other demos can still publish"
+              fi
+            else
+              echo "Copying static ${slug}"
+              mkdir -p "_site/${slug}"
+              if command -v rsync >/dev/null 2>&1; then
+                rsync -a --exclude node_modules --exclude dist --exclude .git "${dir}" "_site/${slug}/"
+              else
+                cp -R "${dir}." "_site/${slug}/"
+              fi
+              echo "Published static ${slug}"
+            fi
+            echo "::endgroup::"
+          done
+          set -e
+
+      - name: Generate gallery
+        run: bun scripts/generate-gallery.ts
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

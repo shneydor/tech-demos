@@ -1,0 +1,12 @@
+node_modules/
+dist/
+_site/
+.DS_Store
+*.log
+.vercel
+.next
+.turbo
+.cache
+.env
+.env.*
+!.env.example
