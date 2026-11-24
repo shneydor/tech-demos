@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0c10;
+  --foreground: #f4f1ea;
+  --card: #16181f;
+  --card-foreground: #f4f1ea;
+  --primary: #e8ff6b;
+  --primary-foreground: #16180c;
+  --secondary: #23262f;
+  --secondary-foreground: #f4f1ea;
+  --muted: #1c1f28;
+  --muted-foreground: #9a9488;
+  --accent: #2a2d36;
+  --accent-foreground: #f4f1ea;
+  --border: #2a2d36;
+  --input: #343844;
+  --ring: #e8ff6b;
+  --destructive: #ff8b7b;
+  --radius: 0.9rem;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: "Segoe UI", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(900px 420px at -10% -20%, #1c2736 0%, transparent 55%),
+      radial-gradient(700px 360px at 110% 0%, #242018 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+@keyframes progress-slide {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(280%);
+  }
+}
+
+.progress-indeterminate {
+  width: 35%;
+  animation: progress-slide 1.15s ease-in-out infinite;
+}

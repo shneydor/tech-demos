@@ -1,5 +1,13 @@
 {
   "proposed": [],
-  "approved": [],
+  "approved": [
+    {
+      "id": "2115098609356284223",
+      "title": "EmbeddingGemma 2",
+      "url": "https://x.com/mmastrac/status/2115098609356284223",
+      "date": "2026-11-24",
+      "slug": "embeddinggemma-2-search"
+    }
+  ],
   "skipped": []
 }
