@@ -1,0 +1,2948 @@
+{
+  "provenance": {
+    "package": "venn-vdm",
+    "version": "0.1.0",
+    "importName": "venn",
+    "commit": "3307c6366b175d8cd19b24dc7831211b338ed570",
+    "tag": "v0.1.0",
+    "headRepo": "markrussinovich/venn-1",
+    "headRevision": "e618a6919e5a15c6ced46c9874424363c2955283",
+    "headReader": {
+      "id": "google/embeddinggemma-2",
+      "revision": "f9972ac22e696a105c482202646979e33e4b5a1e",
+      "dimensions": 768
+    },
+    "vectors": "authored",
+    "embedderDownloaded": false,
+    "note": "Authored unit vectors, not EmbeddingGemma embeddings. The 1.5 GB reader was not downloaded. Choice and Noul were scored by the published venn-1 head.",
+    "command": "python scripts/generate_traces.py",
+    "threshold": 0.55,
+    "referenceK": 5,
+    "closedCount": 62,
+    "incomingCount": 18,
+    "license": "MIT",
+    "preview": "research preview"
+  },
+  "queues": [
+    {
+      "id": "access",
+      "label": "Access",
+      "description": "Sign-in, passwords, and one-time codes."
+    },
+    {
+      "id": "payments",
+      "label": "Payments",
+      "description": "Posted charges, refunds, holds, and transfers."
+    },
+    {
+      "id": "cards",
+      "label": "Cards",
+      "description": "Plastic, PIN, freeze, and replacement."
+    },
+    {
+      "id": "disputes",
+      "label": "Disputes",
+      "description": "Chargebacks and merchant disagreements."
+    },
+    {
+      "id": "digital-assets",
+      "label": "Digital assets",
+      "description": "Wallets and stablecoin transfers. Opened by write-back."
+    }
+  ],
+  "catalog": {
+    "ACC-1001": {
+      "id": "ACC-1001",
+      "title": "Cannot sign in after travel",
+      "body": "The card app rejects the password. A reset email never arrives.",
+      "queue": "access",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "ACC-1002": {
+      "id": "ACC-1002",
+      "title": "One-time code rejected",
+      "body": "Three codes from the card app fail. The customer is locked out.",
+      "queue": "access",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "ACC-1003": {
+      "id": "ACC-1003",
+      "title": "Password reset loop",
+      "body": "Each new password is refused at the next sign-in.",
+      "queue": "access",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "ACC-1004": {
+      "id": "ACC-1004",
+      "title": "New phone, no access",
+      "body": "The trusted-device list still names the old handset.",
+      "queue": "access",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "ACC-1005": {
+      "id": "ACC-1005",
+      "title": "Biometric prompt missing",
+      "body": "The app asks for a password the customer no longer has.",
+      "queue": "access",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "ACC-1006": {
+      "id": "ACC-1006",
+      "title": "Joint account locked",
+      "body": "One holder can sign in. The other is locked after a trip.",
+      "queue": "access",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "ACC-1007": {
+      "id": "ACC-1007",
+      "title": "App update broke sign-in",
+      "body": "The latest card app build will not accept the password.",
+      "queue": "access",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "ACC-1008": {
+      "id": "ACC-1008",
+      "title": "Email on file is old",
+      "body": "Reset mail goes to an address the customer cannot open.",
+      "queue": "access",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "ACC-1009": {
+      "id": "ACC-1009",
+      "title": "Branch reset did not stick",
+      "body": "A teller cleared the lock. The app locked again overnight.",
+      "queue": "access",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "ACC-1010": {
+      "id": "ACC-1010",
+      "title": "VPN and the card app",
+      "body": "Sign-in works off the hotel Wi-Fi and fails on it.",
+      "queue": "access",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "ACC-1011": {
+      "id": "ACC-1011",
+      "title": "Security questions failed",
+      "body": "The answers match the file. The app still refuses.",
+      "queue": "access",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "ACC-1012": {
+      "id": "ACC-1012",
+      "title": "Passkey missing",
+      "body": "The device has no passkey and will not fall back.",
+      "queue": "access",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "ACC-1013": {
+      "id": "ACC-1013",
+      "title": "Travel notice, then a lock",
+      "body": "A travel notice was filed. Sign-in died the next morning.",
+      "queue": "access",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "ACC-1014": {
+      "id": "ACC-1014",
+      "title": "Codes arrive late",
+      "body": "The one-time code lands after it has already expired.",
+      "queue": "access",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "PAY-1001": {
+      "id": "PAY-1001",
+      "title": "Refund has not posted",
+      "body": "A merchant refund was promised four days ago and is not on the card.",
+      "queue": "payments",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "PAY-1002": {
+      "id": "PAY-1002",
+      "title": "Direct debit taken twice",
+      "body": "The same biller drafted the account on Monday and on Tuesday.",
+      "queue": "payments",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "PAY-1003": {
+      "id": "PAY-1003",
+      "title": "Payment sent to the wrong biller",
+      "body": "The customer paid the electric bill to the gas account.",
+      "queue": "payments",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "PAY-1004": {
+      "id": "PAY-1004",
+      "title": "Statement line looks high",
+      "body": "A grocery charge posted for more than the receipt.",
+      "queue": "payments",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "PAY-1005": {
+      "id": "PAY-1005",
+      "title": "Pending hold still there",
+      "body": "A hotel hold from last week has not dropped.",
+      "queue": "payments",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "PAY-1006": {
+      "id": "PAY-1006",
+      "title": "Transfer between own accounts",
+      "body": "A move from checking to the card payment is stuck.",
+      "queue": "payments",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "PAY-1007": {
+      "id": "PAY-1007",
+      "title": "Foreign ATM fee",
+      "body": "A cash withdrawal abroad shows a fee the customer wants explained.",
+      "queue": "payments",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "PAY-1008": {
+      "id": "PAY-1008",
+      "title": "Autopay took the full balance",
+      "body": "The customer expected the minimum. The full balance left.",
+      "queue": "payments",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "PAY-1009": {
+      "id": "PAY-1009",
+      "title": "Merchant refund to a closed card",
+      "body": "The refund was issued to a card that was replaced last month.",
+      "queue": "payments",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "PAY-1010": {
+      "id": "PAY-1010",
+      "title": "Payment posted late",
+      "body": "A payment made on Friday posted on Wednesday.",
+      "queue": "payments",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "PAY-1011": {
+      "id": "PAY-1011",
+      "title": "Bill pay payee rejected",
+      "body": "The biller will not accept the account number on file.",
+      "queue": "payments",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "PAY-1012": {
+      "id": "PAY-1012",
+      "title": "Cashback not applied",
+      "body": "A posted purchase did not earn the stated cashback.",
+      "queue": "payments",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "PAY-1013": {
+      "id": "PAY-1013",
+      "title": "Wire to a card payment",
+      "body": "An inbound wire was meant to pay the card and has not landed.",
+      "queue": "payments",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "PAY-1014": {
+      "id": "PAY-1014",
+      "title": "Installment plan charge",
+      "body": "A plan installment posted on top of the full purchase.",
+      "queue": "payments",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "CAR-1001": {
+      "id": "CAR-1001",
+      "title": "Replacement has not arrived",
+      "body": "A stolen card was blocked. The new plastic is not in the mail.",
+      "queue": "cards",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "CAR-1002": {
+      "id": "CAR-1002",
+      "title": "Card lost on a trip",
+      "body": "The customer is abroad and needs a freeze before a replacement.",
+      "queue": "cards",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "CAR-1003": {
+      "id": "CAR-1003",
+      "title": "PIN forgotten",
+      "body": "The plastic works at the till and fails at the ATM.",
+      "queue": "cards",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "CAR-1004": {
+      "id": "CAR-1004",
+      "title": "Card swallowed by an ATM",
+      "body": "The machine kept the card. The account is otherwise fine.",
+      "queue": "cards",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "CAR-1005": {
+      "id": "CAR-1005",
+      "title": "Name printed wrong",
+      "body": "The new card arrived with a misspelled surname.",
+      "queue": "cards",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "CAR-1006": {
+      "id": "CAR-1006",
+      "title": "Contactless dead",
+      "body": "The chip works. Tap does not.",
+      "queue": "cards",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "CAR-1007": {
+      "id": "CAR-1007",
+      "title": "Damaged chip",
+      "body": "Readers fail on the first try and then succeed.",
+      "queue": "cards",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "CAR-1008": {
+      "id": "CAR-1008",
+      "title": "Additional card for a child",
+      "body": "A parent wants a second plastic with a low limit.",
+      "queue": "cards",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "CAR-1009": {
+      "id": "CAR-1009",
+      "title": "Card never activated",
+      "body": "The sticker is still on. Activation in the app fails.",
+      "queue": "cards",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "CAR-1010": {
+      "id": "CAR-1010",
+      "title": "Freeze after a suspicious tap",
+      "body": "The customer froze the card and now wants it opened.",
+      "queue": "cards",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "CAR-1011": {
+      "id": "CAR-1011",
+      "title": "Expiry next month",
+      "body": "The replacement should already have been sent.",
+      "queue": "cards",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "CAR-1012": {
+      "id": "CAR-1012",
+      "title": "Card delivered to the old flat",
+      "body": "The courier left the plastic at a previous address.",
+      "queue": "cards",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "CAR-1013": {
+      "id": "CAR-1013",
+      "title": "Metal card request",
+      "body": "The customer wants the paid metal design, not more credit.",
+      "queue": "cards",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "CAR-1014": {
+      "id": "CAR-1014",
+      "title": "Temporary card at a branch",
+      "body": "They need a branch plastic while the mailed card is in transit.",
+      "queue": "cards",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "DIS-1001": {
+      "id": "DIS-1001",
+      "title": "Goods never shipped",
+      "body": "A web order was charged. The parcel never left the merchant.",
+      "queue": "disputes",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "DIS-1002": {
+      "id": "DIS-1002",
+      "title": "Hotel charged a cancelled stay",
+      "body": "The stay was cancelled inside the window. The charge posted.",
+      "queue": "disputes",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "DIS-1003": {
+      "id": "DIS-1003",
+      "title": "Subscription after cancel",
+      "body": "The gym drafted a month the customer had already ended.",
+      "queue": "disputes",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "DIS-1004": {
+      "id": "DIS-1004",
+      "title": "Counterfeit item",
+      "body": "The watch that arrived is not what the listing showed.",
+      "queue": "disputes",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "DIS-1005": {
+      "id": "DIS-1005",
+      "title": "Charged in the wrong currency",
+      "body": "The terminal converted a local price the customer did not accept.",
+      "queue": "disputes",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "DIS-1006": {
+      "id": "DIS-1006",
+      "title": "No-show the customer attended",
+      "body": "The salon charged a no-show. The customer was there.",
+      "queue": "disputes",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "DIS-1007": {
+      "id": "DIS-1007",
+      "title": "Rental damage the customer disputes",
+      "body": "A hire firm added a scratch the customer says was already there.",
+      "queue": "disputes",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "DIS-1008": {
+      "id": "DIS-1008",
+      "title": "Ticket for a cancelled flight",
+      "body": "The airline kept the fare after it cancelled the leg.",
+      "queue": "disputes",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "DIS-1009": {
+      "id": "DIS-1009",
+      "title": "Duplicate merchant, different city",
+      "body": "A charge names the customer's merchant but a city they have not visited.",
+      "queue": "disputes",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "DIS-1010": {
+      "id": "DIS-1010",
+      "title": "Service not provided",
+      "body": "A contractor took a deposit and did not start the work.",
+      "queue": "disputes",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "DIS-1011": {
+      "id": "DIS-1011",
+      "title": "Returned item, charge remains",
+      "body": "The shop accepted the return. The charge is still posted.",
+      "queue": "disputes",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "DIS-1012": {
+      "id": "DIS-1012",
+      "title": "Unauthorized tap",
+      "body": "A contactless charge at a bar the customer did not enter.",
+      "queue": "disputes",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "DIS-1013": {
+      "id": "DIS-1013",
+      "title": "Trial converted without consent",
+      "body": "A free trial became a paid plan with no reminder.",
+      "queue": "disputes",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "DIS-1014": {
+      "id": "DIS-1014",
+      "title": "Partial refund short",
+      "body": "The merchant refunded the goods and kept the shipping they had promised.",
+      "queue": "disputes",
+      "kind": "closed",
+      "utility": 0.94
+    },
+    "DSP-C01": {
+      "id": "DSP-C01",
+      "title": "Two lines for one coffee",
+      "body": "One tap at a cafe. The statement shows two lines for the same amount.",
+      "queue": "disputes",
+      "kind": "convention",
+      "utility": 0.97
+    },
+    "DSP-C02": {
+      "id": "DSP-C02",
+      "title": "Duplicate line, one receipt",
+      "body": "The customer has a single receipt. The statement lists the purchase twice.",
+      "queue": "disputes",
+      "kind": "convention",
+      "utility": 0.97
+    },
+    "DSP-C03": {
+      "id": "DSP-C03",
+      "title": "Same merchant, same minute",
+      "body": "Two identical posts one minute apart. The customer paid once.",
+      "queue": "disputes",
+      "kind": "convention",
+      "utility": 0.97
+    },
+    "DSP-C04": {
+      "id": "DSP-C04",
+      "title": "Wallet pay counted twice",
+      "body": "A phone tap produced two statement lines and one merchant receipt.",
+      "queue": "disputes",
+      "kind": "convention",
+      "utility": 0.97
+    },
+    "DSP-C05": {
+      "id": "DSP-C05",
+      "title": "Pending and posted together",
+      "body": "The pending line never dropped, and the posted line matches it.",
+      "queue": "disputes",
+      "kind": "convention",
+      "utility": 0.97
+    },
+    "DSP-C06": {
+      "id": "DSP-C06",
+      "title": "Statement echo of one fare",
+      "body": "A transit fare appears twice. The gate recorded one entry.",
+      "queue": "disputes",
+      "kind": "convention",
+      "utility": 0.97
+    },
+    "INC-1880": {
+      "id": "INC-1880",
+      "title": "USDC will not leave the wallet",
+      "body": "After a travel flag, the stablecoin balance is visible but a transfer of USDC never broadcasts. This is not a plastic card and not a posted merchant charge.",
+      "queue": "digital-assets",
+      "kind": "written-back",
+      "sender": "Noah Feldman",
+      "utility": 1.0
+    },
+    "INC-1401": {
+      "id": "INC-1401",
+      "title": "Locked out after travel",
+      "body": "The card app rejects the password and the one-time code. A reset email has not arrived. A travel notice was filed last night.",
+      "queue": "access",
+      "kind": "access",
+      "sender": "Priya Raman"
+    },
+    "INC-1408": {
+      "id": "INC-1408",
+      "title": "Codes expire before they arrive",
+      "body": "One-time codes land after the app has already rejected them. The customer cannot reach the account.",
+      "queue": "access",
+      "kind": "access",
+      "sender": "Helen Cho"
+    },
+    "INC-1414": {
+      "id": "INC-1414",
+      "title": "New phone will not sign in",
+      "body": "The old handset is gone. The card app will not trust the new one.",
+      "queue": "access",
+      "kind": "access",
+      "sender": "Jonah Adeyemi"
+    },
+    "INC-1419": {
+      "id": "INC-1419",
+      "title": "Password reset did not stick",
+      "body": "A branch cleared the lock yesterday. This morning the app locked again.",
+      "queue": "access",
+      "kind": "access",
+      "sender": "Marta Silva"
+    },
+    "INC-1510": {
+      "id": "INC-1510",
+      "title": "Refund still missing",
+      "body": "A merchant refund was promised four days ago and has not posted. The customer can sign in, and the card is in hand.",
+      "queue": "payments",
+      "kind": "payments",
+      "sender": "Owen Blake"
+    },
+    "INC-1516": {
+      "id": "INC-1516",
+      "title": "Hotel hold still pending",
+      "body": "The stay ended last week. The hold is still on the available balance.",
+      "queue": "payments",
+      "kind": "payments",
+      "sender": "Leah Ortiz"
+    },
+    "INC-1522": {
+      "id": "INC-1522",
+      "title": "Autopay took the full balance",
+      "body": "The customer expected the minimum payment. The full balance left the bank account.",
+      "queue": "payments",
+      "kind": "payments",
+      "sender": "Chris Daley"
+    },
+    "INC-1528": {
+      "id": "INC-1528",
+      "title": "Cashback missing on a posted charge",
+      "body": "The purchase posted. The cashback the offer described did not.",
+      "queue": "payments",
+      "kind": "payments",
+      "sender": "Nina Voss"
+    },
+    "INC-1602": {
+      "id": "INC-1602",
+      "title": "Replacement card has not arrived",
+      "body": "A stolen card was blocked on Monday. The replacement is still not in the mail. The customer can sign in.",
+      "queue": "cards",
+      "kind": "cards",
+      "sender": "Samir Iqbal"
+    },
+    "INC-1609": {
+      "id": "INC-1609",
+      "title": "ATM kept the card",
+      "body": "The machine swallowed the plastic. Purchases on the account are otherwise normal.",
+      "queue": "cards",
+      "kind": "cards",
+      "sender": "Elise Moreau"
+    },
+    "INC-1615": {
+      "id": "INC-1615",
+      "title": "PIN fails only at ATMs",
+      "body": "The chip pays in shops. Cash machines reject the PIN.",
+      "queue": "cards",
+      "kind": "cards",
+      "sender": "Tom Nguyen"
+    },
+    "INC-1702": {
+      "id": "INC-1702",
+      "title": "Invoice the lobby florist",
+      "body": "Accounts payable asks card ops to pay the branch florist for the lobby arrangement. There is no cardholder and no card transaction.",
+      "queue": null,
+      "kind": "off",
+      "sender": "Facilities"
+    },
+    "INC-1708": {
+      "id": "INC-1708",
+      "title": "Cancelled hotel still charged",
+      "body": "The reservation was cancelled inside the window. The hotel charged the stay anyway.",
+      "queue": "disputes",
+      "kind": "disputes",
+      "sender": "Ruth Keller"
+    },
+    "INC-1714": {
+      "id": "INC-1714",
+      "title": "Parcel never shipped",
+      "body": "A web order was charged ten days ago. The merchant has no tracking number.",
+      "queue": "disputes",
+      "kind": "disputes",
+      "sender": "Andre Petit"
+    },
+    "INC-1720": {
+      "id": "INC-1720",
+      "title": "Gym drafted a cancelled month",
+      "body": "The membership ended in writing. A new month still posted.",
+      "queue": "disputes",
+      "kind": "disputes",
+      "sender": "Grace Lim"
+    },
+    "INC-1604": {
+      "id": "INC-1604",
+      "title": "Two statement lines for one coffee",
+      "body": "The customer was charged once at a cafe, but the statement shows two lines. They want the extra line removed, not a second refund.",
+      "queue": "disputes",
+      "kind": "convention",
+      "sender": "Imani Brooks"
+    },
+    "INC-1881": {
+      "id": "INC-1881",
+      "title": "Wallet transfer stuck after a travel hold",
+      "body": "A second customer cannot send USDC. The wallet shows the coins. Nothing has posted to the card account.",
+      "queue": "digital-assets",
+      "kind": "digital2",
+      "sender": "Amira Hassan"
+    }
+  },
+  "tour": [
+    {
+      "id": "access",
+      "ticketId": "INC-1401",
+      "phase": "before",
+      "kicker": "A familiar lockout",
+      "narration": "Password and one-time codes. Closed tickets and the queue descriptions name the same queue."
+    },
+    {
+      "id": "payments",
+      "ticketId": "INC-1510",
+      "phase": "before",
+      "kicker": "A refund that has not posted",
+      "narration": "The customer can sign in and the card is in hand. Both paths name Payments."
+    },
+    {
+      "id": "convention",
+      "ticketId": "INC-1604",
+      "phase": "before",
+      "kicker": "Words that point at the wrong queue",
+      "narration": "The wording sounds like a payment. Duplicate-line filings were resolved in Disputes, and that history is nearer than the Payments description."
+    },
+    {
+      "id": "florist",
+      "ticketId": "INC-1702",
+      "phase": "before",
+      "kicker": "Does not fit this queue",
+      "narration": "An internal invoice, not a cardholder. History abstains. The fit question says it does not belong. Descriptions can still name a listed queue: that signal is not a guardrail."
+    },
+    {
+      "id": "wallet",
+      "ticketId": "INC-1880",
+      "phase": "before",
+      "kicker": "A kind of ticket the desk has not seen",
+      "narration": "No closed wallet case exists, so history will not name a queue. Resolving it and writing the case back is how a new queue enters the model.",
+      "action": {
+        "id": "writeback",
+        "label": "Resolve in Digital assets and write back",
+        "to": "wallet-next"
+      }
+    },
+    {
+      "id": "wallet-next",
+      "ticketId": "INC-1881",
+      "phase": "after",
+      "kicker": "The next similar ticket",
+      "narration": "One written-back case is now the nearest reference, so this ticket routes to Digital assets. The four descriptions still cannot name that queue."
+    }
+  ],
+  "steps": {
+    "INC-1401": {
+      "history": {
+        "queue": {
+          "answer": "access",
+          "confidence": 0.6707983016967773,
+          "probabilities": {
+            "access": 0.6707983016967773,
+            "none": 0.32920169830322266
+          },
+          "margin": 0.7461543679237366,
+          "evidence_ids": [
+            "ACC-1013",
+            "ACC-1008",
+            "ACC-1001",
+            "ACC-1009",
+            "ACC-1012"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "access",
+          "confidence": 0.9999929666519165,
+          "probabilities": {
+            "access": 0.9999929666519165,
+            "payments": 4.904389925286523e-07,
+            "cards": 5.060950343249715e-07,
+            "disputes": 2.830506673490163e-07,
+            "none": 5.793436685053166e-06
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.9916965961456299,
+          "probabilities": {
+            "false": 0.00029297402943484485,
+            "true": 0.9916965961456299,
+            "none": 0.00801042839884758
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "disputes",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 0.44625626802444457,
+            "evidence_ids": [
+              "ACC-1013",
+              "ACC-1008",
+              "ACC-1001",
+              "ACC-1009",
+              "ACC-1012"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.980162262916565,
+            "evidence_ids": [
+              "PAY-1007",
+              "PAY-1009",
+              "PAY-1011",
+              "PAY-1005",
+              "PAY-1006"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9600514888763427,
+            "evidence_ids": [
+              "CAR-1005",
+              "CAR-1003",
+              "CAR-1010",
+              "CAR-1004",
+              "CAR-1014"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.958,
+            "count": 5,
+            "spread": 0.014696938456699081,
+            "mean_distance": 1.9975736379623412,
+            "evidence_ids": [
+              "DSP-C02",
+              "DSP-C04",
+              "DIS-1006",
+              "DIS-1008",
+              "DSP-C06"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1408": {
+      "history": {
+        "queue": {
+          "answer": "access",
+          "confidence": 0.6695545315742493,
+          "probabilities": {
+            "access": 0.6695545315742493,
+            "none": 0.33044546842575073
+          },
+          "margin": 0.7402558922767639,
+          "evidence_ids": [
+            "ACC-1013",
+            "ACC-1001",
+            "ACC-1010",
+            "ACC-1004",
+            "ACC-1008"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "access",
+          "confidence": 0.9999921321868896,
+          "probabilities": {
+            "access": 0.9999921321868896,
+            "payments": 5.216670047047955e-07,
+            "cards": 5.042653015152609e-07,
+            "disputes": 6.83370728893351e-07,
+            "none": 6.227192898222711e-06
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.9944887757301331,
+          "probabilities": {
+            "false": 0.00017831144214142114,
+            "true": 0.9944887757301331,
+            "none": 0.005332954227924347
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "access",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 0.4307364284992218,
+            "evidence_ids": [
+              "ACC-1013",
+              "ACC-1001",
+              "ACC-1010",
+              "ACC-1004",
+              "ACC-1008"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9751336336135865,
+            "evidence_ids": [
+              "PAY-1009",
+              "PAY-1007",
+              "PAY-1006",
+              "PAY-1013",
+              "PAY-1001"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9423441886901855,
+            "evidence_ids": [
+              "CAR-1005",
+              "CAR-1003",
+              "CAR-1010",
+              "CAR-1004",
+              "CAR-1011"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.933559775352478,
+            "evidence_ids": [
+              "DIS-1006",
+              "DIS-1001",
+              "DIS-1003",
+              "DIS-1014",
+              "DIS-1005"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1414": {
+      "history": {
+        "queue": {
+          "answer": "access",
+          "confidence": 0.6680688858032227,
+          "probabilities": {
+            "access": 0.6680688858032227,
+            "none": 0.33193111419677734
+          },
+          "margin": 0.7332249879837036,
+          "evidence_ids": [
+            "ACC-1001",
+            "ACC-1011",
+            "ACC-1008",
+            "ACC-1009",
+            "ACC-1012"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "access",
+          "confidence": 0.9999873638153076,
+          "probabilities": {
+            "access": 0.9999873638153076,
+            "payments": 7.393687724288611e-07,
+            "cards": 5.023146627536335e-07,
+            "disputes": 7.819686516086222e-07,
+            "none": 1.0588973964331672e-05
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.993453323841095,
+          "probabilities": {
+            "false": 0.00011703930795192719,
+            "true": 0.993453323841095,
+            "none": 0.006429668050259352
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "disputes",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 0.43775845170021055,
+            "evidence_ids": [
+              "ACC-1001",
+              "ACC-1011",
+              "ACC-1008",
+              "ACC-1009",
+              "ACC-1012"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.936128067970276,
+            "evidence_ids": [
+              "PAY-1007",
+              "PAY-1009",
+              "PAY-1005",
+              "PAY-1006",
+              "PAY-1002"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9537516355514526,
+            "evidence_ids": [
+              "CAR-1003",
+              "CAR-1005",
+              "CAR-1004",
+              "CAR-1011",
+              "CAR-1007"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.9460000000000001,
+            "count": 5,
+            "spread": 0.01200000000000001,
+            "mean_distance": 1.9131003618240356,
+            "evidence_ids": [
+              "DIS-1006",
+              "DIS-1008",
+              "DIS-1001",
+              "DSP-C02",
+              "DIS-1009"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1419": {
+      "history": {
+        "queue": {
+          "answer": "access",
+          "confidence": 0.668653666973114,
+          "probabilities": {
+            "access": 0.668653666973114,
+            "none": 0.331346333026886
+          },
+          "margin": 0.7359904646873474,
+          "evidence_ids": [
+            "ACC-1001",
+            "ACC-1013",
+            "ACC-1011",
+            "ACC-1009",
+            "ACC-1004"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "access",
+          "confidence": 0.9999912977218628,
+          "probabilities": {
+            "access": 0.9999912977218628,
+            "payments": 3.639000567545736e-07,
+            "cards": 4.7666634372944827e-07,
+            "disputes": 7.349623274421901e-07,
+            "none": 7.1568892963114195e-06
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.9944273233413696,
+          "probabilities": {
+            "false": 0.00012051668454660103,
+            "true": 0.9944273233413696,
+            "none": 0.00545208714902401
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "access",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 0.4441338121891022,
+            "evidence_ids": [
+              "ACC-1001",
+              "ACC-1013",
+              "ACC-1011",
+              "ACC-1009",
+              "ACC-1004"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 2.0150010347366334,
+            "evidence_ids": [
+              "PAY-1007",
+              "PAY-1009",
+              "PAY-1001",
+              "PAY-1006",
+              "PAY-1002"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9656627178192139,
+            "evidence_ids": [
+              "CAR-1010",
+              "CAR-1003",
+              "CAR-1014",
+              "CAR-1012",
+              "CAR-1005"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.925255799293518,
+            "evidence_ids": [
+              "DIS-1006",
+              "DIS-1008",
+              "DIS-1001",
+              "DIS-1003",
+              "DIS-1010"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1510": {
+      "history": {
+        "queue": {
+          "answer": "payments",
+          "confidence": 0.5915346741676331,
+          "probabilities": {
+            "payments": 0.5915346741676331,
+            "none": 0.40846532583236694
+          },
+          "margin": 0.38818731904029846,
+          "evidence_ids": [
+            "PAY-1013",
+            "PAY-1014",
+            "PAY-1001",
+            "PAY-1007",
+            "PAY-1002"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "payments",
+          "confidence": 0.9999878406524658,
+          "probabilities": {
+            "access": 6.461623343056999e-07,
+            "payments": 0.9999878406524658,
+            "cards": 2.8278748231969075e-07,
+            "disputes": 6.809789283579448e-07,
+            "none": 1.055847587849712e-05
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.9886221885681152,
+          "probabilities": {
+            "false": 0.00023211215739138424,
+            "true": 0.9886221885681152,
+            "none": 0.011145642958581448
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "disputes",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.949384379386902,
+            "evidence_ids": [
+              "ACC-1001",
+              "ACC-1006",
+              "ACC-1004",
+              "ACC-1005",
+              "ACC-1014"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 0.45018271803855897,
+            "evidence_ids": [
+              "PAY-1013",
+              "PAY-1014",
+              "PAY-1001",
+              "PAY-1007",
+              "PAY-1002"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 2.0331836223602293,
+            "evidence_ids": [
+              "CAR-1002",
+              "CAR-1011",
+              "CAR-1008",
+              "CAR-1010",
+              "CAR-1014"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.97,
+            "count": 5,
+            "spread": 0.0,
+            "mean_distance": 1.2489142417907715,
+            "evidence_ids": [
+              "DSP-C01",
+              "DSP-C06",
+              "DSP-C05",
+              "DSP-C03",
+              "DSP-C02"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1516": {
+      "history": {
+        "queue": {
+          "answer": "payments",
+          "confidence": 0.5917595624923706,
+          "probabilities": {
+            "payments": 0.5917595624923706,
+            "none": 0.4082404375076294
+          },
+          "margin": 0.3891628086566925,
+          "evidence_ids": [
+            "PAY-1005",
+            "PAY-1004",
+            "PAY-1010",
+            "PAY-1001",
+            "PAY-1002"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "payments",
+          "confidence": 0.9999843835830688,
+          "probabilities": {
+            "access": 8.817670504868147e-07,
+            "payments": 0.9999843835830688,
+            "cards": 7.238347166094172e-07,
+            "disputes": 4.788221872331633e-07,
+            "none": 1.3598468285636045e-05
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.9931696057319641,
+          "probabilities": {
+            "false": 8.08882323326543e-05,
+            "true": 0.9931696057319641,
+            "none": 0.006749527528882027
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "disputes",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9042737007141113,
+            "evidence_ids": [
+              "ACC-1008",
+              "ACC-1006",
+              "ACC-1012",
+              "ACC-1001",
+              "ACC-1014"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 0.43280805349349977,
+            "evidence_ids": [
+              "PAY-1005",
+              "PAY-1004",
+              "PAY-1010",
+              "PAY-1001",
+              "PAY-1002"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.922348141670227,
+            "evidence_ids": [
+              "CAR-1004",
+              "CAR-1011",
+              "CAR-1010",
+              "CAR-1014",
+              "CAR-1005"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.97,
+            "count": 5,
+            "spread": 0.0,
+            "mean_distance": 1.2207710981369018,
+            "evidence_ids": [
+              "DSP-C01",
+              "DSP-C06",
+              "DSP-C05",
+              "DSP-C02",
+              "DSP-C03"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1522": {
+      "history": {
+        "queue": {
+          "answer": "payments",
+          "confidence": 0.5941334366798401,
+          "probabilities": {
+            "payments": 0.5941334366798401,
+            "none": 0.4058665633201599
+          },
+          "margin": 0.39947307109832764,
+          "evidence_ids": [
+            "PAY-1007",
+            "PAY-1011",
+            "PAY-1003",
+            "PAY-1002",
+            "PAY-1001"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "payments",
+          "confidence": 0.9999858140945435,
+          "probabilities": {
+            "access": 8.2849317095679e-07,
+            "payments": 0.9999858140945435,
+            "cards": 5.428564122667012e-07,
+            "disputes": 5.161853664503724e-07,
+            "none": 1.2305542441026773e-05
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.992221474647522,
+          "probabilities": {
+            "false": 0.0001107446732930839,
+            "true": 0.992221474647522,
+            "none": 0.007667786907404661
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "disputes",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9357123374938965,
+            "evidence_ids": [
+              "ACC-1012",
+              "ACC-1001",
+              "ACC-1011",
+              "ACC-1004",
+              "ACC-1003"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 0.4394357085227966,
+            "evidence_ids": [
+              "PAY-1007",
+              "PAY-1011",
+              "PAY-1003",
+              "PAY-1002",
+              "PAY-1001"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.953894019126892,
+            "evidence_ids": [
+              "CAR-1004",
+              "CAR-1008",
+              "CAR-1002",
+              "CAR-1001",
+              "CAR-1014"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.97,
+            "count": 5,
+            "spread": 0.0,
+            "mean_distance": 1.2502973794937133,
+            "evidence_ids": [
+              "DSP-C01",
+              "DSP-C06",
+              "DSP-C05",
+              "DSP-C02",
+              "DSP-C03"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1528": {
+      "history": {
+        "queue": {
+          "answer": "payments",
+          "confidence": 0.5869821906089783,
+          "probabilities": {
+            "payments": 0.5869821906089783,
+            "none": 0.41301780939102173
+          },
+          "margin": 0.3684697151184082,
+          "evidence_ids": [
+            "PAY-1001",
+            "PAY-1004",
+            "PAY-1013",
+            "PAY-1008",
+            "PAY-1007"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "payments",
+          "confidence": 0.9999876022338867,
+          "probabilities": {
+            "access": 5.078154003967938e-07,
+            "payments": 0.9999876022338867,
+            "cards": 5.38725316800992e-07,
+            "disputes": 3.5954187183051545e-07,
+            "none": 1.0965251931338571e-05
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.9896646738052368,
+          "probabilities": {
+            "false": 0.00015982240438461304,
+            "true": 0.9896646738052368,
+            "none": 0.010175472125411034
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "disputes",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9588798761367798,
+            "evidence_ids": [
+              "ACC-1006",
+              "ACC-1001",
+              "ACC-1012",
+              "ACC-1005",
+              "ACC-1014"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 0.4428751468658447,
+            "evidence_ids": [
+              "PAY-1001",
+              "PAY-1004",
+              "PAY-1013",
+              "PAY-1008",
+              "PAY-1007"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9524598360061645,
+            "evidence_ids": [
+              "CAR-1002",
+              "CAR-1010",
+              "CAR-1012",
+              "CAR-1011",
+              "CAR-1014"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.97,
+            "count": 5,
+            "spread": 0.0,
+            "mean_distance": 1.1944989442825318,
+            "evidence_ids": [
+              "DSP-C06",
+              "DSP-C05",
+              "DSP-C03",
+              "DSP-C02",
+              "DSP-C01"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1602": {
+      "history": {
+        "queue": {
+          "answer": "cards",
+          "confidence": 0.6657354235649109,
+          "probabilities": {
+            "cards": 0.6657354235649109,
+            "none": 0.3342645764350891
+          },
+          "margin": 0.722213625907898,
+          "evidence_ids": [
+            "CAR-1011",
+            "CAR-1003",
+            "CAR-1006",
+            "CAR-1005",
+            "CAR-1010"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "cards",
+          "confidence": 0.9999862909317017,
+          "probabilities": {
+            "access": 6.683392257400556e-07,
+            "payments": 6.22434527031146e-07,
+            "cards": 0.9999862909317017,
+            "disputes": 7.248971769513446e-07,
+            "none": 1.1648147847154178e-05
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.9911559224128723,
+          "probabilities": {
+            "false": 0.00017859702347777784,
+            "true": 0.9911559224128723,
+            "none": 0.008665456436574459
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "disputes",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.952837061882019,
+            "evidence_ids": [
+              "ACC-1007",
+              "ACC-1003",
+              "ACC-1002",
+              "ACC-1001",
+              "ACC-1008"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9505297660827636,
+            "evidence_ids": [
+              "PAY-1002",
+              "PAY-1004",
+              "PAY-1013",
+              "PAY-1011",
+              "PAY-1009"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 0.46251036524772643,
+            "evidence_ids": [
+              "CAR-1011",
+              "CAR-1003",
+              "CAR-1006",
+              "CAR-1005",
+              "CAR-1010"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.952,
+            "count": 5,
+            "spread": 0.014696938456699081,
+            "mean_distance": 1.9679447650909423,
+            "evidence_ids": [
+              "DIS-1011",
+              "DIS-1003",
+              "DIS-1005",
+              "DSP-C05",
+              "DSP-C02"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1609": {
+      "history": {
+        "queue": {
+          "answer": "cards",
+          "confidence": 0.6682228446006775,
+          "probabilities": {
+            "cards": 0.6682228446006775,
+            "none": 0.3317771553993225
+          },
+          "margin": 0.733953058719635,
+          "evidence_ids": [
+            "CAR-1009",
+            "CAR-1001",
+            "CAR-1003",
+            "CAR-1012",
+            "CAR-1002"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "cards",
+          "confidence": 0.9999890327453613,
+          "probabilities": {
+            "access": 5.480103482113918e-07,
+            "payments": 4.900027192888956e-07,
+            "cards": 0.9999890327453613,
+            "disputes": 7.181099022091075e-07,
+            "none": 9.166735253529623e-06
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.9946776032447815,
+          "probabilities": {
+            "false": 8.413668547291309e-05,
+            "true": 0.9946776032447815,
+            "none": 0.005238195415586233
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "disputes",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9532369375228882,
+            "evidence_ids": [
+              "ACC-1007",
+              "ACC-1002",
+              "ACC-1003",
+              "ACC-1005",
+              "ACC-1008"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9793456077575684,
+            "evidence_ids": [
+              "PAY-1002",
+              "PAY-1004",
+              "PAY-1010",
+              "PAY-1011",
+              "PAY-1009"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 0.44805859327316283,
+            "evidence_ids": [
+              "CAR-1009",
+              "CAR-1001",
+              "CAR-1003",
+              "CAR-1012",
+              "CAR-1002"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.946,
+            "count": 5,
+            "spread": 0.012000000000000009,
+            "mean_distance": 1.9642556190490723,
+            "evidence_ids": [
+              "DIS-1011",
+              "DSP-C05",
+              "DIS-1010",
+              "DIS-1014",
+              "DIS-1004"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1615": {
+      "history": {
+        "queue": {
+          "answer": "cards",
+          "confidence": 0.6706367135047913,
+          "probabilities": {
+            "cards": 0.6706367135047913,
+            "none": 0.32936328649520874
+          },
+          "margin": 0.7453874945640564,
+          "evidence_ids": [
+            "CAR-1003",
+            "CAR-1008",
+            "CAR-1006",
+            "CAR-1007",
+            "CAR-1010"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "cards",
+          "confidence": 0.9999895095825195,
+          "probabilities": {
+            "access": 5.418843898041814e-07,
+            "payments": 4.055628721744142e-07,
+            "cards": 0.9999895095825195,
+            "disputes": 7.837015800760128e-07,
+            "none": 8.701894330442883e-06
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.991976797580719,
+          "probabilities": {
+            "false": 0.00019759105634875596,
+            "true": 0.991976797580719,
+            "none": 0.007825641892850399
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "access",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.958815860748291,
+            "evidence_ids": [
+              "ACC-1007",
+              "ACC-1002",
+              "ACC-1003",
+              "ACC-1006",
+              "ACC-1008"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9848052740097046,
+            "evidence_ids": [
+              "PAY-1002",
+              "PAY-1011",
+              "PAY-1010",
+              "PAY-1004",
+              "PAY-1009"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 0.4439619302749634,
+            "evidence_ids": [
+              "CAR-1003",
+              "CAR-1008",
+              "CAR-1006",
+              "CAR-1007",
+              "CAR-1010"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9331230163574218,
+            "evidence_ids": [
+              "DIS-1003",
+              "DIS-1011",
+              "DIS-1014",
+              "DIS-1001",
+              "DIS-1007"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1702": {
+      "history": {
+        "queue": {
+          "answer": "none",
+          "confidence": 0.5001809597015381,
+          "probabilities": {
+            "access": 0.5001809597015381,
+            "none": 0.4998190402984619
+          },
+          "margin": 0.000758688896894455,
+          "evidence_ids": [
+            "ACC-1008",
+            "DIS-1006",
+            "ACC-1005",
+            "ACC-1003",
+            "DIS-1009"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "access",
+          "confidence": 0.2784862220287323,
+          "probabilities": {
+            "access": 0.2784862220287323,
+            "payments": 0.16283577680587769,
+            "cards": 0.20146356523036957,
+            "disputes": 0.27403733134269714,
+            "none": 0.08317715674638748
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.9999116063117981,
+          "probabilities": {
+            "false": 0.9999116063117981,
+            "true": 3.295460615504453e-08,
+            "none": 8.838193753035739e-05
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "access",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.94356369972229,
+            "evidence_ids": [
+              "ACC-1008",
+              "ACC-1005",
+              "ACC-1003",
+              "ACC-1007",
+              "ACC-1012"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.996732759475708,
+            "evidence_ids": [
+              "PAY-1008",
+              "PAY-1002",
+              "PAY-1006",
+              "PAY-1005",
+              "PAY-1013"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9833972692489623,
+            "evidence_ids": [
+              "CAR-1002",
+              "CAR-1003",
+              "CAR-1012",
+              "CAR-1010",
+              "CAR-1013"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9511945247650146,
+            "evidence_ids": [
+              "DIS-1006",
+              "DIS-1009",
+              "DIS-1005",
+              "DIS-1012",
+              "DIS-1011"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1708": {
+      "history": {
+        "queue": {
+          "answer": "disputes",
+          "confidence": 0.6705672144889832,
+          "probabilities": {
+            "disputes": 0.6705672144889832,
+            "none": 0.32943278551101685
+          },
+          "margin": 0.7450575828552246,
+          "evidence_ids": [
+            "DIS-1005",
+            "DIS-1001",
+            "DIS-1010",
+            "DIS-1008",
+            "DIS-1004"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "disputes",
+          "confidence": 0.9999804496765137,
+          "probabilities": {
+            "access": 6.282322146944352e-07,
+            "payments": 5.819414923280419e-07,
+            "cards": 3.2362473234570643e-07,
+            "disputes": 0.9999804496765137,
+            "none": 1.7948161257663742e-05
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.9752834439277649,
+          "probabilities": {
+            "false": 0.00039142678724601865,
+            "true": 0.9752834439277649,
+            "none": 0.024325119331479073
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "access",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9709423780441284,
+            "evidence_ids": [
+              "ACC-1005",
+              "ACC-1013",
+              "ACC-1002",
+              "ACC-1004",
+              "ACC-1014"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9674377202987672,
+            "evidence_ids": [
+              "PAY-1013",
+              "PAY-1003",
+              "PAY-1008",
+              "PAY-1006",
+              "PAY-1001"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 2.0429835319519043,
+            "evidence_ids": [
+              "CAR-1006",
+              "CAR-1011",
+              "CAR-1005",
+              "CAR-1010",
+              "CAR-1008"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 0.46306819319725034,
+            "evidence_ids": [
+              "DIS-1005",
+              "DIS-1001",
+              "DIS-1010",
+              "DIS-1008",
+              "DIS-1004"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1714": {
+      "history": {
+        "queue": {
+          "answer": "disputes",
+          "confidence": 0.6732937693595886,
+          "probabilities": {
+            "disputes": 0.6732937693595886,
+            "none": 0.3267062306404114
+          },
+          "margin": 0.758023202419281,
+          "evidence_ids": [
+            "DIS-1012",
+            "DIS-1001",
+            "DIS-1010",
+            "DIS-1007",
+            "DIS-1008"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "disputes",
+          "confidence": 0.9999793767929077,
+          "probabilities": {
+            "access": 3.2370709845963574e-07,
+            "payments": 6.368845220094954e-07,
+            "cards": 7.226117304526269e-07,
+            "disputes": 0.9999793767929077,
+            "none": 1.8941438611363992e-05
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.9804096221923828,
+          "probabilities": {
+            "false": 0.00025174763868562877,
+            "true": 0.9804096221923828,
+            "none": 0.019338609650731087
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "access",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 2.0334930658340453,
+            "evidence_ids": [
+              "ACC-1013",
+              "ACC-1005",
+              "ACC-1002",
+              "ACC-1007",
+              "ACC-1006"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9606555461883546,
+            "evidence_ids": [
+              "PAY-1012",
+              "PAY-1005",
+              "PAY-1008",
+              "PAY-1007",
+              "PAY-1001"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.954114556312561,
+            "evidence_ids": [
+              "CAR-1006",
+              "CAR-1005",
+              "CAR-1003",
+              "CAR-1009",
+              "CAR-1013"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 0.45638585090637207,
+            "evidence_ids": [
+              "DIS-1012",
+              "DIS-1001",
+              "DIS-1010",
+              "DIS-1007",
+              "DIS-1008"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1720": {
+      "history": {
+        "queue": {
+          "answer": "disputes",
+          "confidence": 0.671183705329895,
+          "probabilities": {
+            "disputes": 0.671183705329895,
+            "none": 0.328816294670105
+          },
+          "margin": 0.7479843497276306,
+          "evidence_ids": [
+            "DIS-1012",
+            "DIS-1010",
+            "DIS-1005",
+            "DIS-1013",
+            "DIS-1008"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "disputes",
+          "confidence": 0.9999823570251465,
+          "probabilities": {
+            "access": 4.3584364561866096e-07,
+            "payments": 3.7864370483475795e-07,
+            "cards": 5.371064730752551e-07,
+            "disputes": 0.9999823570251465,
+            "none": 1.6321102521033026e-05
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.980255663394928,
+          "probabilities": {
+            "false": 0.0002635307901073247,
+            "true": 0.980255663394928,
+            "none": 0.01948079653084278
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "access",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9965854167938233,
+            "evidence_ids": [
+              "ACC-1013",
+              "ACC-1005",
+              "ACC-1006",
+              "ACC-1007",
+              "ACC-1002"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9988760232925415,
+            "evidence_ids": [
+              "PAY-1013",
+              "PAY-1008",
+              "PAY-1012",
+              "PAY-1003",
+              "PAY-1001"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.962254524230957,
+            "evidence_ids": [
+              "CAR-1006",
+              "CAR-1013",
+              "CAR-1003",
+              "CAR-1014",
+              "CAR-1004"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 0.4490730881690979,
+            "evidence_ids": [
+              "DIS-1012",
+              "DIS-1010",
+              "DIS-1005",
+              "DIS-1013",
+              "DIS-1008"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1604": {
+      "history": {
+        "queue": {
+          "answer": "disputes",
+          "confidence": 0.594817578792572,
+          "probabilities": {
+            "disputes": 0.594817578792572,
+            "none": 0.405182421207428
+          },
+          "margin": 0.4024478793144226,
+          "evidence_ids": [
+            "DSP-C06",
+            "DSP-C04",
+            "DSP-C01",
+            "DSP-C05",
+            "DSP-C03"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "payments",
+          "confidence": 0.926002562046051,
+          "probabilities": {
+            "access": 0.0005702325142920017,
+            "payments": 0.926002562046051,
+            "cards": 0.000602051499299705,
+            "disputes": 0.0637805387377739,
+            "none": 0.009044688194990158
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.9796180129051208,
+          "probabilities": {
+            "false": 0.00041784095810726285,
+            "true": 0.9796180129051208,
+            "none": 0.0199641864746809
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "disputes",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9753781795501708,
+            "evidence_ids": [
+              "ACC-1006",
+              "ACC-1005",
+              "ACC-1001",
+              "ACC-1004",
+              "ACC-1010"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.1942753076553345,
+            "evidence_ids": [
+              "PAY-1012",
+              "PAY-1004",
+              "PAY-1008",
+              "PAY-1006",
+              "PAY-1002"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9638965129852295,
+            "evidence_ids": [
+              "CAR-1004",
+              "CAR-1014",
+              "CAR-1010",
+              "CAR-1013",
+              "CAR-1003"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.97,
+            "count": 5,
+            "spread": 0.0,
+            "mean_distance": 0.3912956237792969,
+            "evidence_ids": [
+              "DSP-C06",
+              "DSP-C04",
+              "DSP-C01",
+              "DSP-C05",
+              "DSP-C03"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1880": {
+      "history": {
+        "queue": {
+          "answer": "none",
+          "confidence": 0.5045117735862732,
+          "probabilities": {
+            "disputes": 0.5045117735862732,
+            "none": 0.4954882264137268
+          },
+          "margin": 0.018918726593255997,
+          "evidence_ids": [
+            "DSP-C05",
+            "DIS-1014",
+            "DSP-C04",
+            "DSP-C02",
+            "DIS-1007"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "disputes",
+          "confidence": 0.2722509205341339,
+          "probabilities": {
+            "access": 0.14092977344989777,
+            "payments": 0.2711547613143921,
+            "cards": 0.19395625591278076,
+            "disputes": 0.2722509205341339,
+            "none": 0.12170840054750443
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.3885074853897095,
+          "probabilities": {
+            "false": 0.3347946107387543,
+            "true": 0.3885074853897095,
+            "none": 0.27669787406921387
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "disputes",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9885674238204956,
+            "evidence_ids": [
+              "ACC-1012",
+              "ACC-1013",
+              "ACC-1011",
+              "ACC-1001",
+              "ACC-1005"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9408315896987915,
+            "evidence_ids": [
+              "PAY-1006",
+              "PAY-1013",
+              "PAY-1012",
+              "PAY-1007",
+              "PAY-1002"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.954628014564514,
+            "evidence_ids": [
+              "CAR-1013",
+              "CAR-1004",
+              "CAR-1005",
+              "CAR-1014",
+              "CAR-1010"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.9579999999999999,
+            "count": 5,
+            "spread": 0.014696938456699083,
+            "mean_distance": 1.9038782358169555,
+            "evidence_ids": [
+              "DSP-C05",
+              "DIS-1014",
+              "DSP-C04",
+              "DSP-C02",
+              "DIS-1007"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1881": {
+      "history": {
+        "queue": {
+          "answer": "none",
+          "confidence": 0.5010500550270081,
+          "probabilities": {
+            "disputes": 0.5010500550270081,
+            "none": 0.49894994497299194
+          },
+          "margin": 0.004403088241815567,
+          "evidence_ids": [
+            "DIS-1004",
+            "ACC-1012",
+            "ACC-1013",
+            "ACC-1011",
+            "ACC-1008"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "access",
+          "confidence": 0.28164350986480713,
+          "probabilities": {
+            "access": 0.28164350986480713,
+            "payments": 0.2141028791666031,
+            "cards": 0.2218458354473114,
+            "disputes": 0.21553291380405426,
+            "none": 0.06687480956315994
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.45168447494506836,
+          "probabilities": {
+            "false": 0.38421568274497986,
+            "true": 0.45168447494506836,
+            "none": 0.16409987211227417
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "disputes",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9209654808044434,
+            "evidence_ids": [
+              "ACC-1012",
+              "ACC-1013",
+              "ACC-1011",
+              "ACC-1008",
+              "ACC-1004"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9620809078216552,
+            "evidence_ids": [
+              "PAY-1006",
+              "PAY-1007",
+              "PAY-1004",
+              "PAY-1013",
+              "PAY-1012"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9426087379455566,
+            "evidence_ids": [
+              "CAR-1005",
+              "CAR-1013",
+              "CAR-1004",
+              "CAR-1003",
+              "CAR-1009"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.946,
+            "count": 5,
+            "spread": 0.01200000000000001,
+            "mean_distance": 1.933839750289917,
+            "evidence_ids": [
+              "DIS-1004",
+              "DIS-1014",
+              "DIS-1006",
+              "DIS-1007",
+              "DSP-C06"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1881:after": {
+      "history": {
+        "queue": {
+          "answer": "digital-assets",
+          "confidence": 0.6693930625915527,
+          "probabilities": {
+            "digital-assets": 0.6693930625915527,
+            "none": 0.33060693740844727
+          },
+          "margin": 0.7394907474517822,
+          "evidence_ids": [
+            "INC-1880",
+            "DIS-1004",
+            "ACC-1012",
+            "ACC-1013",
+            "ACC-1011"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "access",
+          "confidence": 0.28164350986480713,
+          "probabilities": {
+            "access": 0.28164350986480713,
+            "payments": 0.2141028791666031,
+            "cards": 0.2218458354473114,
+            "disputes": 0.21553291380405426,
+            "none": 0.06687480956315994
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.45168447494506836,
+          "probabilities": {
+            "false": 0.38421568274497986,
+            "true": 0.45168447494506836,
+            "none": 0.16409987211227417
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "digital-assets",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9209654808044434,
+            "evidence_ids": [
+              "ACC-1012",
+              "ACC-1013",
+              "ACC-1011",
+              "ACC-1008",
+              "ACC-1004"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9620809078216552,
+            "evidence_ids": [
+              "PAY-1006",
+              "PAY-1007",
+              "PAY-1004",
+              "PAY-1013",
+              "PAY-1012"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9426087379455566,
+            "evidence_ids": [
+              "CAR-1005",
+              "CAR-1013",
+              "CAR-1004",
+              "CAR-1003",
+              "CAR-1009"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.946,
+            "count": 5,
+            "spread": 0.01200000000000001,
+            "mean_distance": 1.933839750289917,
+            "evidence_ids": [
+              "DIS-1004",
+              "DIS-1014",
+              "DIS-1006",
+              "DIS-1007",
+              "DSP-C06"
+            ],
+            "supported": true
+          },
+          "digital-assets": {
+            "mean": 1.0,
+            "count": 1,
+            "spread": 0.0,
+            "mean_distance": 0.42629778385162354,
+            "evidence_ids": [
+              "INC-1880"
+            ],
+            "supported": true
+          }
+        }
+      }
+    },
+    "INC-1401:after": {
+      "history": {
+        "queue": {
+          "answer": "access",
+          "confidence": 0.6707983016967773,
+          "probabilities": {
+            "access": 0.6707983016967773,
+            "none": 0.32920169830322266
+          },
+          "margin": 0.7461543679237366,
+          "evidence_ids": [
+            "ACC-1013",
+            "ACC-1008",
+            "ACC-1001",
+            "ACC-1009",
+            "ACC-1012"
+          ],
+          "calibrated": false,
+          "none_semantics": "cannot affirm nearest outcome; not calibrated corpus-wide OOD"
+        },
+        "described": {
+          "answer": "access",
+          "confidence": 0.9999929666519165,
+          "probabilities": {
+            "access": 0.9999929666519165,
+            "payments": 4.904389925286523e-07,
+            "cards": 5.060950343249715e-07,
+            "disputes": 2.830506673490163e-07,
+            "none": 5.793436685053166e-06
+          },
+          "calibrated": false
+        },
+        "fits": {
+          "answer": "in_scope",
+          "confidence": 0.9916965961456299,
+          "probabilities": {
+            "false": 0.00029297402943484485,
+            "true": 0.9916965961456299,
+            "none": 0.00801042839884758
+          },
+          "calibrated": false
+        }
+      },
+      "outcome": {
+        "answer": "digital-assets",
+        "calibrated": false,
+        "confidence": null,
+        "goal": "maximize",
+        "distance": "squared_l2",
+        "options": {
+          "access": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 0.44625626802444457,
+            "evidence_ids": [
+              "ACC-1013",
+              "ACC-1008",
+              "ACC-1001",
+              "ACC-1009",
+              "ACC-1012"
+            ],
+            "supported": true
+          },
+          "payments": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.980162262916565,
+            "evidence_ids": [
+              "PAY-1007",
+              "PAY-1009",
+              "PAY-1011",
+              "PAY-1005",
+              "PAY-1006"
+            ],
+            "supported": true
+          },
+          "cards": {
+            "mean": 0.9399999999999998,
+            "count": 5,
+            "spread": 1.1102230246251565e-16,
+            "mean_distance": 1.9600514888763427,
+            "evidence_ids": [
+              "CAR-1005",
+              "CAR-1003",
+              "CAR-1010",
+              "CAR-1004",
+              "CAR-1014"
+            ],
+            "supported": true
+          },
+          "disputes": {
+            "mean": 0.958,
+            "count": 5,
+            "spread": 0.014696938456699081,
+            "mean_distance": 1.9975736379623412,
+            "evidence_ids": [
+              "DSP-C02",
+              "DSP-C04",
+              "DIS-1006",
+              "DIS-1008",
+              "DSP-C06"
+            ],
+            "supported": true
+          },
+          "digital-assets": {
+            "mean": 1.0,
+            "count": 1,
+            "spread": 0.0,
+            "mean_distance": 1.9919636249542236,
+            "evidence_ids": [
+              "INC-1880"
+            ],
+            "supported": true
+          }
+        }
+      }
+    }
+  },
+  "source": "Projected from traces.json. Vectors are omitted here; the exact envelopes are in that file."
+}
