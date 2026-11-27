@@ -1,0 +1,44 @@
+bun test v1.4.5 (a7733435c)
+
+tests/skim.test.ts:
+(pass) empty text is zero words and ok [0.15ms]
+(pass) whitespace only is empty [0.02ms]
+(pass) counts words under the cap [0.08ms]
+(pass) a hyphenated token is one word
+(pass) status is over when the count exceeds the cap [0.02ms]
+(pass) rejects a cap that is not an integer >= 1 [0.08ms]
+36 |   );
+37 |   expect(() => skim("one", Number.NaN)).toThrow(TypeError);
+38 | });
+39 | 
+40 | test("clips the headline to the cap with one ellipsis", () => {
+41 |   expect(skim("alpha beta gamma", 2).headline).toBe("alpha beta…");
+                                                    ^
+error: expect(received).toBe(expected)
+
+Expected: "alpha beta…"
+Received: "alpha beta gamma"
+
+      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:41:48)
+(fail) clips the headline to the cap with one ellipsis [0.11ms]
+(pass) does not add an ellipsis when the text fits
+(pass) an exact cap does not clip [0.01ms]
+49 |   expect(skim("alpha beta", 2).headline).toBe("alpha beta");
+50 |   expect(skim("alpha beta", 2).status).toBe("ok");
+51 | });
+52 | 
+53 | test("collapses whitespace and then clips", () => {
+54 |   expect(skim("  alpha   beta\tgamma ", 2).headline).toBe("alpha beta…");
+                                                          ^
+error: expect(received).toBe(expected)
+
+Expected: "alpha beta…"
+Received: "alpha beta gamma"
+
+      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:54:54)
+(fail) collapses whitespace and then clips [0.03ms]
+
+ 8 pass
+ 2 fail
+ 15 expect() calls
+Ran 10 tests across 1 file. [4.00ms]
