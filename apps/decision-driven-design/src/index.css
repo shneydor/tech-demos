@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Noto Serif Hebrew";
+  src: url("./fonts/NotoSerifHebrew-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Serif Hebrew";
+  src: url("./fonts/NotoSerifHebrew-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans Hebrew";
+  src: url("./fonts/NotoSansHebrew-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans Hebrew";
+  src: url("./fonts/NotoSansHebrew-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --paper: #f3efe6;
+  --card: #fffcf6;
+  --ink: #20343a;
+  --teal: #087f73;
+  --teal-ink: #f3fffc;
+  --line: #e3dac8;
+  --rose: #8d3b3b;
+  --amber: #8a5a12;
+  --amber-bg: #f8efd8;
+  --muted: #5e6c71;
+}
+
+@theme inline {
+  --font-sans: "Segoe UI", "Helvetica Neue", "Noto Sans Hebrew", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: Palatino, "Palatino Linotype", "Iowan Old Style", "Noto Serif Hebrew", Georgia, serif;
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-teal: var(--teal);
+  --color-teal-ink: var(--teal-ink);
+  --color-line: var(--line);
+  --color-rose: var(--rose);
+  --color-amber: var(--amber);
+  --color-amber-bg: var(--amber-bg);
+  --color-muted: var(--muted);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(900px 420px at -10% -10%, #e7f3f1 0%, transparent 55%),
+    radial-gradient(700px 380px at 110% 0%, #f6ead2 0%, transparent 46%),
+    var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+dialog.prompt-dialog {
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  background: var(--card);
+  color: var(--ink);
+  width: min(920px, calc(100vw - 1.5rem));
+  max-height: min(90vh, 840px);
+  overflow: auto;
+  box-shadow: 0 24px 80px rgb(32 52 58 / 28%);
+}
+
+dialog.prompt-dialog::backdrop {
+  background: rgb(32 52 58 / 55%);
+}
+
+dialog.prompt-dialog pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

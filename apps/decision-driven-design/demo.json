@@ -1,0 +1,6 @@
+{
+  "title": "Decision Driven Design",
+  "description": "Walk a pre-generated decision tree, read who argued each choice, and change one decision to see what moves downstream.",
+  "date": "2026-11-27",
+  "sourceUrl": "https://ddd-prompt.surge.sh"
+}
