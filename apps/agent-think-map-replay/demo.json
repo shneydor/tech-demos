@@ -1,0 +1,6 @@
+{
+  "title": "Agent Think Map Replay",
+  "description": "A recorded login-bug run skips a skill and calls the wrong tool. Replay it beside the retry on Agent Think Map’s canvas, then click any step for its input, output, error, and timing.",
+  "date": "2026-11-27",
+  "sourceUrl": "https://github.com/nimrodfisher/agent-think-map"
+}

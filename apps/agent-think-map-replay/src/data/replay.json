@@ -1,0 +1,1380 @@
+{
+  "provenance": {
+    "package": "agent-think-map",
+    "version": "0.2.1",
+    "tag": "v0.2.1",
+    "commit": "5ee8ffc291b240518b5dfb439b617a3c7db9880b",
+    "recorded": true,
+    "live": false,
+    "provider": "custom",
+    "note": "These events were authored for this page, then parsed, enveloped, reduced, and compared by agent-think-map 0.2.1 at build time. They were not captured from Claude Code or Codex. This page does not open Studio, a hook, or an SSE stream."
+  },
+  "prompt": "File a GitHub issue for the login form overflowing on 320px screens.",
+  "focus": {
+    "failedToolId": "tool-bash",
+    "failedAnswerId": "answer-fail",
+    "skillId": "skill-frontend",
+    "readId": "tool-read",
+    "subagentId": "subagent-layout",
+    "mcpId": "mcp-issue",
+    "retryAnswerId": "answer-ok"
+  },
+  "failed": {
+    "runId": "run-login-skipped-skill",
+    "label": "Skipped the skill",
+    "status": "failed",
+    "events": [
+      {
+        "type": "run.started",
+        "runId": "run-login-skipped-skill",
+        "prompt": "File a GitHub issue for the login form overflowing on 320px screens.",
+        "ts": 0
+      },
+      {
+        "type": "run.meta",
+        "runId": "run-login-skipped-skill",
+        "model": "none — recorded replay",
+        "effort": "scripted",
+        "ts": 30
+      },
+      {
+        "type": "node.started",
+        "id": "think-fail",
+        "kind": "thinking",
+        "title": "Thinking",
+        "operation": {
+          "name": "thinking",
+          "providerName": "thinking"
+        },
+        "parentId": "user-run-login-skipped-skill",
+        "reason": "The agent recorded a reasoning step before choosing a tool.",
+        "ts": 80
+      },
+      {
+        "type": "node.delta",
+        "id": "think-fail",
+        "text": "The report says overflow. I will skip the skill file and run the test script, then search the lockfile.",
+        "ts": 120
+      },
+      {
+        "type": "node.completed",
+        "id": "think-fail",
+        "outputPreview": "The report says overflow. I will skip the skill file and run the test script, then search the lockfile.",
+        "durationMs": 180,
+        "ts": 260
+      },
+      {
+        "type": "node.started",
+        "id": "tool-bash",
+        "kind": "tool",
+        "title": "npm",
+        "operation": {
+          "name": "bash",
+          "providerName": "Bash"
+        },
+        "parentId": "think-fail",
+        "reason": "Used npm on npm test",
+        "ts": 300
+      },
+      {
+        "type": "tool.input",
+        "id": "tool-bash",
+        "partial": "{\"command\":\"npm test\"}",
+        "ts": 324
+      },
+      {
+        "type": "node.failed",
+        "id": "tool-bash",
+        "error": "npm error Missing script: \"test\"\nTo see a list of scripts, run:\n  npm run",
+        "ts": 520
+      },
+      {
+        "type": "node.started",
+        "id": "tool-grep",
+        "kind": "tool",
+        "title": "Grep",
+        "operation": {
+          "name": "grep",
+          "providerName": "Grep"
+        },
+        "parentId": "tool-bash",
+        "reason": "Used Grep on package-lock.json",
+        "ts": 560
+      },
+      {
+        "type": "tool.input",
+        "id": "tool-grep",
+        "partial": "{\"pattern\":\"overflow\",\"path\":\"package-lock.json\"}",
+        "ts": 584
+      },
+      {
+        "type": "node.completed",
+        "id": "tool-grep",
+        "outputPreview": "package-lock.json\n  node_modules/wrap-ansi: \"overflow\"\n  node_modules/cli-boxes: \"overflow\"",
+        "durationMs": 160,
+        "ts": 740
+      },
+      {
+        "type": "node.started",
+        "id": "answer-fail",
+        "kind": "answer",
+        "title": "Answer",
+        "operation": {
+          "name": "answer",
+          "providerName": "answer"
+        },
+        "parentId": "tool-grep",
+        "ts": 820
+      },
+      {
+        "type": "node.delta",
+        "id": "answer-fail",
+        "text": "No code change. npm test is not defined, and package-lock.json mentions overflow inside dependencies, so the 320px report looks already handled.",
+        "ts": 860
+      },
+      {
+        "type": "node.completed",
+        "id": "answer-fail",
+        "outputPreview": "No code change. npm test is not defined, and package-lock.json mentions overflow inside dependencies, so the 320px report looks already handled.",
+        "durationMs": 140,
+        "ts": 960
+      },
+      {
+        "type": "run.completed",
+        "runId": "run-login-skipped-skill",
+        "ts": 1000
+      }
+    ],
+    "envelopes": [
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skipped-skill\",\"run.started:run-login-skipped-skill:0\"]",
+        "sequence": 0,
+        "provider": "custom",
+        "sessionId": "run-login-skipped-skill",
+        "timestamp": 0,
+        "payload": {
+          "type": "run.started",
+          "runId": "run-login-skipped-skill",
+          "prompt": "File a GitHub issue for the login form overflowing on 320px screens.",
+          "ts": 0
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skipped-skill\",\"run.meta:run-login-skipped-skill:30\"]",
+        "sequence": 1,
+        "provider": "custom",
+        "sessionId": "run-login-skipped-skill",
+        "timestamp": 30,
+        "payload": {
+          "type": "run.meta",
+          "runId": "run-login-skipped-skill",
+          "model": "none — recorded replay",
+          "effort": "scripted",
+          "ts": 30
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skipped-skill\",\"node.started:think-fail:80\"]",
+        "sequence": 2,
+        "provider": "custom",
+        "sessionId": "run-login-skipped-skill",
+        "timestamp": 80,
+        "payload": {
+          "type": "node.started",
+          "id": "think-fail",
+          "kind": "thinking",
+          "title": "Thinking",
+          "operation": {
+            "name": "thinking",
+            "providerName": "thinking"
+          },
+          "parentId": "user-run-login-skipped-skill",
+          "reason": "The agent recorded a reasoning step before choosing a tool.",
+          "ts": 80
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skipped-skill\",\"node.delta:think-fail:120\"]",
+        "sequence": 3,
+        "provider": "custom",
+        "sessionId": "run-login-skipped-skill",
+        "timestamp": 120,
+        "payload": {
+          "type": "node.delta",
+          "id": "think-fail",
+          "text": "The report says overflow. I will skip the skill file and run the test script, then search the lockfile.",
+          "ts": 120
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skipped-skill\",\"node.completed:think-fail:260\"]",
+        "sequence": 4,
+        "provider": "custom",
+        "sessionId": "run-login-skipped-skill",
+        "timestamp": 260,
+        "payload": {
+          "type": "node.completed",
+          "id": "think-fail",
+          "outputPreview": "The report says overflow. I will skip the skill file and run the test script, then search the lockfile.",
+          "durationMs": 180,
+          "ts": 260
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skipped-skill\",\"node.started:tool-bash:300\"]",
+        "sequence": 5,
+        "provider": "custom",
+        "sessionId": "run-login-skipped-skill",
+        "timestamp": 300,
+        "payload": {
+          "type": "node.started",
+          "id": "tool-bash",
+          "kind": "tool",
+          "title": "npm",
+          "operation": {
+            "name": "bash",
+            "providerName": "Bash"
+          },
+          "parentId": "think-fail",
+          "reason": "Used npm on npm test",
+          "ts": 300
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skipped-skill\",\"tool.input:tool-bash:324\"]",
+        "sequence": 6,
+        "provider": "custom",
+        "sessionId": "run-login-skipped-skill",
+        "timestamp": 324,
+        "payload": {
+          "type": "tool.input",
+          "id": "tool-bash",
+          "partial": "{\"command\":\"npm test\"}",
+          "ts": 324
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skipped-skill\",\"node.failed:tool-bash:520\"]",
+        "sequence": 7,
+        "provider": "custom",
+        "sessionId": "run-login-skipped-skill",
+        "timestamp": 520,
+        "payload": {
+          "type": "node.failed",
+          "id": "tool-bash",
+          "error": "npm error Missing script: \"test\"\nTo see a list of scripts, run:\n  npm run",
+          "ts": 520
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skipped-skill\",\"node.started:tool-grep:560\"]",
+        "sequence": 8,
+        "provider": "custom",
+        "sessionId": "run-login-skipped-skill",
+        "timestamp": 560,
+        "payload": {
+          "type": "node.started",
+          "id": "tool-grep",
+          "kind": "tool",
+          "title": "Grep",
+          "operation": {
+            "name": "grep",
+            "providerName": "Grep"
+          },
+          "parentId": "tool-bash",
+          "reason": "Used Grep on package-lock.json",
+          "ts": 560
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skipped-skill\",\"tool.input:tool-grep:584\"]",
+        "sequence": 9,
+        "provider": "custom",
+        "sessionId": "run-login-skipped-skill",
+        "timestamp": 584,
+        "payload": {
+          "type": "tool.input",
+          "id": "tool-grep",
+          "partial": "{\"pattern\":\"overflow\",\"path\":\"package-lock.json\"}",
+          "ts": 584
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skipped-skill\",\"node.completed:tool-grep:740\"]",
+        "sequence": 10,
+        "provider": "custom",
+        "sessionId": "run-login-skipped-skill",
+        "timestamp": 740,
+        "payload": {
+          "type": "node.completed",
+          "id": "tool-grep",
+          "outputPreview": "package-lock.json\n  node_modules/wrap-ansi: \"overflow\"\n  node_modules/cli-boxes: \"overflow\"",
+          "durationMs": 160,
+          "ts": 740
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skipped-skill\",\"node.started:answer-fail:820\"]",
+        "sequence": 11,
+        "provider": "custom",
+        "sessionId": "run-login-skipped-skill",
+        "timestamp": 820,
+        "payload": {
+          "type": "node.started",
+          "id": "answer-fail",
+          "kind": "answer",
+          "title": "Answer",
+          "operation": {
+            "name": "answer",
+            "providerName": "answer"
+          },
+          "parentId": "tool-grep",
+          "ts": 820
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skipped-skill\",\"node.delta:answer-fail:860\"]",
+        "sequence": 12,
+        "provider": "custom",
+        "sessionId": "run-login-skipped-skill",
+        "timestamp": 860,
+        "payload": {
+          "type": "node.delta",
+          "id": "answer-fail",
+          "text": "No code change. npm test is not defined, and package-lock.json mentions overflow inside dependencies, so the 320px report looks already handled.",
+          "ts": 860
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skipped-skill\",\"node.completed:answer-fail:960\"]",
+        "sequence": 13,
+        "provider": "custom",
+        "sessionId": "run-login-skipped-skill",
+        "timestamp": 960,
+        "payload": {
+          "type": "node.completed",
+          "id": "answer-fail",
+          "outputPreview": "No code change. npm test is not defined, and package-lock.json mentions overflow inside dependencies, so the 320px report looks already handled.",
+          "durationMs": 140,
+          "ts": 960
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skipped-skill\",\"run.completed:run-login-skipped-skill:1000\"]",
+        "sequence": 14,
+        "provider": "custom",
+        "sessionId": "run-login-skipped-skill",
+        "timestamp": 1000,
+        "payload": {
+          "type": "run.completed",
+          "runId": "run-login-skipped-skill",
+          "ts": 1000
+        },
+        "eventIdProvenance": "stable-provider-id"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "user-run-login-skipped-skill",
+        "kind": "user",
+        "title": "User",
+        "status": "completed",
+        "reason": "",
+        "text": "File a GitHub issue for the login form overflowing on 320px screens.",
+        "input": null,
+        "outputPreview": null,
+        "error": null,
+        "durationMs": null,
+        "elapsedMs": 0,
+        "durationSource": "timestamps",
+        "operation": null
+      },
+      {
+        "id": "think-fail",
+        "kind": "thinking",
+        "title": "Thinking",
+        "status": "completed",
+        "reason": "The agent recorded a reasoning step before choosing a tool.",
+        "text": "The report says overflow. I will skip the skill file and run the test script, then search the lockfile.",
+        "input": null,
+        "outputPreview": "The report says overflow. I will skip the skill file and run the test script, then search the lockfile.",
+        "error": null,
+        "durationMs": 180,
+        "elapsedMs": 180,
+        "durationSource": "durationMs",
+        "operation": {
+          "name": "thinking",
+          "providerName": "thinking"
+        }
+      },
+      {
+        "id": "tool-bash",
+        "kind": "tool",
+        "title": "npm",
+        "status": "failed",
+        "reason": "Used npm on npm test",
+        "text": "",
+        "input": "{\"command\":\"npm test\"}",
+        "outputPreview": null,
+        "error": "npm error Missing script: \"test\"\nTo see a list of scripts, run:\n  npm run",
+        "durationMs": null,
+        "elapsedMs": 220,
+        "durationSource": "timestamps",
+        "operation": {
+          "name": "bash",
+          "providerName": "Bash"
+        }
+      },
+      {
+        "id": "tool-grep",
+        "kind": "tool",
+        "title": "Grep",
+        "status": "completed",
+        "reason": "Used Grep on package-lock.json",
+        "text": "",
+        "input": "{\"pattern\":\"overflow\",\"path\":\"package-lock.json\"}",
+        "outputPreview": "package-lock.json\n  node_modules/wrap-ansi: \"overflow\"\n  node_modules/cli-boxes: \"overflow\"",
+        "error": null,
+        "durationMs": 160,
+        "elapsedMs": 180,
+        "durationSource": "durationMs",
+        "operation": {
+          "name": "grep",
+          "providerName": "Grep"
+        }
+      },
+      {
+        "id": "answer-fail",
+        "kind": "answer",
+        "title": "Answer",
+        "status": "completed",
+        "reason": "",
+        "text": "No code change. npm test is not defined, and package-lock.json mentions overflow inside dependencies, so the 320px report looks already handled.",
+        "input": null,
+        "outputPreview": "No code change. npm test is not defined, and package-lock.json mentions overflow inside dependencies, so the 320px report looks already handled.",
+        "error": null,
+        "durationMs": 140,
+        "elapsedMs": 140,
+        "durationSource": "durationMs",
+        "operation": {
+          "name": "answer",
+          "providerName": "answer"
+        }
+      }
+    ]
+  },
+  "retry": {
+    "runId": "run-login-skill-retry",
+    "label": "Loaded the skill",
+    "status": "completed",
+    "events": [
+      {
+        "type": "run.started",
+        "runId": "run-login-skill-retry",
+        "prompt": "File a GitHub issue for the login form overflowing on 320px screens.",
+        "ts": 0
+      },
+      {
+        "type": "run.meta",
+        "runId": "run-login-skill-retry",
+        "model": "none — recorded replay",
+        "effort": "scripted",
+        "ts": 30
+      },
+      {
+        "type": "node.started",
+        "id": "think-ok",
+        "kind": "thinking",
+        "title": "Thinking",
+        "operation": {
+          "name": "thinking",
+          "providerName": "thinking"
+        },
+        "parentId": "user-run-login-skill-retry",
+        "reason": "The agent recorded a reasoning step before choosing a tool.",
+        "ts": 80
+      },
+      {
+        "type": "node.delta",
+        "id": "think-ok",
+        "text": "This is a layout bug. Load frontend-engineer, read Login.tsx, ask the layout reviewer, then open a GitHub issue.",
+        "ts": 120
+      },
+      {
+        "type": "node.completed",
+        "id": "think-ok",
+        "outputPreview": "This is a layout bug. Load frontend-engineer, read Login.tsx, ask the layout reviewer, then open a GitHub issue.",
+        "durationMs": 160,
+        "ts": 240
+      },
+      {
+        "type": "node.started",
+        "id": "skill-frontend",
+        "kind": "skill",
+        "title": "frontend-engineer",
+        "operation": {
+          "name": "read",
+          "providerName": "Read"
+        },
+        "parentId": "think-ok",
+        "reason": "Loaded frontend-engineer because the task matched that skill",
+        "ts": 280
+      },
+      {
+        "type": "tool.input",
+        "id": "skill-frontend",
+        "partial": "{\"file_path\":\".claude/skills/frontend-engineer/SKILL.md\"}",
+        "ts": 304
+      },
+      {
+        "type": "node.completed",
+        "id": "skill-frontend",
+        "outputPreview": "Use a distinctive layout, check overflow, never ship a horizontal scroll on 320px.",
+        "durationMs": 64,
+        "ts": 360
+      },
+      {
+        "type": "node.started",
+        "id": "tool-read",
+        "kind": "tool",
+        "title": "Read",
+        "operation": {
+          "name": "read",
+          "providerName": "Read"
+        },
+        "parentId": "skill-frontend",
+        "reason": "Used Read on src/Login.tsx",
+        "ts": 420
+      },
+      {
+        "type": "tool.input",
+        "id": "tool-read",
+        "partial": "{\"file_path\":\"src/Login.tsx\"}",
+        "ts": 444
+      },
+      {
+        "type": "node.completed",
+        "id": "tool-read",
+        "outputPreview": "export function Login() {\n  return <form className=\"flex w-[480px]\">...</form>;\n}",
+        "durationMs": 48,
+        "ts": 560
+      },
+      {
+        "type": "node.started",
+        "id": "subagent-layout",
+        "kind": "subagent",
+        "title": "Task",
+        "operation": {
+          "name": "task",
+          "providerName": "Task"
+        },
+        "parentId": "tool-read",
+        "reason": "Used Task on layout-reviewer",
+        "ts": 640
+      },
+      {
+        "type": "tool.input",
+        "id": "subagent-layout",
+        "partial": "{\"description\":\"Check 320px overflow\",\"subagent_type\":\"layout-reviewer\",\"prompt\":\"Review src/Login.tsx at 320px. The form uses a fixed 480px width.\"}",
+        "ts": 664
+      },
+      {
+        "type": "node.completed",
+        "id": "subagent-layout",
+        "outputPreview": "The fixed 480px row overflows a 320px viewport. Do not ship horizontal scroll.",
+        "durationMs": 260,
+        "ts": 920
+      },
+      {
+        "type": "node.started",
+        "id": "mcp-issue",
+        "kind": "mcp",
+        "title": "github / create_issue",
+        "operation": {
+          "name": "github.create_issue",
+          "server": "github",
+          "providerName": "mcp__github__create_issue"
+        },
+        "parentId": "subagent-layout",
+        "reason": "Called create_issue on server github",
+        "ts": 980
+      },
+      {
+        "type": "tool.input",
+        "id": "mcp-issue",
+        "partial": "{\"title\":\"Login form overflows at 320px\",\"body\":\"src/Login.tsx uses a fixed 480px flex row. frontend-engineer says not to ship horizontal scroll at 320px.\"}",
+        "ts": 1004
+      },
+      {
+        "type": "node.completed",
+        "id": "mcp-issue",
+        "outputPreview": "Created issue #41 in acme/web",
+        "durationMs": 280,
+        "ts": 1280
+      },
+      {
+        "type": "node.started",
+        "id": "answer-ok",
+        "kind": "answer",
+        "title": "Answer",
+        "operation": {
+          "name": "answer",
+          "providerName": "answer"
+        },
+        "parentId": "mcp-issue",
+        "ts": 1360
+      },
+      {
+        "type": "node.delta",
+        "id": "answer-ok",
+        "text": "Opened GitHub issue #41. Login.tsx is a fixed 480px flex row, so it overflows at 320px. frontend-engineer says not to ship horizontal scroll at that width.",
+        "ts": 1400
+      },
+      {
+        "type": "node.completed",
+        "id": "answer-ok",
+        "outputPreview": "Opened GitHub issue #41. Login.tsx is a fixed 480px flex row, so it overflows at 320px. frontend-engineer says not to ship horizontal scroll at that width.",
+        "durationMs": 120,
+        "ts": 1480
+      },
+      {
+        "type": "run.completed",
+        "runId": "run-login-skill-retry",
+        "ts": 1520
+      }
+    ],
+    "envelopes": [
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"run.started:run-login-skill-retry:0\"]",
+        "sequence": 0,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 0,
+        "payload": {
+          "type": "run.started",
+          "runId": "run-login-skill-retry",
+          "prompt": "File a GitHub issue for the login form overflowing on 320px screens.",
+          "ts": 0
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"run.meta:run-login-skill-retry:30\"]",
+        "sequence": 1,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 30,
+        "payload": {
+          "type": "run.meta",
+          "runId": "run-login-skill-retry",
+          "model": "none — recorded replay",
+          "effort": "scripted",
+          "ts": 30
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"node.started:think-ok:80\"]",
+        "sequence": 2,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 80,
+        "payload": {
+          "type": "node.started",
+          "id": "think-ok",
+          "kind": "thinking",
+          "title": "Thinking",
+          "operation": {
+            "name": "thinking",
+            "providerName": "thinking"
+          },
+          "parentId": "user-run-login-skill-retry",
+          "reason": "The agent recorded a reasoning step before choosing a tool.",
+          "ts": 80
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"node.delta:think-ok:120\"]",
+        "sequence": 3,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 120,
+        "payload": {
+          "type": "node.delta",
+          "id": "think-ok",
+          "text": "This is a layout bug. Load frontend-engineer, read Login.tsx, ask the layout reviewer, then open a GitHub issue.",
+          "ts": 120
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"node.completed:think-ok:240\"]",
+        "sequence": 4,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 240,
+        "payload": {
+          "type": "node.completed",
+          "id": "think-ok",
+          "outputPreview": "This is a layout bug. Load frontend-engineer, read Login.tsx, ask the layout reviewer, then open a GitHub issue.",
+          "durationMs": 160,
+          "ts": 240
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"node.started:skill-frontend:280\"]",
+        "sequence": 5,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 280,
+        "payload": {
+          "type": "node.started",
+          "id": "skill-frontend",
+          "kind": "skill",
+          "title": "frontend-engineer",
+          "operation": {
+            "name": "read",
+            "providerName": "Read"
+          },
+          "parentId": "think-ok",
+          "reason": "Loaded frontend-engineer because the task matched that skill",
+          "ts": 280
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"tool.input:skill-frontend:304\"]",
+        "sequence": 6,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 304,
+        "payload": {
+          "type": "tool.input",
+          "id": "skill-frontend",
+          "partial": "{\"file_path\":\".claude/skills/frontend-engineer/SKILL.md\"}",
+          "ts": 304
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"node.completed:skill-frontend:360\"]",
+        "sequence": 7,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 360,
+        "payload": {
+          "type": "node.completed",
+          "id": "skill-frontend",
+          "outputPreview": "Use a distinctive layout, check overflow, never ship a horizontal scroll on 320px.",
+          "durationMs": 64,
+          "ts": 360
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"node.started:tool-read:420\"]",
+        "sequence": 8,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 420,
+        "payload": {
+          "type": "node.started",
+          "id": "tool-read",
+          "kind": "tool",
+          "title": "Read",
+          "operation": {
+            "name": "read",
+            "providerName": "Read"
+          },
+          "parentId": "skill-frontend",
+          "reason": "Used Read on src/Login.tsx",
+          "ts": 420
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"tool.input:tool-read:444\"]",
+        "sequence": 9,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 444,
+        "payload": {
+          "type": "tool.input",
+          "id": "tool-read",
+          "partial": "{\"file_path\":\"src/Login.tsx\"}",
+          "ts": 444
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"node.completed:tool-read:560\"]",
+        "sequence": 10,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 560,
+        "payload": {
+          "type": "node.completed",
+          "id": "tool-read",
+          "outputPreview": "export function Login() {\n  return <form className=\"flex w-[480px]\">...</form>;\n}",
+          "durationMs": 48,
+          "ts": 560
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"node.started:subagent-layout:640\"]",
+        "sequence": 11,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 640,
+        "payload": {
+          "type": "node.started",
+          "id": "subagent-layout",
+          "kind": "subagent",
+          "title": "Task",
+          "operation": {
+            "name": "task",
+            "providerName": "Task"
+          },
+          "parentId": "tool-read",
+          "reason": "Used Task on layout-reviewer",
+          "ts": 640
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"tool.input:subagent-layout:664\"]",
+        "sequence": 12,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 664,
+        "payload": {
+          "type": "tool.input",
+          "id": "subagent-layout",
+          "partial": "{\"description\":\"Check 320px overflow\",\"subagent_type\":\"layout-reviewer\",\"prompt\":\"Review src/Login.tsx at 320px. The form uses a fixed 480px width.\"}",
+          "ts": 664
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"node.completed:subagent-layout:920\"]",
+        "sequence": 13,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 920,
+        "payload": {
+          "type": "node.completed",
+          "id": "subagent-layout",
+          "outputPreview": "The fixed 480px row overflows a 320px viewport. Do not ship horizontal scroll.",
+          "durationMs": 260,
+          "ts": 920
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"node.started:mcp-issue:980\"]",
+        "sequence": 14,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 980,
+        "payload": {
+          "type": "node.started",
+          "id": "mcp-issue",
+          "kind": "mcp",
+          "title": "github / create_issue",
+          "operation": {
+            "name": "github.create_issue",
+            "server": "github",
+            "providerName": "mcp__github__create_issue"
+          },
+          "parentId": "subagent-layout",
+          "reason": "Called create_issue on server github",
+          "ts": 980
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"tool.input:mcp-issue:1004\"]",
+        "sequence": 15,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 1004,
+        "payload": {
+          "type": "tool.input",
+          "id": "mcp-issue",
+          "partial": "{\"title\":\"Login form overflows at 320px\",\"body\":\"src/Login.tsx uses a fixed 480px flex row. frontend-engineer says not to ship horizontal scroll at 320px.\"}",
+          "ts": 1004
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"node.completed:mcp-issue:1280\"]",
+        "sequence": 16,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 1280,
+        "payload": {
+          "type": "node.completed",
+          "id": "mcp-issue",
+          "outputPreview": "Created issue #41 in acme/web",
+          "durationMs": 280,
+          "ts": 1280
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"node.started:answer-ok:1360\"]",
+        "sequence": 17,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 1360,
+        "payload": {
+          "type": "node.started",
+          "id": "answer-ok",
+          "kind": "answer",
+          "title": "Answer",
+          "operation": {
+            "name": "answer",
+            "providerName": "answer"
+          },
+          "parentId": "mcp-issue",
+          "ts": 1360
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"node.delta:answer-ok:1400\"]",
+        "sequence": 18,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 1400,
+        "payload": {
+          "type": "node.delta",
+          "id": "answer-ok",
+          "text": "Opened GitHub issue #41. Login.tsx is a fixed 480px flex row, so it overflows at 320px. frontend-engineer says not to ship horizontal scroll at that width.",
+          "ts": 1400
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"node.completed:answer-ok:1480\"]",
+        "sequence": 19,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 1480,
+        "payload": {
+          "type": "node.completed",
+          "id": "answer-ok",
+          "outputPreview": "Opened GitHub issue #41. Login.tsx is a fixed 480px flex row, so it overflows at 320px. frontend-engineer says not to ship horizontal scroll at that width.",
+          "durationMs": 120,
+          "ts": 1480
+        },
+        "eventIdProvenance": "stable-provider-id"
+      },
+      {
+        "schemaVersion": 1,
+        "eventId": "[\"custom\",\"run-login-skill-retry\",\"run.completed:run-login-skill-retry:1520\"]",
+        "sequence": 20,
+        "provider": "custom",
+        "sessionId": "run-login-skill-retry",
+        "timestamp": 1520,
+        "payload": {
+          "type": "run.completed",
+          "runId": "run-login-skill-retry",
+          "ts": 1520
+        },
+        "eventIdProvenance": "stable-provider-id"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "user-run-login-skill-retry",
+        "kind": "user",
+        "title": "User",
+        "status": "completed",
+        "reason": "",
+        "text": "File a GitHub issue for the login form overflowing on 320px screens.",
+        "input": null,
+        "outputPreview": null,
+        "error": null,
+        "durationMs": null,
+        "elapsedMs": 0,
+        "durationSource": "timestamps",
+        "operation": null
+      },
+      {
+        "id": "think-ok",
+        "kind": "thinking",
+        "title": "Thinking",
+        "status": "completed",
+        "reason": "The agent recorded a reasoning step before choosing a tool.",
+        "text": "This is a layout bug. Load frontend-engineer, read Login.tsx, ask the layout reviewer, then open a GitHub issue.",
+        "input": null,
+        "outputPreview": "This is a layout bug. Load frontend-engineer, read Login.tsx, ask the layout reviewer, then open a GitHub issue.",
+        "error": null,
+        "durationMs": 160,
+        "elapsedMs": 160,
+        "durationSource": "durationMs",
+        "operation": {
+          "name": "thinking",
+          "providerName": "thinking"
+        }
+      },
+      {
+        "id": "skill-frontend",
+        "kind": "skill",
+        "title": "frontend-engineer",
+        "status": "completed",
+        "reason": "Loaded frontend-engineer because the task matched that skill",
+        "text": "",
+        "input": "{\"file_path\":\".claude/skills/frontend-engineer/SKILL.md\"}",
+        "outputPreview": "Use a distinctive layout, check overflow, never ship a horizontal scroll on 320px.",
+        "error": null,
+        "durationMs": 64,
+        "elapsedMs": 80,
+        "durationSource": "durationMs",
+        "operation": {
+          "name": "read",
+          "providerName": "Read"
+        }
+      },
+      {
+        "id": "tool-read",
+        "kind": "tool",
+        "title": "Read",
+        "status": "completed",
+        "reason": "Used Read on src/Login.tsx",
+        "text": "",
+        "input": "{\"file_path\":\"src/Login.tsx\"}",
+        "outputPreview": "export function Login() {\n  return <form className=\"flex w-[480px]\">...</form>;\n}",
+        "error": null,
+        "durationMs": 48,
+        "elapsedMs": 140,
+        "durationSource": "durationMs",
+        "operation": {
+          "name": "read",
+          "providerName": "Read"
+        }
+      },
+      {
+        "id": "subagent-layout",
+        "kind": "subagent",
+        "title": "Task",
+        "status": "completed",
+        "reason": "Used Task on layout-reviewer",
+        "text": "",
+        "input": "{\"description\":\"Check 320px overflow\",\"subagent_type\":\"layout-reviewer\",\"prompt\":\"Review src/Login.tsx at 320px. The form uses a fixed 480px width.\"}",
+        "outputPreview": "The fixed 480px row overflows a 320px viewport. Do not ship horizontal scroll.",
+        "error": null,
+        "durationMs": 260,
+        "elapsedMs": 280,
+        "durationSource": "durationMs",
+        "operation": {
+          "name": "task",
+          "providerName": "Task"
+        }
+      },
+      {
+        "id": "mcp-issue",
+        "kind": "mcp",
+        "title": "github / create_issue",
+        "status": "completed",
+        "reason": "Called create_issue on server github",
+        "text": "",
+        "input": "{\"title\":\"Login form overflows at 320px\",\"body\":\"src/Login.tsx uses a fixed 480px flex row. frontend-engineer says not to ship horizontal scroll at 320px.\"}",
+        "outputPreview": "Created issue #41 in acme/web",
+        "error": null,
+        "durationMs": 280,
+        "elapsedMs": 300,
+        "durationSource": "durationMs",
+        "operation": {
+          "name": "github.create_issue",
+          "server": "github",
+          "providerName": "mcp__github__create_issue"
+        }
+      },
+      {
+        "id": "answer-ok",
+        "kind": "answer",
+        "title": "Answer",
+        "status": "completed",
+        "reason": "",
+        "text": "Opened GitHub issue #41. Login.tsx is a fixed 480px flex row, so it overflows at 320px. frontend-engineer says not to ship horizontal scroll at that width.",
+        "input": null,
+        "outputPreview": "Opened GitHub issue #41. Login.tsx is a fixed 480px flex row, so it overflows at 320px. frontend-engineer says not to ship horizontal scroll at that width.",
+        "error": null,
+        "durationMs": 120,
+        "elapsedMs": 120,
+        "durationSource": "durationMs",
+        "operation": {
+          "name": "answer",
+          "providerName": "answer"
+        }
+      }
+    ]
+  },
+  "comparison": {
+    "diffId": "a290b15e6ae8a519eae962a4d18e08c6d78feff23334f20d36bf8cb9e4c8ae56",
+    "analyzerVersion": 2,
+    "fingerprintVersion": 1,
+    "provisional": true,
+    "warnings": [
+      "Fingerprint V1 is provisional: real developer-pair human validation is pending.",
+      "1 of 3 aligned step pairs are inferred.",
+      "Divergence is an investigative lead, not proof of a cause."
+    ],
+    "firstDivergence": 0,
+    "rows": [
+      {
+        "goodOrdinal": 0,
+        "badOrdinal": 0,
+        "classification": "changed",
+        "match": "inferred",
+        "matchBasis": "structural-identity-only",
+        "confidence": "medium",
+        "reason": "Correspondence uses structural identity without captured operation identity"
+      },
+      {
+        "goodOrdinal": 1,
+        "badOrdinal": 1,
+        "classification": "matched",
+        "match": "exact",
+        "matchBasis": "exact-fingerprint",
+        "confidence": "high",
+        "reason": "Unique captured fingerprint and outcome class"
+      },
+      {
+        "badOrdinal": 2,
+        "classification": "inserted",
+        "match": "inferred",
+        "matchBasis": "no-corresponding-step",
+        "confidence": "medium",
+        "reason": "Additional step in failed sequence"
+      },
+      {
+        "badOrdinal": 3,
+        "classification": "inserted",
+        "match": "inferred",
+        "matchBasis": "no-corresponding-step",
+        "confidence": "medium",
+        "reason": "Additional step in failed sequence"
+      },
+      {
+        "goodOrdinal": 2,
+        "classification": "missing",
+        "match": "inferred",
+        "matchBasis": "no-corresponding-step",
+        "confidence": "medium",
+        "reason": "Good step absent from failed sequence"
+      },
+      {
+        "goodOrdinal": 3,
+        "classification": "missing",
+        "match": "inferred",
+        "matchBasis": "no-corresponding-step",
+        "confidence": "medium",
+        "reason": "Good step absent from failed sequence"
+      },
+      {
+        "goodOrdinal": 4,
+        "classification": "missing",
+        "match": "inferred",
+        "matchBasis": "no-corresponding-step",
+        "confidence": "medium",
+        "reason": "Good step absent from failed sequence"
+      },
+      {
+        "goodOrdinal": 5,
+        "classification": "missing",
+        "match": "inferred",
+        "matchBasis": "no-corresponding-step",
+        "confidence": "medium",
+        "reason": "Good step absent from failed sequence"
+      },
+      {
+        "goodOrdinal": 6,
+        "badOrdinal": 4,
+        "classification": "matched",
+        "match": "exact",
+        "matchBasis": "exact-fingerprint",
+        "confidence": "high",
+        "reason": "Unique captured fingerprint and outcome class"
+      }
+    ],
+    "badSteps": [
+      {
+        "ordinal": 0,
+        "nodeId": "user-run-login-skipped-skill",
+        "kind": "user",
+        "status": "completed",
+        "operationName": "user",
+        "providerName": null,
+        "error": null,
+        "durationMs": 0
+      },
+      {
+        "ordinal": 1,
+        "nodeId": "think-fail",
+        "kind": "thinking",
+        "status": "completed",
+        "operationName": "thinking",
+        "providerName": "thinking",
+        "error": null,
+        "durationMs": 180
+      },
+      {
+        "ordinal": 2,
+        "nodeId": "tool-bash",
+        "kind": "tool",
+        "status": "failed",
+        "operationName": "bash",
+        "providerName": "Bash",
+        "error": "npm error Missing script: \"test\"\nTo see a list of scripts, run:\n  npm run",
+        "durationMs": 220
+      },
+      {
+        "ordinal": 3,
+        "nodeId": "tool-grep",
+        "kind": "tool",
+        "status": "completed",
+        "operationName": "grep",
+        "providerName": "Grep",
+        "error": null,
+        "durationMs": 160
+      },
+      {
+        "ordinal": 4,
+        "nodeId": "answer-fail",
+        "kind": "answer",
+        "status": "completed",
+        "operationName": "answer",
+        "providerName": "answer",
+        "error": null,
+        "durationMs": 140
+      }
+    ],
+    "goodSteps": [
+      {
+        "ordinal": 0,
+        "nodeId": "user-run-login-skill-retry",
+        "kind": "user",
+        "status": "completed",
+        "operationName": "user",
+        "providerName": null,
+        "error": null,
+        "durationMs": 0
+      },
+      {
+        "ordinal": 1,
+        "nodeId": "think-ok",
+        "kind": "thinking",
+        "status": "completed",
+        "operationName": "thinking",
+        "providerName": "thinking",
+        "error": null,
+        "durationMs": 160
+      },
+      {
+        "ordinal": 2,
+        "nodeId": "skill-frontend",
+        "kind": "skill",
+        "status": "completed",
+        "operationName": "read",
+        "providerName": "Read",
+        "error": null,
+        "durationMs": 64
+      },
+      {
+        "ordinal": 3,
+        "nodeId": "tool-read",
+        "kind": "tool",
+        "status": "completed",
+        "operationName": "read",
+        "providerName": "Read",
+        "error": null,
+        "durationMs": 48
+      },
+      {
+        "ordinal": 4,
+        "nodeId": "subagent-layout",
+        "kind": "subagent",
+        "status": "completed",
+        "operationName": "task",
+        "providerName": "Task",
+        "error": null,
+        "durationMs": 260
+      },
+      {
+        "ordinal": 5,
+        "nodeId": "mcp-issue",
+        "kind": "mcp",
+        "status": "completed",
+        "operationName": "github.create_issue",
+        "providerName": "mcp__github__create_issue",
+        "error": null,
+        "durationMs": 280
+      },
+      {
+        "ordinal": 6,
+        "nodeId": "answer-ok",
+        "kind": "answer",
+        "status": "completed",
+        "operationName": "answer",
+        "providerName": "answer",
+        "error": null,
+        "durationMs": 120
+      }
+    ]
+  }
+}
