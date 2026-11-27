@@ -1,0 +1,14 @@
+bun test v1.4.5 (a7733435c)
+
+tests/skim.test.ts:
+(pass) empty text is zero words and ok [0.18ms]
+(pass) whitespace only is empty [0.03ms]
+(pass) counts words under the cap [0.09ms]
+(pass) a hyphenated token is one word [0.01ms]
+(pass) status is over when the count exceeds the cap [0.02ms]
+(pass) rejects a cap that is not an integer >= 1 [0.07ms]
+
+ 6 pass
+ 0 fail
+ 10 expect() calls
+Ran 6 tests across 1 file. [4.00ms]

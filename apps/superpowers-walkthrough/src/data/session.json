@@ -1,0 +1,190 @@
+{
+  "feature": "skim",
+  "recordedOn": "2026-11-27",
+  "harness": "Cursor cloud agent. Task 1 ran in this session. Task 2 and the review each ran in a fresh subagent that did not receive the earlier transcript.",
+  "steps": [
+    {
+      "id": "brainstorm",
+      "label": "Brainstorm",
+      "skill": "brainstorming",
+      "provenance": "recorded",
+      "note": "Recorded against skills/brainstorming/SKILL.md at 22f0b463. The partner lines are the brief locked in this demo's plan, not a live person. No product code was written in this step.",
+      "turns": [
+        {
+          "kind": "talk",
+          "role": "partner",
+          "speaker": "Partner",
+          "body": "I keep getting paragraphs from coding agents that are too long to skim. I want a tiny TypeScript function, skim(text, maxWords), I can call from other code. It should tell me the word count, whether that is over the cap, and a headline of the leading words. No UI. Success is trusting those three fields. A failure would be a clever summarizer, a cut through the middle of a word, or a character count wearing a word count's name."
+        },
+        {
+          "kind": "talk",
+          "role": "agent",
+          "speaker": "Agent",
+          "body": "You want a function you can call, not a screen. You hand it a paragraph and a cap because agent text runs long, and you want three facts back: how many words, whether that is over the cap, and a headline of the leading words. Success is trusting those three. A rewrite of the paragraph, a cut through a word, or a character count labeled as words would miss it, even if the function returned.\n\nNothing exists for this yet. It would be a new module and a test file.\n\nOne choice still changes the function. When you say word, do you mean a split on whitespace, so well-known stays one word, or a language-aware split? I would ship the whitespace split: it is predictable and it matches a skim check. A language-aware split handles some scripts better and pulls in more rules than this function needs."
+        },
+        {
+          "kind": "talk",
+          "role": "partner",
+          "speaker": "Partner",
+          "body": "Whitespace. Empty text is 0 words, status ok, headline empty. Whitespace-only is empty too. Status is over only when the count is greater than the cap. The cap has to be an integer of at least 1, otherwise throw TypeError. Collapse whitespace to single spaces in the headline. If you clip, end with one … character. If you don't clip, no ellipsis. A hyphenated token is one word. No HTML, no sentence detection, no stemming. Two tasks: counting first, headline second. bun test. You pick how it is built."
+        },
+        {
+          "kind": "talk",
+          "role": "agent",
+          "speaker": "Agent",
+          "body": "Three ways to build it:\n\n1. One function that splits on whitespace. Predictable, no dictionary, matches why you want it. Weaker for scripts that do not separate words with spaces.\n2. Intl.Segmenter. Better for some of those scripts. More API than you asked for.\n3. A character cap. Smaller, and it is the failure you named, so it is out.\n\nI will go with 1. The design is next."
+        },
+        {
+          "kind": "talk",
+          "role": "partner",
+          "speaker": "Partner",
+          "body": "Go with the split. Write the short design."
+        },
+        {
+          "kind": "talk",
+          "role": "agent",
+          "speaker": "Agent",
+          "body": "Short design, written to docs/superpowers/specs/2026-11-27-skim-design.md. The error string and the file paths are my calls.\n\n# Skim\n\nShort design. Small change: one function, no UI.\n\n## Intent\n\nA caller passes a paragraph and a word cap because a chunk of agent text is often too long to read. `skim` answers three questions: how many words are there, is that over the cap, and what is a headline of the leading words. The caller decides what to show.\n\n## Why\n\nThe request is for a check you can trust while skimming, not for a summary. Success is trusting the count, the status, and the headline. A clever summarizer, a cut in the middle of a word, or a character count labeled as words would be a failure even if the function ran.\n\n## Goals\n\n- Return `{ words, maxWords, status, headline }`.\n- `status` is `\"ok\"` or `\"over\"`.\n- Clip the headline on a word boundary.\n\n## Non-goals\n\n- A user interface, a server, or a model.\n- Summarization, sentence detection, HTML parsing, stemming, or locale segmentation.\n\n## Anti-goals\n\n- A headline that ends mid-word.\n- A character budget presented as a word budget.\n\n## Constraints\n\n- TypeScript. Tests run with `bun:test`. No runtime dependencies.\n- Words are split on whitespace. A hyphenated token is one word.\n- Empty text, and whitespace-only text, yield `words: 0`, `status: \"ok\"`, `headline: \"\"`.\n- `status` is `\"over\"` only when `words > maxWords`. Otherwise `\"ok\"`.\n- `headline` is the text with whitespace collapsed to single spaces, then clipped to `maxWords` words. A clipped headline ends with one ellipsis character `…`. A headline that fits has no ellipsis.\n- `maxWords` must be an integer greater than or equal to 1. Otherwise throw `TypeError`.\n\n## Approaches\n\n1. **One function, split on whitespace.** Chosen. It is predictable, it needs no dictionary, and it matches the reason for the function. It is weaker for scripts that do not separate words with spaces.\n2. **`Intl.Segmenter`.** Better for some of those scripts. It pulls in more rules than this caller asked for.\n3. **A character cap.** Smaller, and it is the failure the request named, so it is out.\n\nThe partner chose approach 1 and asked for two tasks: counting, status, and validation first; headline clipping second.\n\n## What the partner decided\n\n- The function name is `skim`.\n- The return fields are `words`, `maxWords`, `status`, `headline`.\n- No UI.\n- The partner picks the behavior above. The builder picks file layout and the exact error string.\n\n## Builder calls\n\n- `TypeError` message is exactly `maxWords must be an integer greater than or equal to 1`.\n- Implementation file: `src/skim.ts`. Tests: `tests/skim.test.ts`.\n- Task 1 may return an unclipped collapsed headline. Task 2 makes clipping true. The finished function matches the constraints either way."
+        },
+        {
+          "kind": "talk",
+          "role": "partner",
+          "speaker": "Partner",
+          "body": "Approved."
+        }
+      ]
+    },
+    {
+      "id": "plan",
+      "label": "Plan",
+      "skill": "writing-plans",
+      "provenance": "recorded",
+      "note": "Recorded against skills/writing-plans/SKILL.md after the design was approved. The self-review is that skill's checklist, run by the same agent, not a second model.",
+      "turns": [
+        {
+          "kind": "talk",
+          "role": "agent",
+          "speaker": "Agent",
+          "body": "I'm using the writing-plans skill to create the implementation plan.\n\nSaved to docs/superpowers/plans/2026-11-27-skim.md.\n\n# Skim Implementation Plan\n\n> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.\n\n**Goal:** Ship `skim(text, maxWords)`, a pure function that reports a whitespace word count, whether that count is over the cap, and a headline clipped to the cap.\n\n**Architecture:** One module, one exported function. Tests import it directly. No I/O.\n\n**Tech Stack:** TypeScript, `bun:test`, no runtime dependencies.\n\n**Spec:** `docs/superpowers/specs/2026-11-27-skim-design.md`\n\n## Global Constraints\n\n- TypeScript. Tests use `bun:test`. No runtime dependencies.\n- Words split on whitespace. A hyphenated token is one word.\n- Empty or whitespace-only text: `words` 0, `status` `\"ok\"`, `headline` `\"\"`.\n- `status` is `\"over\"` only when `words > maxWords`.\n- `headline` collapses whitespace to single spaces. A clip ends with one `…`. A fit has no ellipsis.\n- Otherwise throw `TypeError` with message `maxWords must be an integer greater than or equal to 1`.\n\n## Review Focus\n\n- A `NaN` cap throws `TypeError` — a caller who divided by zero should not get a headline. Test on Task 1.\n- Whitespace-only text counts as empty — a blank chunk is not one word. Test on Task 1.\n- A hyphenated token stays one word — `well-known` is not two words. Test on Task 1.\n- The ellipsis is the single character `…`, not three dots — the constraint names that character. Test on Task 2.\n- A cap equal to the word count does not clip — \"over\" means greater than, not greater than or equal. Test on Task 2.\n\n## File structure\n\n- `src/skim.ts` — `skim` and the `SkimResult` type. Nothing else.\n- `tests/skim.test.ts` — the behaviors below. Task 2 appends tests; it does not rewrite Task 1's assertions.\n\n### Task 1: Count, status, and validation\n\n**Files:**\n- Create: `src/skim.ts`\n- Test: `tests/skim.test.ts`\n\n**Interfaces:**\n- Consumes: nothing\n- Produces: `skim(text: string, maxWords: number): SkimResult` where `SkimResult` is `{ words: number; maxWords: number; status: \"ok\" | \"over\"; headline: string }`. After this task, `headline` is the whitespace-collapsed text with no clipping. Task 2 changes clipping only.\n\n- [ ] **Step 1: Write the failing test**\n\n```ts\nimport { expect, test } from \"bun:test\";\nimport { skim } from \"../src/skim.ts\";\n\ntest(\"empty text is zero words and ok\", () => {\n  expect(skim(\"\", 5)).toEqual({ words: 0, maxWords: 5, status: \"ok\", headline: \"\" });\n});\n\ntest(\"whitespace only is empty\", () => {\n  expect(skim(\"  \\n\\t \", 3)).toEqual({ words: 0, maxWords: 3, status: \"ok\", headline: \"\" });\n});\n\ntest(\"counts words under the cap\", () => {\n  expect(skim(\"alpha  beta\", 5)).toEqual({\n    words: 2,\n    maxWords: 5,\n    status: \"ok\",\n    headline: \"alpha beta\",\n  });\n});\n\ntest(\"a hyphenated token is one word\", () => {\n  expect(skim(\"well-known path\", 5).words).toBe(2);\n});\n\ntest(\"status is over when the count exceeds the cap\", () => {\n  const result = skim(\"one two three\", 2);\n  expect(result.words).toBe(3);\n  expect(result.status).toBe(\"over\");\n  expect(result.maxWords).toBe(2);\n});\n\ntest(\"rejects a cap that is not an integer >= 1\", () => {\n  expect(() => skim(\"one\", 0)).toThrow(TypeError);\n  expect(() => skim(\"one\", 1.5)).toThrow(\n    \"maxWords must be an integer greater than or equal to 1\",\n  );\n  expect(() => skim(\"one\", Number.NaN)).toThrow(TypeError);\n});\n```\n\n- [ ] **Step 2: Run test to verify it fails**\n\nRun: `bun test tests/skim.test.ts`\nExpected: FAIL because `skim` is not implemented (a thrown `not implemented`, or a wrong return), not because of a syntax error.\n\n- [ ] **Step 3: Implement `skim(text: string, maxWords: number): SkimResult` in `src/skim.ts`**\n\nValidate `maxWords` first. Split trimmed text on whitespace. Return the count, the same `maxWords`, `\"over\"` when the count is greater, and the collapsed words joined by single spaces (no clip yet).\n\n- [ ] **Step 4: Run test to verify it passes**\n\nRun: `bun test tests/skim.test.ts`\nExpected: PASS, 6 tests.\n\n- [ ] **Step 5: Commit**\n\n```bash\ngit add src/skim.ts tests/skim.test.ts\ngit commit -m \"feat: count words and reject a bad cap\"\n```\n\n### Task 2: Clip the headline\n\n**Files:**\n- Modify: `src/skim.ts`\n- Test: `tests/skim.test.ts`\n\n**Interfaces:**\n- Consumes: `skim(text: string, maxWords: number): SkimResult` from Task 1\n- Produces: the same signature. `headline` is now clipped to `maxWords` words, with one `…` only when words were dropped.\n\n- [ ] **Step 1: Write the failing test**\n\nAppend:\n\n```ts\ntest(\"clips the headline to the cap with one ellipsis\", () => {\n  expect(skim(\"alpha beta gamma\", 2).headline).toBe(\"alpha beta…\");\n});\n\ntest(\"does not add an ellipsis when the text fits\", () => {\n  expect(skim(\"alpha beta\", 5).headline).toBe(\"alpha beta\");\n});\n\ntest(\"an exact cap does not clip\", () => {\n  expect(skim(\"alpha beta\", 2).headline).toBe(\"alpha beta\");\n  expect(skim(\"alpha beta\", 2).status).toBe(\"ok\");\n});\n\ntest(\"collapses whitespace and then clips\", () => {\n  expect(skim(\"  alpha   beta\\tgamma \", 2).headline).toBe(\"alpha beta…\");\n});\n```\n\n- [ ] **Step 2: Run test to verify it fails**\n\nRun: `bun test tests/skim.test.ts`\nExpected: the clip test FAILs because the headline is still the full collapsed string `alpha beta gamma`. The Task 1 tests still pass.\n\n- [ ] **Step 3: Clip in `skim`**\n\nWhen there are more words than `maxWords`, `headline` is the first `maxWords` words joined by spaces, plus `…`. Otherwise it stays the collapsed text.\n\n- [ ] **Step 4: Run test to verify it passes**\n\nRun: `bun test tests/skim.test.ts`\nExpected: PASS, 10 tests.\n\n- [ ] **Step 5: Commit**\n\n```bash\ngit add src/skim.ts tests/skim.test.ts\ngit commit -m \"feat: clip the skim headline on a word boundary\"\n```"
+        },
+        {
+          "kind": "talk",
+          "role": "agent",
+          "speaker": "Agent",
+          "body": "Self-review against the spec:\n\n1. Spec coverage. Count, status, validation, and clipping each have a task. Non-goals are not tasks.\n2. Steps. Each test step has the assertions. Each code step has the signature and the rule, not a function body.\n3. Types. Both tasks use skim(text: string, maxWords: number): SkimResult with the same four fields.\n4. Review focus. NaN, whitespace-only, hyphen, the ellipsis character, and an exact cap each have a test on the task that owns them.\n5. Proportion. The plan is longer than the spec because the tests are written out. It does not contain the function body.\n\nPlan complete and saved to docs/superpowers/plans/2026-11-27-skim.md. Two tasks share one signature, and a bad clip can be rejected without redoing the count. I recommend subagent-driven for that reason. Does the plan capture what you want, and which approach should we use?"
+        },
+        {
+          "kind": "talk",
+          "role": "partner",
+          "speaker": "Partner",
+          "body": "Subagent-driven. The plan matches."
+        }
+      ]
+    },
+    {
+      "id": "tdd",
+      "label": "TDD",
+      "skill": "test-driven-development",
+      "provenance": "recorded",
+      "note": "Recorded. Task 1 in /tmp/skim-session with bun 1.4.5. The command output is the log file, unedited. Commit 76b41348a96733de5107cee8eb557fceb2e942af.",
+      "turns": [
+        {
+          "kind": "talk",
+          "role": "agent",
+          "speaker": "Agent",
+          "body": "Using test-driven development for Task 1: count, status, and validation. The test file is the six tests from the plan. src/skim.ts exports skim and throws Error(\"not implemented\"). No counting code yet."
+        },
+        {
+          "kind": "command",
+          "speaker": "bun test · red",
+          "command": "bun test tests/skim.test.ts",
+          "output": "bun test v1.4.5 (a7733435c)\n\ntests/skim.test.ts:\n 6 |   status: SkimStatus;\n 7 |   headline: string;\n 8 | };\n 9 | \n10 | export function skim(_text: string, _maxWords: number): SkimResult {\n11 |   throw new Error(\"not implemented\");\n                                        ^\nerror: not implemented\n      at skim (/tmp/skim-session/src/skim.ts:11:36)\n      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:5:10)\n(fail) empty text is zero words and ok [0.17ms]\n 6 |   status: SkimStatus;\n 7 |   headline: string;\n 8 | };\n 9 | \n10 | export function skim(_text: string, _maxWords: number): SkimResult {\n11 |   throw new Error(\"not implemented\");\n                                        ^\nerror: not implemented\n      at skim (/tmp/skim-session/src/skim.ts:11:36)\n      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:9:10)\n(fail) whitespace only is empty [0.03ms]\n 6 |   status: SkimStatus;\n 7 |   headline: string;\n 8 | };\n 9 | \n10 | export function skim(_text: string, _maxWords: number): SkimResult {\n11 |   throw new Error(\"not implemented\");\n                                        ^\nerror: not implemented\n      at skim (/tmp/skim-session/src/skim.ts:11:36)\n      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:13:10)\n(fail) counts words under the cap [0.02ms]\n 6 |   status: SkimStatus;\n 7 |   headline: string;\n 8 | };\n 9 | \n10 | export function skim(_text: string, _maxWords: number): SkimResult {\n11 |   throw new Error(\"not implemented\");\n                                        ^\nerror: not implemented\n      at skim (/tmp/skim-session/src/skim.ts:11:36)\n      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:22:10)\n(fail) a hyphenated token is one word [0.02ms]\n 6 |   status: SkimStatus;\n 7 |   headline: string;\n 8 | };\n 9 | \n10 | export function skim(_text: string, _maxWords: number): SkimResult {\n11 |   throw new Error(\"not implemented\");\n                                        ^\nerror: not implemented\n      at skim (/tmp/skim-session/src/skim.ts:11:36)\n      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:26:18)\n(fail) status is over when the count exceeds the cap [0.02ms]\n28 |   expect(result.status).toBe(\"over\");\n29 |   expect(result.maxWords).toBe(2);\n30 | });\n31 | \n32 | test(\"rejects a cap that is not an integer >= 1\", () => {\n33 |   expect(() => skim(\"one\", 0)).toThrow(TypeError);\n                                    ^\nerror: expect(received).toThrow(expected)\n\nExpected constructor: TypeError\nReceived constructor: Error\n\nReceived message: \"not implemented\"\n\n      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:33:32)\n(fail) rejects a cap that is not an integer >= 1 [0.07ms]\n\n 0 pass\n 6 fail\n 1 expect() calls\nRan 6 tests across 1 file. [3.00ms]"
+        },
+        {
+          "kind": "talk",
+          "role": "agent",
+          "speaker": "Agent",
+          "body": "6 fail, 0 pass. Five tests die on \"not implemented\", which is the missing feature. The cap test expected TypeError and received Error, because the stub throws before any validation. That is still the missing function, not a typo, so I implement from the tests.\n\nValidate maxWords first. Split the trimmed text on whitespace. Status is over only when the count is greater than the cap. Headline is the collapsed words with no clipping yet. That clip is Task 2."
+        },
+        {
+          "kind": "command",
+          "speaker": "bun test · green",
+          "command": "bun test tests/skim.test.ts",
+          "output": "bun test v1.4.5 (a7733435c)\n\ntests/skim.test.ts:\n(pass) empty text is zero words and ok [0.18ms]\n(pass) whitespace only is empty [0.03ms]\n(pass) counts words under the cap [0.09ms]\n(pass) a hyphenated token is one word [0.01ms]\n(pass) status is over when the count exceeds the cap [0.02ms]\n(pass) rejects a cap that is not an integer >= 1 [0.07ms]\n\n 6 pass\n 0 fail\n 10 expect() calls\nRan 6 tests across 1 file. [4.00ms]"
+        },
+        {
+          "kind": "talk",
+          "role": "agent",
+          "speaker": "Agent",
+          "body": "6 pass, 0 fail. Committed as 76b4134, \"feat: count words and reject a bad cap\"."
+        }
+      ]
+    },
+    {
+      "id": "handoff",
+      "label": "Handoff",
+      "skill": "subagent-driven-development",
+      "provenance": "recorded",
+      "note": "Recorded. A fresh implementer subagent got task-2-brief.md and the test-driven-development skill. It did not get the brainstorm transcript. Commit aedc0beb7029915e24ac1e689fe40159943e2ac0.",
+      "turns": [
+        {
+          "kind": "talk",
+          "role": "agent",
+          "speaker": "Agent",
+          "body": "Using subagent-driven development. Ledger: # SDD ledger — plan: docs/superpowers/plans/2026-11-27-skim.md\n\nPreflight, before any implementer:\n\nTask 1 and Task 2 share src/skim.ts and tests/skim.test.ts. Task 1 produces skim with an unclipped headline. Task 2 keeps that signature and only changes clipping. The tests agree with those steps. The error string and the ellipsis character match the global constraints. No conflict to rule on.\n\nTask 1 is already committed (76b4134, 6 pass). The controller did that task so the red and green logs above would be from this session. Ruling: the scratch repo is its own branch, feature/skim, not the gallery repo. The brief asked for a standalone function. Cost if wrong: the sample is copied into the demo and merged nowhere else.\n\nDispatching a fresh implementer for Task 2 only, on a fast model. The plan already has the tests and the signature, so the work is the red/green cycle plus the clip. The brief is task-2-brief.md. The implementer does not get this transcript."
+        },
+        {
+          "kind": "command",
+          "speaker": "Implementer · bun test · red",
+          "command": "bun test tests/skim.test.ts",
+          "output": "bun test v1.4.5 (a7733435c)\n\ntests/skim.test.ts:\n(pass) empty text is zero words and ok [0.15ms]\n(pass) whitespace only is empty [0.02ms]\n(pass) counts words under the cap [0.08ms]\n(pass) a hyphenated token is one word\n(pass) status is over when the count exceeds the cap [0.02ms]\n(pass) rejects a cap that is not an integer >= 1 [0.08ms]\n36 |   );\n37 |   expect(() => skim(\"one\", Number.NaN)).toThrow(TypeError);\n38 | });\n39 | \n40 | test(\"clips the headline to the cap with one ellipsis\", () => {\n41 |   expect(skim(\"alpha beta gamma\", 2).headline).toBe(\"alpha beta…\");\n                                                    ^\nerror: expect(received).toBe(expected)\n\nExpected: \"alpha beta…\"\nReceived: \"alpha beta gamma\"\n\n      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:41:48)\n(fail) clips the headline to the cap with one ellipsis [0.11ms]\n(pass) does not add an ellipsis when the text fits\n(pass) an exact cap does not clip [0.01ms]\n49 |   expect(skim(\"alpha beta\", 2).headline).toBe(\"alpha beta\");\n50 |   expect(skim(\"alpha beta\", 2).status).toBe(\"ok\");\n51 | });\n52 | \n53 | test(\"collapses whitespace and then clips\", () => {\n54 |   expect(skim(\"  alpha   beta\\tgamma \", 2).headline).toBe(\"alpha beta…\");\n                                                          ^\nerror: expect(received).toBe(expected)\n\nExpected: \"alpha beta…\"\nReceived: \"alpha beta gamma\"\n\n      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:54:54)\n(fail) collapses whitespace and then clips [0.03ms]\n\n 8 pass\n 2 fail\n 15 expect() calls\nRan 10 tests across 1 file. [4.00ms]"
+        },
+        {
+          "kind": "command",
+          "speaker": "Implementer · bun test · green",
+          "command": "bun test tests/skim.test.ts",
+          "output": "bun test v1.4.5 (a7733435c)\n\ntests/skim.test.ts:\n(pass) empty text is zero words and ok [0.17ms]\n(pass) whitespace only is empty [0.02ms]\n(pass) counts words under the cap [0.09ms]\n(pass) a hyphenated token is one word [0.01ms]\n(pass) status is over when the count exceeds the cap [0.03ms]\n(pass) rejects a cap that is not an integer >= 1 [0.07ms]\n(pass) clips the headline to the cap with one ellipsis [0.03ms]\n(pass) does not add an ellipsis when the text fits\n(pass) an exact cap does not clip\n(pass) collapses whitespace and then clips [0.02ms]\n\n 10 pass\n 0 fail\n 15 expect() calls\nRan 10 tests across 1 file. [4.00ms]"
+        },
+        {
+          "kind": "talk",
+          "role": "subagent",
+          "speaker": "Implementer",
+          "body": "# Task 2 Report: Clip the Headline\n\n## RED Phase\n\n**Command:** `bun test tests/skim.test.ts`\n\n**Summary:** 8 pass, 2 fail\n\n**Failing assertions (expected clip behavior missing):**\n\n```\ntest(\"clips the headline to the cap with one ellipsis\", () => {\n  expect(skim(\"alpha beta gamma\", 2).headline).toBe(\"alpha beta…\");\n                                                    ^\nerror: expect(received).toBe(expected)\n\nExpected: \"alpha beta…\"\nReceived: \"alpha beta gamma\"\n```\n\n```\ntest(\"collapses whitespace and then clips\", () => {\n  expect(skim(\"  alpha   beta\\tgamma \", 2).headline).toBe(\"alpha beta…\");\n                                                          ^\nerror: expect(received).toBe(expected)\n\nExpected: \"alpha beta…\"\nReceived: \"alpha beta gamma\"\n```\n\nFailures match the intended RED: headline was still the full collapsed string without clipping.\n\nFull output: `logs/task2-red.txt`\n\n## GREEN Phase\n\n**Command:** `bun test tests/skim.test.ts`\n\n**Summary:** 10 pass, 0 fail\n\nFull output: `logs/task2-green.txt`\n\n## Files Changed\n\n| File | Change |\n|------|--------|\n| `src/skim.ts` | When `words.length > maxWords`, headline is first `maxWords` words joined by single spaces plus U+2026 ellipsis; otherwise unchanged collapsed text |\n| `tests/skim.test.ts` | Appended four headline clip tests per brief |\n| `logs/task2-red.txt` | RED run capture |\n| `logs/task2-green.txt` | GREEN run capture |\n\n## Self-Review\n\n- TDD followed: tests appended before implementation; RED verified on missing clip; minimal clip logic added; GREEN at 10/10.\n- Scope unchanged: count, status, and cap validation untouched.\n- Ellipsis is single character `…` (U+2026), not three ASCII periods.\n- Existing Task 1 assertions were not modified.\n- No concerns."
+        },
+        {
+          "kind": "talk",
+          "role": "agent",
+          "speaker": "Agent",
+          "body": "Status from the implementer: DONE. Commit aedc0be, \"feat: clip the skim headline on a word boundary\". 10 pass, 0 fail. The red log failed on the two clip assertions and left the Task 1 tests green. Ledger marks Task 2 complete. No concerns to send back."
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "label": "Review",
+      "skill": "requesting-code-review",
+      "provenance": "recorded",
+      "note": "Recorded. A fresh reviewer subagent used skills/requesting-code-review/code-reviewer.md. Read-only. Base 0f3dfd81b869fd3f0ac2193b5b2fd02e61b2ca78, head aedc0beb7029915e24ac1e689fe40159943e2ac0.",
+      "turns": [
+        {
+          "kind": "talk",
+          "role": "agent",
+          "speaker": "Agent",
+          "body": "Using requesting-code-review before calling the feature done.\n\nBASE_SHA=0f3dfd81b869fd3f0ac2193b5b2fd02e61b2ca78\nHEAD_SHA=aedc0beb7029915e24ac1e689fe40159943e2ac0\n\nDispatching a fresh reviewer with the code-reviewer template. Description: skim(text, maxWords), word count, over/ok, headline clipped on a word boundary. Requirements: the spec and the plan. The reviewer does not get this transcript and does not edit the repo."
+        },
+        {
+          "kind": "talk",
+          "role": "subagent",
+          "speaker": "Reviewer",
+          "body": "### Declined to judge\n- CJK and other scripts without whitespace-separated words — spec non-goal; approach 1 was chosen over `Intl.Segmenter`.\n- `null` / `undefined` / non-string `text` — TypeScript signature only; no runtime coercion specified.\n- HTML entities, markup stripping, and summarization — explicit non-goals.\n- UI, server, model integration — explicit non-goals.\n- Performance or memory on very large inputs — not constrained by spec or plan.\n- `package.json` `scripts.test`, `tsconfig`, or strict compile gates — plan only requires `bun test` against the test file.\n- Locale-specific word rules and stemming — non-goals.\n- Files outside the git range (e.g. `logs/task2-report.md` present on disk but not in `0f3dfd..aedc0be`) — not part of this diff review.\n\n### Strengths\n- **Spec-complete core behavior:** `skim` returns `{ words, maxWords, status, headline }` with whitespace word splitting, hyphenated tokens as one word, empty/whitespace-only → `words: 0`, `status: \"ok\"`, `headline: \"\"`, and `status: \"over\"` only when `words > maxWords`.\n- **Validation first:** Invalid caps use a single `TypeError` with the exact required message (`maxWords must be an integer greater than or equal to 1`); `Number.isInteger` correctly rejects `NaN`, fractions, and `Infinity`.\n- **Headline rules:** Whitespace collapse, word-boundary clip via `slice`, U+2026 ellipsis only when words are dropped, no ellipsis when text fits or count equals cap.\n- **Architecture:** One module, one exported function, no runtime dependencies; small and readable (`src/skim.ts`).\n- **Tests match the plan:** All ten planned cases in `tests/skim.test.ts`; Task 2 appended tests without rewriting Task 1 assertions.\n- **TDD evidence:** `logs/task1-red.txt` shows six failures from `not implemented` (and wrong error type on cap validation). `logs/task2-red.txt` shows exactly two failures on clip expectations (`\"alpha beta…\"` vs full `\"alpha beta gamma\"`) while Task 1 tests stay green—consistent with the plan’s RED step.\n- **Commits:** Two commits align with plan messages (`feat: count words and reject a bad cap`, `feat: clip the skim headline on a word boundary`).\n\n### Issues\n#### Critical (Must Fix)\n_None._\n\n#### Important (Should Fix)\n_None._\n\n#### Minor (Nice to Have)\n1. **File:** `tests/skim.test.ts`  \n   **What’s wrong:** Cap validation tests assert `TypeError` for `0` and `NaN` but only assert the exact error **message** for `1.5`.  \n   **Why it matters:** A future change could throw `TypeError` with a different message for `0`/`NaN` while still passing tests, even though the spec names one message for invalid caps.  \n   **How to fix:** Add `.toThrow(\"maxWords must be an integer greater than or equal to 1\")` (or shared matcher) for `0` and `NaN`, or use one parameterized test for all invalid caps.\n\n2. **File:** `tests/skim.test.ts`  \n   **What’s wrong:** `\"status is over when the count exceeds the cap\"` never asserts `headline` after Task 2, so over-status and clipped headline are only indirectly linked via separate clip tests.  \n   **Why it matters:** Low risk here because clip and status share the same `words.length > maxWords` branch, but a split regression would be easier to catch with one combined assertion.  \n   **How to fix:** Optionally extend that test with `expect(result.headline).toBe(\"one two…\")` (plan allowed not rewriting Task 1 tests—this would be a deliberate follow-up).\n\n3. **File:** `tests/skim.test.ts`  \n   **What’s wrong:** No explicit test for negative integer `maxWords` (e.g. `-1`).  \n   **Why it matters:** Spec requires integer ≥ 1; implementation rejects via `maxWords < 1`, but negative caps are untested.  \n   **How to fix:** Add `expect(() => skim(\"one\", -1)).toThrow(TypeError)` (and message if you adopt issue #1).\n\n4. **File:** `src/skim.ts`  \n   **What’s wrong:** Exports `SkimStatus` in addition to `SkimResult`; plan text emphasized `SkimResult` only.  \n   **Why it matters:** Slightly wider public API than the plan’s minimal surface; harmless for consumers.  \n   **How to fix:** Inline `\"ok\" | \"over\"` in `SkimResult` and drop the extra export, or document the alias as intentional.\n\n### Recommendations\n- Keep the RED/GREEN log files for walkthrough provenance; they substantiate TDD for both tasks.\n- If this graduates from a scratch session into a shared library, add the minor validation tests above and consider asserting clipped `headline` alongside `status: \"over\"` in one test.\n\n### Assessment\n**Ready to merge?** Yes\n\n**Reasoning:** The diff implements the spec and plan faithfully, all ten tests pass, and the task2 RED log shows the expected clip failures before clipping landed. Remaining items are test-hardening and API tidiness, not user-visible defects."
+        },
+        {
+          "kind": "talk",
+          "role": "agent",
+          "speaker": "Agent",
+          "body": "No Critical issues. No Important issues. Ready to merge: yes.\n\nFour minor notes, left for later, which is what this skill says to do with minors: pin the TypeError message on every bad cap, not only on 1.5; assert the clipped headline next to status over; test a negative cap; the extra SkimStatus export is slightly wider than the plan's name for the type. I am not changing the tests in this session. The function the page runs is the reviewed one."
+        }
+      ]
+    }
+  ]
+}

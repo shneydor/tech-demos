@@ -1,0 +1,79 @@
+bun test v1.4.5 (a7733435c)
+
+tests/skim.test.ts:
+ 6 |   status: SkimStatus;
+ 7 |   headline: string;
+ 8 | };
+ 9 | 
+10 | export function skim(_text: string, _maxWords: number): SkimResult {
+11 |   throw new Error("not implemented");
+                                        ^
+error: not implemented
+      at skim (/tmp/skim-session/src/skim.ts:11:36)
+      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:5:10)
+(fail) empty text is zero words and ok [0.17ms]
+ 6 |   status: SkimStatus;
+ 7 |   headline: string;
+ 8 | };
+ 9 | 
+10 | export function skim(_text: string, _maxWords: number): SkimResult {
+11 |   throw new Error("not implemented");
+                                        ^
+error: not implemented
+      at skim (/tmp/skim-session/src/skim.ts:11:36)
+      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:9:10)
+(fail) whitespace only is empty [0.03ms]
+ 6 |   status: SkimStatus;
+ 7 |   headline: string;
+ 8 | };
+ 9 | 
+10 | export function skim(_text: string, _maxWords: number): SkimResult {
+11 |   throw new Error("not implemented");
+                                        ^
+error: not implemented
+      at skim (/tmp/skim-session/src/skim.ts:11:36)
+      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:13:10)
+(fail) counts words under the cap [0.02ms]
+ 6 |   status: SkimStatus;
+ 7 |   headline: string;
+ 8 | };
+ 9 | 
+10 | export function skim(_text: string, _maxWords: number): SkimResult {
+11 |   throw new Error("not implemented");
+                                        ^
+error: not implemented
+      at skim (/tmp/skim-session/src/skim.ts:11:36)
+      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:22:10)
+(fail) a hyphenated token is one word [0.02ms]
+ 6 |   status: SkimStatus;
+ 7 |   headline: string;
+ 8 | };
+ 9 | 
+10 | export function skim(_text: string, _maxWords: number): SkimResult {
+11 |   throw new Error("not implemented");
+                                        ^
+error: not implemented
+      at skim (/tmp/skim-session/src/skim.ts:11:36)
+      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:26:18)
+(fail) status is over when the count exceeds the cap [0.02ms]
+28 |   expect(result.status).toBe("over");
+29 |   expect(result.maxWords).toBe(2);
+30 | });
+31 | 
+32 | test("rejects a cap that is not an integer >= 1", () => {
+33 |   expect(() => skim("one", 0)).toThrow(TypeError);
+                                    ^
+error: expect(received).toThrow(expected)
+
+Expected constructor: TypeError
+Received constructor: Error
+
+Received message: "not implemented"
+
+      at <anonymous> (/tmp/skim-session/tests/skim.test.ts:33:32)
+(fail) rejects a cap that is not an integer >= 1 [0.07ms]
+
+ 0 pass
+ 6 fail
+ 1 expect() calls
+Ran 6 tests across 1 file. [3.00ms]
