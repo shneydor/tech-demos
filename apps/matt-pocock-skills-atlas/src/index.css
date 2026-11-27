@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #efe6d4;
+  --paper-2: #f7f1e4;
+  --ink: #1a1814;
+  --rule: #d4c6ae;
+  --teal: #1f4e5f;
+  --teal-soft: #e5eef1;
+  --rust: #9a3412;
+  --rust-soft: #f8ebe3;
+  --muted: #5e564c;
+  color-scheme: light;
+}
+
+@theme inline {
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-sans: "Segoe UI", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-rule: var(--rule);
+  --color-teal: var(--teal);
+  --color-teal-soft: var(--teal-soft);
+  --color-rust: var(--rust);
+  --color-rust-soft: var(--rust-soft);
+  --color-muted: var(--muted);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(to right, rgb(26 24 20 / 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(26 24 20 / 0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+    color: var(--ink);
+    font-family: var(--font-sans);
+  }
+
+  button,
+  input {
+    font: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--rust);
+    outline-offset: 2px;
+  }
+}
