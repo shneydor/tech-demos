@@ -1,0 +1,14 @@
+[workspace]
+name = "northline"
+
+# Collection keys are path prefixes. The longest matching prefix wins.
+[collections]
+"wiki/concepts" = "concepts"
+"wiki/entities" = "entities"
+"wiki/projects" = "projects"
+"ops/decisions" = "decisions"
+"ops/sops" = "sops"
+"ops/workflows" = "workflows"
+"journal" = "journal"
+"inbox" = "inbox"
+"README.md" = "wiki"
