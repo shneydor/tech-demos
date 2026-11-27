@@ -1,0 +1,6 @@
+{
+  "title": "NexusOS Memory Vault",
+  "description": "Inspect a company wiki the way NexusOS does. Search, open a note, follow wiki links, and read a context packet of paths and line ranges from a real nexusos 0.1.0 index. Unrecorded queries are labeled as a browser fallback.",
+  "date": "2026-11-27",
+  "sourceUrl": "https://github.com/asimons81/nexusos"
+}
