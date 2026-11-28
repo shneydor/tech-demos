@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bars</title>
+  <link rel="stylesheet" href="./stage.css" />
+  <style>
+    #root {
+      position: relative;
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      color: #f4f1ea;
+      font-family: Syne, sans-serif;
+      background:
+        radial-gradient(720px 380px at 50% 100%, rgba(255, 107, 74, 0.16), transparent 70%),
+        #120e0c;
+    }
+    .mark {
+      position: absolute;
+      left: 72px;
+      top: 96px;
+      margin: 0;
+      font-size: 132px;
+      font-weight: 800;
+      letter-spacing: -0.055em;
+      line-height: 0.85;
+      opacity: 0;
+    }
+    .chart {
+      position: absolute;
+      left: 120px;
+      right: 120px;
+      bottom: 118px;
+      height: 400px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 56px;
+      align-items: end;
+    }
+    .col {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 18px;
+    }
+    .num {
+      font-size: 42px;
+      font-weight: 750;
+      letter-spacing: -0.04em;
+      opacity: 0;
+    }
+    .bar {
+      width: 84px;
+      transform-origin: center bottom;
+      transform: scaleY(0);
+      border-radius: 8px 8px 0 0;
+    }
+    #bar1 { height: 150px; background: #ffb199; }
+    #bar2 { height: 250px; background: #ff6b4a; }
+    #bar3 { height: 360px; background: #ff3b22; }
+    .baseline {
+      position: absolute;
+      left: 120px;
+      right: 120px;
+      bottom: 118px;
+      height: 2px;
+      background: rgba(244, 241, 234, 0.28);
+    }
+  </style>
+</head>
+<body>
+  <div
+    id="root"
+    data-composition-id="bars"
+    data-start="0"
+    data-duration="4"
+    data-width="1280"
+    data-height="720"
+    data-fps="30"
+  >
+    <p class="kicker" id="kicker">03 — bars</p>
+    <h1 class="mark" id="mark">Twice.</h1>
+    <div class="chart">
+      <div class="col">
+        <div class="num" id="n1">36</div>
+        <div class="bar" id="bar1"></div>
+      </div>
+      <div class="col">
+        <div class="num" id="n2">64</div>
+        <div class="bar" id="bar2"></div>
+      </div>
+      <div class="col">
+        <div class="num" id="n3">88</div>
+        <div class="bar" id="bar3"></div>
+      </div>
+    </div>
+    <div class="baseline"></div>
+    <p class="caption" id="caption">Scale, not layout. A seek can land anywhere.</p>
+  </div>
+  <script src="./vendor/gsap.min.js"></script>
+  <script>
+    gsap.defaults({ force3D: false });
+    const timeline = gsap.timeline({ paused: true });
+    timeline.fromTo("#kicker", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+    timeline.fromTo("#mark", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.12);
+    timeline.fromTo("#bar1", { scaleY: 0 }, { scaleY: 1, duration: 0.7, ease: "power3.out" }, 0.45);
+    timeline.fromTo("#bar2", { scaleY: 0 }, { scaleY: 1, duration: 0.8, ease: "power3.out" }, 0.62);
+    timeline.fromTo("#bar3", { scaleY: 0 }, { scaleY: 1, duration: 0.9, ease: "power3.out" }, 0.8);
+    timeline.fromTo("#n1", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.05);
+    timeline.fromTo("#n2", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.25);
+    timeline.fromTo("#n3", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.5);
+    timeline.fromTo("#caption", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 2.15);
+    window.__timelines = window.__timelines || {};
+    window.__timelines.bars = timeline;
+  </script>
+</body>
+</html>

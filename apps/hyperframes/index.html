@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HyperFrames — Tech Demos</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main>
+    <p class="kicker">Tech Demos</p>
+    <h1>HTML in. The same MP4 out.</h1>
+    <p class="lede">
+      HyperFrames seeks a page one frame at a time and encodes it. One pane is that HTML, running here.
+      The other is an MP4 the build rendered from the same file and committed. One playhead drives both.
+    </p>
+
+    <div class="tabs" role="tablist" aria-label="Compositions">
+      <button type="button" class="tab" role="tab" id="tab-signal" data-clip="signal" aria-selected="true">Signal</button>
+      <button type="button" class="tab" role="tab" id="tab-orbit" data-clip="orbit" aria-selected="false">Orbit</button>
+      <button type="button" class="tab" role="tab" id="tab-bars" data-clip="bars" aria-selected="false">Bars</button>
+    </div>
+
+    <div class="stage">
+      <section class="pane" aria-labelledby="live-label">
+        <div class="pane-head">
+          <h2 id="live-label">Live HTML</h2>
+          <p>This composition, in the browser, seeked to the shared playhead. It is not the video.</p>
+        </div>
+        <div class="frame" id="live-frame">
+          <iframe id="live" title="Live HTML composition" width="1280" height="720"></iframe>
+        </div>
+      </section>
+      <section class="pane" aria-labelledby="video-label">
+        <div class="pane-head">
+          <h2 id="video-label">Pre-rendered MP4</h2>
+          <p>HyperFrames captured this file at build time. It is not a recording of this tab.</p>
+        </div>
+        <div class="frame">
+          <video id="video" muted playsinline preload="auto"></video>
+        </div>
+      </section>
+    </div>
+
+    <div class="transport">
+      <button type="button" id="play" aria-pressed="false">Play</button>
+      <input id="scrub" type="range" min="0" max="4" step="0.001" value="0" aria-label="Shared playhead" />
+      <span id="time">0.00 / 4.00</span>
+    </div>
+    <p class="hint">The video is the clock. Each frame, the live timeline seeks to the video’s current time. The MP4 has 30 frames a second, so the HTML can sit between those frames.</p>
+
+    <section class="proof" aria-labelledby="proof-label">
+      <div class="proof-head">
+        <h2 id="proof-label">Two renders</h2>
+        <p id="proof-status" aria-live="polite">Hashing both files…</p>
+      </div>
+      <p class="proof-note" id="proof-note">
+        Each clip was rendered twice, back to back. This page hashes both files in your browser.
+        The check compares those two MP4s with each other, not the live pane with the video.
+      </p>
+      <dl class="hashes">
+        <div>
+          <dt>Render A</dt>
+          <dd id="hash-a">…</dd>
+        </div>
+        <div>
+          <dt>Render B</dt>
+          <dd id="hash-b">…</dd>
+        </div>
+      </dl>
+      <p class="proof-detail" id="proof-detail"></p>
+    </section>
+
+    <section class="source" aria-labelledby="source-label">
+      <div class="source-head">
+        <h2 id="source-label">Source</h2>
+        <span id="source-name">compositions/signal.html</span>
+      </div>
+      <pre id="source" tabindex="0"></pre>
+    </section>
+
+    <a class="back" href="../">← All demos</a>
+  </main>
+  <script src="./main.js"></script>
+</body>
+</html>

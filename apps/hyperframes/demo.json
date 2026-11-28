@@ -1,0 +1,6 @@
+{
+  "title": "HyperFrames",
+  "description": "Short HTML animations beside the MP4s HyperFrames rendered at build time, driven by one playhead. The page hashes two renders of each clip in the browser.",
+  "date": "2026-11-28",
+  "sourceUrl": "https://github.com/heygen-com/hyperframes"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "hyperframes",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "render": "bun scripts/render.ts",
+    "build": "bun scripts/build.ts"
+  },
+  "dependencies": {
+    "gsap": "3.12.7",
+    "hyperframes": "0.9.93"
+  }
+}
