@@ -1,0 +1,186 @@
+{
+  "composition": "film",
+  "width": 1920,
+  "height": 1080,
+  "duration": null,
+  "variables": [
+    {
+      "id": "kicker",
+      "type": "string",
+      "label": "Opening line",
+      "value": "Your AWS Premier Partner and Managed Services Provider"
+    },
+    {
+      "id": "headline",
+      "type": "string",
+      "label": "Headline",
+      "value": "Helping Startups Grow with AI, DevOps, and Data on AWS"
+    },
+    {
+      "id": "tagline",
+      "type": "string",
+      "label": "Closing line",
+      "value": "By your side at startup speed."
+    },
+    {
+      "id": "taglineSize",
+      "type": "number",
+      "label": "Closing size",
+      "value": 84
+    },
+    {
+      "id": "taglineTop",
+      "type": "number",
+      "label": "Closing top",
+      "value": 420
+    },
+    {
+      "id": "taglineWeight",
+      "type": "number",
+      "label": "Closing weight",
+      "value": 800
+    },
+    {
+      "id": "taglineColor",
+      "type": "color",
+      "label": "Closing colour",
+      "value": "#111111"
+    },
+    {
+      "id": "taglineBar",
+      "type": "boolean",
+      "label": "Lime bar behind the closing line",
+      "value": true
+    },
+    {
+      "id": "paper",
+      "type": "color",
+      "label": "Ground",
+      "value": "#f7f7f8"
+    },
+    {
+      "id": "ink",
+      "type": "color",
+      "label": "Type",
+      "value": "#111111"
+    },
+    {
+      "id": "muted",
+      "type": "color",
+      "label": "Secondary type",
+      "value": "#353535"
+    },
+    {
+      "id": "accent",
+      "type": "color",
+      "label": "Logo green",
+      "value": "#A7EB20"
+    },
+    {
+      "id": "blue",
+      "type": "color",
+      "label": "Logo blue",
+      "value": "#4C9AD4"
+    },
+    {
+      "id": "deep",
+      "type": "color",
+      "label": "Logo deep",
+      "value": "#01486D"
+    }
+  ],
+  "objects": [
+    {
+      "id": "logo",
+      "line": 87
+    },
+    {
+      "id": "kicker",
+      "line": 88
+    },
+    {
+      "id": "rule",
+      "line": 89
+    },
+    {
+      "id": "headline",
+      "line": 93
+    },
+    {
+      "id": "ai",
+      "line": 98
+    },
+    {
+      "id": "devops",
+      "line": 102
+    },
+    {
+      "id": "finops",
+      "line": 106
+    },
+    {
+      "id": "customers",
+      "line": 114
+    },
+    {
+      "id": "engineers",
+      "line": 121
+    },
+    {
+      "id": "certs",
+      "line": 122
+    },
+    {
+      "id": "score",
+      "line": 123
+    },
+    {
+      "id": "competencies",
+      "line": 124
+    },
+    {
+      "id": "waste",
+      "line": 129
+    },
+    {
+      "id": "tagline",
+      "line": 137
+    },
+    {
+      "id": "tagline",
+      "line": 186,
+      "canvas": true
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "line": 205
+    },
+    {
+      "id": "line",
+      "line": 210
+    },
+    {
+      "id": "burst",
+      "line": 217
+    },
+    {
+      "id": "stop",
+      "line": 225
+    },
+    {
+      "id": "peak",
+      "line": 231
+    },
+    {
+      "id": "claim",
+      "line": 237
+    },
+    {
+      "id": "end",
+      "line": 244
+    }
+  ],
+  "lines": 258
+}

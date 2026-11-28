@@ -1,0 +1,34 @@
+[
+  {
+    "id": "c58da99",
+    "text": "The closing line sits too low and too quiet. Lift it and give it more weight. Leave the numbers and the logo alone.",
+    "t": 14,
+    "x": 480,
+    "y": 890,
+    "target": "tagline",
+    "scene": "end",
+    "element": null,
+    "variables": {
+      "tagline": "By your side at startup speed.",
+      "taglineSize": 36,
+      "taglineTop": 860,
+      "taglineWeight": 600,
+      "taglineColor": "#353535",
+      "taglineBar": false
+    },
+    "at": "2026-11-28T06:12:07.216Z",
+    "status": "done",
+    "created": "2026-11-28T06:12:07.216Z",
+    "thread": [
+      {
+        "who": "agent",
+        "text": "Lifted the closing line and set it in Poppins 800 on the logo green. Numbers and logo unchanged.",
+        "at": "2026-11-28T06:12:17.351Z"
+      }
+    ],
+    "claimed": "2026-11-28T06:12:07.250Z",
+    "agent": "agent",
+    "done": "2026-11-28T06:12:17.351Z",
+    "note": "Lifted the closing line and set it in Poppins 800 on the logo green. Numbers and logo unchanged."
+  }
+]

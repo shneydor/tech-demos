@@ -1,0 +1,20 @@
+{
+  "repo": "https://github.com/alchaincyf/huashu-motion",
+  "commit": "f4f38bfe295a3f768753857be9236cc3277c7dad",
+  "version": "0.6.1",
+  "film": "examples/showcase",
+  "title": "Tea Across the Ages",
+  "commentId": "c482676",
+  "capturedAt": "2026-11-28T05:47:37.765Z",
+  "note": "The comment text was written for this capture and passed to addComment in cli/lib/inbox.js, the function the studio's comment endpoint uses. om inbox --wait and om look then printed the packet and the stills. om done was not run, and index.html was not edited.",
+  "commands": [
+    "addComment via cli/lib/inbox.js on a copy of examples/showcase",
+    "node cli/om.js inbox <copy> --wait --timeout 30 --quiet",
+    "node cli/om.js look c482676 <copy>",
+    "node cli/om.js scan <copy>",
+    "node cli/om.js export html <copy> --out <share> --title \"Tea Across the Ages\""
+  ],
+  "look": "frame at 0.55s — close-up 480×270 at 2x around x=900 y=980",
+  "chrome": "Google Chrome 157.0.8103.50. om look was pointed at a --no-sandbox wrapper because the capture user is not root; the CLI adds that flag only for uid 0. The CLI was not modified.",
+  "sourceLine": "https://github.com/alchaincyf/huashu-motion/blob/f4f38bfe295a3f768753857be9236cc3277c7dad/examples/showcase/index.html#L139"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "c482676",
+  "text": "The opening title sits too low and too quiet. Lift it and give it more weight. Leave the cat and the year card alone.",
+  "t": 0.55,
+  "x": 900,
+  "y": 980,
+  "target": "title",
+  "scene": "01_cave",
+  "element": null,
+  "variables": {
+    "title": "TEA ACROSS THE AGES",
+    "signature": "Opus 5.5",
+    "finaleYear": 2026,
+    "showCredit": true
+  },
+  "at": "2026-11-28T05:47:37.765Z",
+  "status": "working",
+  "created": "2026-11-28T05:47:37.765Z",
+  "thread": [],
+  "claimed": "2026-11-28T05:47:37.827Z",
+  "agent": "agent"
+}

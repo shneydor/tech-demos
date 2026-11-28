@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[
+  {"id":"kicker","type":"string","label":"Opening line","default":"Your AWS Premier Partner and Managed Services Provider"},
+  {"id":"headline","type":"string","label":"Headline","default":"Helping Startups Grow with AI, DevOps, and Data on AWS"},
+  {"id":"tagline","type":"string","label":"Closing line","default":"By your side at startup speed."},
+  {"id":"taglineSize","type":"number","label":"Closing size","default":84,"min":24,"max":140,"step":1},
+  {"id":"taglineTop","type":"number","label":"Closing top","default":420,"min":80,"max":980,"step":1},
+  {"id":"taglineWeight","type":"number","label":"Closing weight","default":800,"min":600,"max":800,"step":200},
+  {"id":"taglineColor","type":"color","label":"Closing colour","default":"#111111"},
+  {"id":"taglineBar","type":"boolean","label":"Lime bar behind the closing line","default":true},
+  {"id":"paper","type":"color","label":"Ground","default":"#f7f7f8"},
+  {"id":"ink","type":"color","label":"Type","default":"#111111"},
+  {"id":"muted","type":"color","label":"Secondary type","default":"#353535"},
+  {"id":"accent","type":"color","label":"Logo green","default":"#A7EB20"},
+  {"id":"blue","type":"color","label":"Logo blue","default":"#4C9AD4"},
+  {"id":"deep","type":"color","label":"Logo deep","default":"#01486D"}
+]'>
+<head><script>window.__omConfig={video:"live",lenient:true}</script><script src="../player/om-engine.js"></script>
+<meta charset="utf-8">
+<title>Automat-it</title>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/om.js"></script>
+<style>
+  @font-face { font-family: Poppins; src: url("assets/fonts/Poppins-600.woff") format("woff"); font-weight: 600; font-style: normal; }
+  @font-face { font-family: Poppins; src: url("assets/fonts/Poppins-800.woff") format("woff"); font-weight: 800; font-style: normal; }
+  html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #f7f7f8; }
+  #film {
+    position: relative; width: 100%; height: 100%; overflow: hidden;
+    background: var(--paper, #f7f7f8); color: var(--ink, #111111);
+    font-family: Poppins, sans-serif; font-weight: 600;
+  }
+  section { position: absolute; inset: 0; transform-origin: 50% 42%; }
+  #s-hook { transform-origin: 0% 46%; }
+  .logo { display: block; width: 560px; height: auto; }
+  .hook .logo { position: absolute; left: 120px; top: 340px; }
+  .kicker {
+    position: absolute; left: 120px; top: 470px; width: 1500px;
+    font-size: 32px; line-height: 1.35; color: var(--ink);
+  }
+  .hook-rule {
+    position: absolute; left: 120px; top: 560px; width: 1080px; height: 18px;
+    background: var(--accent); transform-origin: 0 50%;
+  }
+  .line h1 {
+    position: absolute; left: 120px; top: 280px; width: 1640px; margin: 0;
+    font-size: 84px; line-height: 1.05; font-weight: 800; letter-spacing: -1.5px;
+  }
+  .line h1 .row { display: block; }
+  .line h1 .mask { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.08em; }
+  .line h1 .ch { display: inline-block; }
+  .cards { position: absolute; left: 120px; top: 250px; display: flex; gap: 28px; }
+  .card {
+    width: 520px; min-height: 340px; box-sizing: border-box; padding: 36px 32px;
+    background: #fff; border-top: 14px solid var(--card);
+  }
+  .card b { display: block; font-size: 48px; line-height: 1.1; font-weight: 800; letter-spacing: -0.5px; }
+  .card span { display: block; margin-top: 28px; font-size: 26px; line-height: 1.35; color: var(--muted); }
+  .stop .num {
+    position: absolute; left: 120px; top: 250px;
+    font-size: 280px; line-height: 0.9; font-weight: 800; letter-spacing: -8px;
+    transform-origin: 0 50%;
+  }
+  .stop .lbl { position: absolute; left: 140px; top: 560px; font-size: 64px; font-weight: 600; }
+  .stop .rule { position: absolute; left: 120px; top: 680px; width: 280px; height: 16px; background: var(--accent); }
+  .facts { position: absolute; left: 100px; top: 300px; display: flex; gap: 20px; }
+  .fact { width: 420px; }
+  .fact b { display: block; font-size: 92px; line-height: 1; font-weight: 800; letter-spacing: -2px; }
+  .fact span { display: block; margin-top: 16px; font-size: 28px; line-height: 1.25; color: var(--muted); }
+  .claim .big {
+    position: absolute; left: 120px; top: 240px;
+    font-size: 220px; line-height: 0.9; font-weight: 800; letter-spacing: -6px;
+    transform-origin: 0 50%;
+  }
+  .claim .of { position: absolute; left: 130px; top: 480px; font-size: 64px; font-weight: 800; }
+  .claim .src { position: absolute; left: 130px; top: 600px; width: 1500px; font-size: 32px; line-height: 1.35; color: var(--muted); }
+  .end .logo { position: absolute; left: 120px; top: 160px; width: 420px; }
+  .end .focus { position: absolute; left: 120px; top: 300px; font-size: 28px; color: var(--muted); }
+  .tagline {
+    position: absolute; left: 120px; margin: 0; line-height: 1.15; letter-spacing: -0.5px;
+    display: inline-block; width: max-content; max-width: 1600px;
+  }
+</style>
+</head>
+<body>
+<div id="film" data-composition-id="film" data-width="1920" data-height="1080" data-om-signature="top-right">
+  <audio id="om-sound" src="assets/sound.wav" data-start="0" data-duration="17.143" data-track-index="8" data-volume="1"></audio>
+  <section class="hook" id="s-hook">
+    <img class="logo" data-om-id="logo" src="assets/logo.svg" alt="Automat-it">
+    <p class="kicker" data-om-id="kicker" data-var-text="kicker"></p>
+    <div class="hook-rule" data-om-id="rule"></div>
+  </section>
+
+  <section class="line" id="s-line">
+    <h1 data-om-id="headline" data-om-var="headline"></h1>
+  </section>
+
+  <section id="s-burst">
+    <div class="cards">
+      <article class="card" data-om-id="ai" style="--card:#A7EB20">
+        <b>AI Enablement</b>
+        <span>Amazon Bedrock migration and adoption</span>
+      </article>
+      <article class="card" data-om-id="devops" style="--card:#4C9AD4">
+        <b>Cloud DevOps</b>
+        <span>CI/CD · Kubernetes · Security</span>
+      </article>
+      <article class="card" data-om-id="finops" style="--card:#01486D">
+        <b>Cloud FinOps</b>
+        <span>Cost analysis &amp; optimization</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="stop" id="s-stop">
+    <div class="num" data-om-id="customers">1000+</div>
+    <div class="lbl">Customers</div>
+    <div class="rule"></div>
+  </section>
+
+  <section id="s-peak">
+    <div class="facts">
+      <div class="fact" data-om-id="engineers"><b>180+</b><span>Engineers</span></div>
+      <div class="fact" data-om-id="certs"><b>600+</b><span>AWS Certifications</span></div>
+      <div class="fact" data-om-id="score"><b>9.8/10</b><span>AWS Satisfaction Score</span></div>
+      <div class="fact" data-om-id="competencies"><b>8</b><span>Competencies</span></div>
+    </div>
+  </section>
+
+  <section class="claim" id="s-claim">
+    <div class="big" data-om-id="waste">40-50%</div>
+    <div class="of">of cloud waste</div>
+    <p class="src">Shift-left FinOps that cuts 40-50% of cloud waste</p>
+  </section>
+
+  <section class="end" id="s-end">
+    <img class="logo" src="assets/logo.svg" alt="">
+    <p class="focus">We are 100% startup focused.</p>
+    <h2 class="tagline" data-om-id="tagline" data-om-var="tagline"></h2>
+  </section>
+</div>
+
+<script type="text/vnd.abc" id="om-score">
+X:1
+T:Automat-it · launch cue
+M:4/4
+L:1/8
+Q:1/4=112
+K:Amin
+V:PLK inst=synpluck role=melody gain=0.62
+!mark:hook! !mf! A c e g A c e g | A c e g c e g a | !mark:burst! !f! A2 c2 e2 g2 | !mark:stop! !p! z8 | !mark:peak! !ff! !hit! c e g c' e g a c' | A c e g A2 c2 | !mark:end! !mf! A2 c2 e2 g2 | A4 z4 |
+V:PAD inst=pad gain=0.4
+!pp! z8 | !mp! [A,EA]4 [F,CF]4 | !f! [A,EA]2 [A,EA]2 [A,EA]2 [A,EA]2 | !p! z8 | !ff! [A,EA]2 [F,CF]2 [CEG]2 [G,BD]2 | [CEG]4 [G,BD]4 | !mf! [A,EA]2 [A,EA]2 [A,EA]2 [A,EA]2 | [A,EA]4 z4 |
+V:BASS inst=synbass gain=0.72
+!mf! A,2 A,2 E,2 E,2 | F,2 F,2 C,2 C,2 | A,2 A,2 E,2 E,2 | z8 | A,2 A,2 F,2 F,2 | C,2 C,2 G,2 G,2 | A,2 A,2 E,2 E,2 | A,4 z4 |
+V:DR inst=drums kit=808 gain=0.78
+!mf! [^F,,]2 [^F,,]2 [^F,,]2 [^F,,]2 | [^F,,]2 [^F,,]2 [^F,,] [^F,,] [^F,,]2 | !f! [C,,^F,,]2 [C,,^F,,]2 [C,,D,,]2 [C,,^F,,]2 | z8 | !ff! [C,,D,,]2 [^F,,]2 [C,,D,,]2 [C,,^F,,]2 | [C,,^F,,]2 [C,,^F,,]2 [C,,D,,]2 [C,,^F,,]2 | !mf! [C,,^C,]2 z2 [^F,,]2 [^F,,]2 | z8 |
+</script>
+
+<script>
+  const V = OM.vars();
+  const root = document.documentElement;
+  root.style.setProperty('--paper', V.paper);
+  root.style.setProperty('--ink', V.ink);
+  root.style.setProperty('--muted', V.muted);
+  root.style.setProperty('--accent', V.accent);
+  document.getElementById('film').style.background = V.paper;
+  document.getElementById('film').style.color = V.ink;
+
+  const esc = (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' })[c] || c;
+  const title = document.querySelector('.line h1');
+  const cut = V.headline.indexOf(' with ');
+  const lines = cut > 0 ? [V.headline.slice(0, cut), V.headline.slice(cut + 1)] : [V.headline];
+  title.innerHTML = lines.map((line) => `<span class="row">${[...line].map((c) => c === ' ' ? ' ' : `<span class="mask"><span class="ch">${esc(c)}</span></span>`).join('')}</span>`).join('');
+
+  const tag = document.querySelector('.tagline');
+  tag.textContent = V.tagline;
+  tag.style.top = V.taglineTop + 'px';
+  tag.style.fontSize = V.taglineSize + 'px';
+  tag.style.fontWeight = String(V.taglineWeight);
+  tag.style.color = V.taglineColor;
+  tag.style.background = V.taglineBar ? V.accent : 'transparent';
+  tag.style.padding = V.taglineBar ? '12px 22px' : '0';
+
+  OM.music({ bpm: 112 });
+  const B = (n) => OM.beat(n);
+
+  OM.region('tagline', (t) => {
+    if (t < B(24) + 0.4) return null;
+    const size = Number(V.taglineSize);
+    const top = Number(V.taglineTop) - (V.taglineBar ? 12 : 0);
+    const w = Math.min(1600, String(V.tagline).length * size * 0.56 + (V.taglineBar ? 44 : 0));
+    const h = size * 1.2 + (V.taglineBar ? 24 : 0);
+    return [120, top, w, h];
+  }, 'closing line');
+
+  const tl = gsap.timeline({ paused: true });
+  gsap.set('#s-line, #s-burst, #s-stop, #s-peak, #s-claim, #s-end', { autoAlpha: 0 });
+  gsap.set('.hook-rule', { scaleX: 0, transformOrigin: '0% 50%' });
+  gsap.set('.line .ch', { yPercent: 140 });
+
+  // A push on every shot, then a hard cut. The push is long enough that a frame is never still for two seconds.
+  const push = (sel, at, dur, from) => {
+    tl.fromTo(sel, { scale: from }, { scale: 1, duration: dur * 0.62, ease: 'expo.out', immediateRender: false }, at);
+  };
+
+  tl.addLabel('scene:hook', 0);
+  tl.fromTo('#s-hook', { scale: 1.42 }, { scale: 1, duration: 2.1, ease: 'power2.out' }, 0);
+  tl.fromTo('.hook-rule', { scaleX: 0 }, { scaleX: 1, duration: 1.4, ease: 'power2.out', immediateRender: false }, 0.2);
+  OM.sfx('whoosh', 0.05);
+
+  tl.addLabel('scene:line', B(4));
+  tl.set('#s-hook', { autoAlpha: 0 }, B(4));
+  tl.set('#s-line', { autoAlpha: 1 }, B(4));
+  tl.to('.line .ch', { yPercent: 0, duration: 0.55, stagger: 0.012, ease: 'power2.out' }, B(4));
+  push('#s-line', B(4), B(4), 1.18);
+  OM.sfx('whoosh', B(4));
+
+  tl.addLabel('scene:burst', B(8));
+  tl.set('#s-line', { autoAlpha: 0 }, B(8));
+  tl.set('#s-burst', { autoAlpha: 1 }, B(8));
+  tl.fromTo('.card', { y: 520 }, { y: 0, duration: 1.75, stagger: 0.04, ease: 'power2.out', immediateRender: false }, B(8));
+  push('#s-burst', B(8), B(4), 1.12);
+  OM.sfx('thud', B(8) + 0.95, { pan: -0.35 });
+  OM.sfx('thud', B(8) + 1.15, { pan: 0.35 });
+
+  tl.addLabel('scene:stop', B(12));
+  tl.set('#s-burst', { autoAlpha: 0 }, B(12));
+  tl.set('#s-stop', { autoAlpha: 1 }, B(12));
+  tl.fromTo('#s-stop .num', { scale: 1.45 }, { scale: 1, duration: 0.7, ease: 'expo.out' }, B(12));
+  push('#s-stop', B(12), B(4), 1.08);
+
+  tl.addLabel('scene:peak', B(16));
+  tl.set('#s-stop', { autoAlpha: 0 }, B(16));
+  tl.set('#s-peak', { autoAlpha: 1 }, B(16));
+  tl.fromTo('.fact', { x: (i) => (i % 2 ? 180 : -180), autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.55, stagger: 0.05, ease: 'expo.out' }, B(16));
+  push('#s-peak', B(16), B(4), 1.1);
+
+  tl.addLabel('scene:claim', B(20));
+  tl.set('#s-peak', { autoAlpha: 0 }, B(20));
+  tl.set('#s-claim', { autoAlpha: 1 }, B(20));
+  tl.fromTo('#s-claim .big', { scale: 0.72 }, { scale: 1, duration: 0.55, ease: 'expo.out' }, B(20));
+  push('#s-claim', B(20), B(4), 1.12);
+  OM.sfx('whoosh', B(20));
+
+  tl.addLabel('scene:end', B(24));
+  tl.set('#s-claim', { autoAlpha: 0 }, B(24));
+  tl.set('#s-end', { autoAlpha: 1 }, B(24));
+  tl.fromTo('#s-end .logo', { y: 48, scale: 1.25 }, { y: 0, scale: 1, duration: 0.65, ease: 'expo.out', immediateRender: false }, B(24));
+  tl.fromTo('#s-end', { y: 0 }, { y: -80, duration: 0.55, ease: 'power2.inOut', immediateRender: false }, B(24) + 1.55);
+  tl.fromTo('#s-end', { y: -80 }, { y: -16, duration: 0.5, ease: 'power2.out', immediateRender: false }, B(24) + 3.05);
+  OM.sfx('chime', B(24) + 0.35);
+
+  tl.to({}, { duration: 0.02 }, B(32) - 0.02);
+  window.__timelines = window.__timelines || {};
+  window.__timelines.film = tl;
+</script>
+</body>
+</html>
