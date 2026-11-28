@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Caliboard — Tech Demos</title>
+  <meta
+    name="description"
+    content="A recreation of Caliboard: click through a coding-agent plan, one reviewer comment, and the revised draft."
+  />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="back" href="../">← All demos</a>
+    <p class="wordmark">Caliboard <span>Replay</span></p>
+  </header>
+
+  <main>
+    <p class="banner">
+      <strong>Recreation.</strong>
+      This page follows Caliboard’s public docs: a plan becomes a canvas of steps, dependencies, risks, and decisions; a comment stays on the revision you reviewed; the agent answers with a new draft. The hosted MCP requires a signed-in account. On 28 Nov 2026 an unauthenticated request to caliboard.pro/mcp returned 401, so no live board is connected. The comment below stays in this page. In the real product, sending a comment is not approval to implement.
+    </p>
+
+    <div class="title-row">
+      <div>
+        <p class="kicker">Sample plan · acme/billing</p>
+        <h1 id="plan-title">Retry failed invoice charges</h1>
+        <p class="lede">
+          After reading the charge path, the agent laid the work out as steps you can inspect. The arrows are dependencies. One comment is already on the risky retry.
+        </p>
+      </div>
+      <div class="switch" role="group" aria-label="Plan revision">
+        <button type="button" id="show-draft" aria-pressed="true">Commented draft</button>
+        <button type="button" id="show-revised" aria-pressed="false">Revised plan</button>
+      </div>
+    </div>
+
+    <p id="status" class="status" aria-live="polite"></p>
+
+    <div class="layout">
+      <section class="board" aria-labelledby="plan-title">
+        <div class="legend">
+          <span><i class="swatch step-swatch"></i> Step</span>
+          <span><i class="swatch arrow-swatch"></i> Depends on</span>
+          <span><i class="swatch comment-swatch"></i> Comment</span>
+        </div>
+        <div class="canvas" id="canvas">
+          <svg id="edges" aria-hidden="true"></svg>
+          <div class="lanes" id="lanes"></div>
+        </div>
+      </section>
+      <aside class="inspector" id="inspector" aria-label="Step details"></aside>
+    </div>
+
+    <noscript>
+      <p class="banner">This replay draws the canvas with JavaScript. The files are local, and the sample comment stays on this page.</p>
+    </noscript>
+
+    <footer class="foot">
+      <p>
+        Based on the public docs at
+        <a href="https://caliboard.pro/docs">caliboard.pro/docs</a>
+        and
+        <a href="https://caliboard.pro/for/coding-agents">caliboard.pro/for/coding-agents</a>.
+        The sample plan was written for this replay.
+      </p>
+      <a class="back" href="../">← All demos</a>
+    </footer>
+  </main>
+
+  <script src="./replay.js"></script>
+</body>
+</html>
