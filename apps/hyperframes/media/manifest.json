@@ -1,0 +1,57 @@
+{
+  "hyperframes": "0.9.93",
+  "fps": 30,
+  "width": 1280,
+  "height": 720,
+  "duration": 4,
+  "clips": [
+    {
+      "id": "signal",
+      "title": "Signal",
+      "duration": 4,
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "fileA": "signal-a.mp4",
+      "fileB": "signal-b.mp4",
+      "sha256A": "6fc3bc69777a6d2d1ff698d2d0008de97567d406a8b570768d2480c4bd0e6985",
+      "sha256B": "6fc3bc69777a6d2d1ff698d2d0008de97567d406a8b570768d2480c4bd0e6985",
+      "bytesMatch": true,
+      "frameSha256A": "01904827d174cf6f39e17de58f424d7997b4645bd336db5ec45e505406b7a762",
+      "frameSha256B": "01904827d174cf6f39e17de58f424d7997b4645bd336db5ec45e505406b7a762",
+      "framesMatch": true
+    },
+    {
+      "id": "orbit",
+      "title": "Orbit",
+      "duration": 4,
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "fileA": "orbit-a.mp4",
+      "fileB": "orbit-b.mp4",
+      "sha256A": "2303c27b2788f663005d473485980e5965a55c30423b90e1285bae75fdba3321",
+      "sha256B": "2303c27b2788f663005d473485980e5965a55c30423b90e1285bae75fdba3321",
+      "bytesMatch": true,
+      "frameSha256A": "602f3f6ae8982475812160461e5fee73c1c76a21529718c8af31b86caea92a23",
+      "frameSha256B": "602f3f6ae8982475812160461e5fee73c1c76a21529718c8af31b86caea92a23",
+      "framesMatch": true
+    },
+    {
+      "id": "bars",
+      "title": "Bars",
+      "duration": 4,
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "fileA": "bars-a.mp4",
+      "fileB": "bars-b.mp4",
+      "sha256A": "f66cc73dede0d5a975652f4b57ccbbb7fd732227347cb7dbdff92801c3aca1b9",
+      "sha256B": "f66cc73dede0d5a975652f4b57ccbbb7fd732227347cb7dbdff92801c3aca1b9",
+      "bytesMatch": true,
+      "frameSha256A": "ae1eb2e8b3a5e785a3611df7647a0ac6ba07397c42efbc7c865dc52ee7e502bb",
+      "frameSha256B": "ae1eb2e8b3a5e785a3611df7647a0ac6ba07397c42efbc7c865dc52ee7e502bb",
+      "framesMatch": true
+    }
+  ]
+}
