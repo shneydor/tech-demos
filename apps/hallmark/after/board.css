@@ -1,0 +1,420 @@
+/* Hallmark · shape: Narrative Workflow · genre: modern-minimal · theme: Dose (deal 2/3, seed monday-decision-board-small-44c4·4601945c·2026-11-28·r0) · redesign: full · job: sign up · draw: bcb1e0
+ * hero: Ledge · nav: slab · footer: statement · imagery: none · signature: the three column sentences set as type · dose: white
+ * axes: light/grotesk-sans/chromatic-green · posture: committed · contrast: pass · fold: pass · audience: a small studio that writes Monday's decisions down · tone: utilitarian · vibe: a Monday board, paper and ink · v2.0.0 */
+/* Hallmark · pre-emit critique: P5 H4 E4 S5 R4 V4 · weakest: H, the ledge is light so the Decided sentence is set at section size */
+/* Hallmark · reworded "Your week, finally written down for you" to "Monday stays written." · 38i names the italic word in that heading */
+/* Hallmark · reworded "Decided" to "1. Decided" · stage number sits inside the heading on this board */
+/* Hallmark · reworded "Waiting" to "2. Waiting" · stage number sits inside the heading on this board */
+/* Hallmark · reworded "From last Monday" to "3. From last Monday" · stage number sits inside the heading on this board */
+/* Hallmark · dropped "The numbers speak for themselves" · planted proof heading above invented metrics */
+/* Hallmark · dropped "Everything you need to supercharge Monday" · planted features heading, that verb was not supplied */
+/* Hallmark · dropped "12,000+" · planted team count, no owner supplied a number */
+/* Hallmark · dropped "99.99%" · planted uptime, no owner supplied a percentage */
+/* Hallmark · dropped "4.9/5" · planted rating, no owner supplied a score */
+/* Hallmark · dropped "Acme", "Nexus", "Northwind", "Globex" · planted logo names, no owner supplied a customer */
+/* Hallmark · dropped "Trusted by innovators", "Quietly trusted by teams who ship." · planted trust lines over a fake logo wall */
+/* Hallmark · dropped "Jane Doe" · planted name on a quote nobody gave this studio */
+/* Hallmark · dropped "Head of Synergy, Acme" · planted role on a quote nobody gave this studio */
+/* Hallmark · dropped "Lumenboard is seamless, robust, and effortless. It elevated our workflow." · planted quote, no person said it */
+/* Hallmark · dropped "Built for the modern team" · planted opener, this is a small studio board */
+/* Hallmark · dropped "all in one place", "No credit card required" · planted template lines in the old hero sentence */
+/* Hallmark · dropped "All rights reserved", "Made with a heart" · planted footer lines with nothing legal behind them */
+/* Hallmark · dropped "Introducing Lumenboard" · eyebrow and Beta pill before the heading */
+/* Hallmark · dropped "Fast, Secure, AI-native" · planted middle-dot meta, none of those claims were supplied */
+/* Hallmark · dropped "Get started" · arrow glued to the label, the action is the Monday note */
+/* Hallmark · dropped "Learn more" · stock second action on the board link and the quote link */
+/* Hallmark · dropped "browser chrome" · redrawn window with traffic lights, the board is type */
+/* Hallmark · dropped "emoji icons" · spark bolt and lock stood in for the three columns */
+/* Hallmark · dropped "decorative green dots" · status dots beside the columns, they are not live states */
+/* Hallmark · dropped "purple-to-blue gradient" · planted on the wordmark and the buttons */
+
+body {
+  font-synthesis: none;
+  background-color: var(--color-paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.22'/%3E%3C/svg%3E");
+  background-size: var(--space-4xl) var(--space-4xl);
+}
+
+.skip {
+  position: absolute;
+  left: var(--space-md);
+  top: calc(-1 * var(--space-3xl));
+  z-index: var(--z-toast);
+  padding: var(--space-xs) var(--space-md);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  text-decoration: none;
+}
+
+.skip:focus-visible {
+  top: var(--space-md);
+  outline: 2px solid var(--color-accent-soft);
+  outline-offset: 2px;
+}
+
+.slab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  min-height: var(--space-2xl);
+  padding: var(--space-sm) var(--gutter);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  z-index: var(--z-sticky-nav);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  letter-spacing: var(--tracking-display);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.slab-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md) var(--space-lg);
+}
+
+.slab a {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.wordmark {
+  font-size: var(--text-lg);
+}
+
+.slab a:hover {
+  color: var(--color-accent-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-soft);
+}
+
+.slab a:active {
+  color: var(--color-paper);
+}
+
+.slab :focus-visible {
+  outline: 2px solid var(--color-accent-soft);
+  outline-offset: 2px;
+}
+
+@media (min-width: 60rem) {
+  .slab {
+    position: fixed;
+    inset: 0 0 auto 0;
+  }
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+.daylight {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-base);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.pane {
+  position: absolute;
+  background: var(--light);
+  filter: blur(32px);
+  transform: skewX(-12deg);
+  animation: drift 90s var(--ease-in-out) infinite alternate;
+}
+
+.pane-a { width: 46%; height: 42%; top: -8%; left: -6%; }
+.pane-b { width: 34%; height: 36%; top: 6%; right: -8%; }
+.pane-c { width: 28%; height: 30%; top: 22%; left: 28%; }
+.pane-d { width: 40%; height: 26%; bottom: 8%; left: 8%; }
+
+@keyframes drift {
+  from { transform: skewX(-12deg) translate3d(0, 0, 0); }
+  to { transform: skewX(-12deg) translate3d(5%, 2%, 0); }
+}
+
+.hero:hover .pane,
+.hero:focus-within .pane {
+  animation-play-state: paused;
+}
+
+.ledge {
+  position: relative;
+  z-index: var(--z-raised);
+  width: 100%;
+  margin-top: auto;
+  padding-bottom: var(--space-xl);
+}
+
+.hero h1 {
+  line-height: 1.02;
+}
+
+.lead {
+  margin-top: var(--space-lg);
+}
+
+.note-block {
+  margin-top: var(--space-xl);
+}
+
+.field-name {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.signup-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--space-xs);
+}
+
+.signup-row input {
+  flex: 1 1 18rem;
+  min-width: 0;
+  height: 52px;
+  padding: 0 var(--space-md);
+  border: 1px solid var(--color-muted);
+  border-radius: var(--radius-input);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.signup-row input::placeholder {
+  color: var(--color-ink-2);
+  opacity: 1;
+}
+
+.signup-row input:hover {
+  border-color: var(--color-ink-2);
+}
+
+.signup-row input:focus-visible {
+  outline-color: var(--color-focus);
+}
+
+.signup-row input:active {
+  border-color: var(--color-ink);
+}
+
+.signup-row input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  min-height: 52px;
+  padding: 0 var(--space-lg);
+  border: 0;
+  border-radius: var(--radius-input);
+  background: linear-gradient(var(--color-accent), var(--color-accent-deep));
+  color: var(--color-accent-ink);
+  box-shadow: 0 0 0 1px var(--color-accent-deep), 0 3px 0 var(--color-accent-deep);
+  font: 500 var(--text-md)/1 var(--font-body);
+  letter-spacing: 0;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+}
+
+.btn:hover {
+  background: var(--color-accent-deep);
+}
+
+.btn:active {
+  transform: translateY(3px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#join-note {
+  min-height: 1lh;
+  margin-top: var(--space-sm);
+  font-size: var(--text-sm);
+  color: var(--color-ink-2);
+}
+
+.stage-decided {
+  padding-top: var(--section-gap-l);
+  padding-bottom: var(--space-xl);
+}
+
+.stage-waiting {
+  padding-top: var(--section-gap);
+  padding-bottom: var(--space-lg);
+}
+
+.stage-carried {
+  padding-top: var(--section-gap-s);
+  padding-bottom: var(--space-2xl);
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.stage h2 {
+  line-height: 1.02;
+}
+
+.statement,
+.tray-copy {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-section);
+  line-height: 1.02;
+  letter-spacing: var(--tracking-display);
+  overflow-wrap: break-word;
+  min-width: 0;
+  text-wrap: balance;
+}
+
+.statement {
+  width: 100%;
+  max-width: 56rem;
+  margin-top: var(--space-lg);
+}
+
+.more {
+  display: inline-block;
+  margin-top: var(--space-xl);
+  font-weight: 500;
+}
+
+.more:hover {
+  color: var(--color-accent);
+}
+
+.more:active {
+  color: var(--color-accent-deep);
+}
+
+.more:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--gap-columns);
+  align-items: center;
+}
+
+.plastic {
+  --t: var(--p-thu);
+  min-height: calc(var(--space-4xl) * 2);
+  padding: var(--space-xl);
+  border-radius: var(--radius-card);
+  background:
+    linear-gradient(color-mix(in oklab, var(--glint) 28%, transparent), transparent 22%),
+    color-mix(in oklab, var(--t) 62%, transparent);
+  box-shadow:
+    inset 0 1px 0 var(--glint),
+    inset 0 -24px 36px -28px color-mix(in oklab, var(--t) 45%, var(--color-ink));
+}
+
+.stage-carried .more {
+  color: var(--color-paper);
+}
+
+.close-band {
+  padding-top: var(--section-gap);
+  padding-bottom: var(--section-gap-s);
+  background: var(--color-paper-2);
+}
+
+.close-band h2 {
+  line-height: 1.02;
+}
+
+.close-band p {
+  margin-top: var(--space-lg);
+}
+
+.close-band .more {
+  margin-top: var(--space-lg);
+}
+
+.colophon {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-2xl);
+}
+
+.foot-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.foot-links a {
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.foot-links a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.foot-links a:active {
+  color: var(--color-accent-deep);
+}
+
+.foot-links a:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.fine {
+  margin-top: var(--space-lg);
+  font-size: var(--text-sm);
+  color: var(--color-ink-2);
+}
+
+@media (max-width: 60rem) {
+  .hero { min-height: 0; padding-top: var(--space-3xl); }
+  .ledge { margin-top: var(--space-3xl); }
+  .split { grid-template-columns: minmax(0, 1fr); }
+  .slab { align-items: flex-start; flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pane { animation: none; }
+  .btn { transition: none; }
+}
