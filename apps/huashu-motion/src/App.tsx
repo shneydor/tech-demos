@@ -1,17 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import {
-  ERA_LABEL,
-  comment,
-  filmUrl,
-  frameUrl,
-  inbox,
-  provenance,
-  scan,
-  zoomUrl,
-} from './capture.ts'
+import { ERA_LABEL, films, featured, type FilmPack } from './capture.ts'
 import type { FilmWindow, OmPlayerElement, PlayerReadyDetail } from './player.ts'
 
-const STEPS = ['C', 'Click', 'Note', 'Inbox', 'Stills'] as const
+const TEA_STEPS = ['C', 'Click', 'Note', 'Inbox', 'Stills'] as const
+const AUTOMAT_STEPS = ['C', 'Click', 'Note', 'Inbox', 'Before / After'] as const
 
 interface SceneMark {
   id: string
@@ -34,7 +26,10 @@ function formatTime(t: number) {
 
 function readScenes(el: OmPlayerElement): SceneMark[] {
   const win = el.iframeElement?.contentWindow as FilmWindow | null
-  const labels = win?.__timelines?.showcase?.labels ?? {}
+  const labels = Object.values(win?.__timelines ?? {}).reduce<Record<string, number>>(
+    (all, timeline) => ({ ...all, ...(timeline?.labels ?? {}) }),
+    {},
+  )
   return Object.entries(labels)
     .filter(([key]) => key.startsWith('scene:'))
     .map(([key, start]) => ({ id: key.slice(6), start }))
@@ -48,13 +43,14 @@ function place(
   y: number,
   w: number,
   h: number,
+  width: number,
 ): Box | null {
   const iframe = el.iframeElement
   if (!iframe) return null
   const ir = iframe.getBoundingClientRect()
   const sr = stage.getBoundingClientRect()
   if (!ir.width) return null
-  const k = ir.width / (scan.width || 1920)
+  const k = ir.width / (width || 1920)
   return {
     left: ir.left - sr.left + x * k,
     top: ir.top - sr.top + y * k,
@@ -66,17 +62,20 @@ function place(
 export default function App() {
   const playerRef = useRef<OmPlayerElement>(null)
   const stageRef = useRef<HTMLDivElement>(null)
+  const [film, setFilm] = useState<FilmPack>(featured)
   const [ready, setReady] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [playing, setPlaying] = useState(false)
   const [time, setTime] = useState(0)
-  const [duration, setDuration] = useState(scan.duration)
+  const [duration, setDuration] = useState(film.scan.duration || film.fallbackDuration)
   const [scenes, setScenes] = useState<SceneMark[]>([])
   const [step, setStep] = useState(0)
   const [walking, setWalking] = useState(false)
   const [region, setRegion] = useState<Box | null>(null)
   const [pin, setPin] = useState<Box | null>(null)
   const [stillError, setStillError] = useState(false)
+  const steps = film.id === 'automat' ? AUTOMAT_STEPS : TEA_STEPS
+  const { comment, scan, provenance, inbox } = film
 
   const syncMarks = useCallback(() => {
     const stage = stageRef.current
@@ -87,11 +86,11 @@ export default function App() {
       return
     }
     const win = el.iframeElement?.contentWindow as FilmWindow | null
-    const box = win?.__om?.boxOf?.('title', comment.t)
-    setRegion(box ? place(stage, el, box[0], box[1], box[2], box[3]) : null)
-    const point = place(stage, el, comment.x, comment.y, 0, 0)
+    const box = win?.__om?.boxOf?.(comment.target, comment.t)
+    setRegion(box ? place(stage, el, box[0], box[1], box[2], box[3], scan.width || 1920) : null)
+    const point = place(stage, el, comment.x, comment.y, 0, 0, scan.width || 1920)
     setPin(point)
-  }, [step])
+  }, [step, comment, scan.width])
 
   useEffect(() => {
     const el = playerRef.current
@@ -100,7 +99,7 @@ export default function App() {
     const markReady = (detail?: PlayerReadyDetail) => {
       setReady(true)
       setError(null)
-      setDuration(detail?.duration || el.duration || scan.duration)
+      setDuration(detail?.duration || el.duration || scan.duration || film.fallbackDuration)
       setScenes(readScenes(el))
       setTime(el.currentTime || 0)
     }
@@ -143,7 +142,7 @@ export default function App() {
       el.removeEventListener('ended', onPause)
       el.removeEventListener('error', onError)
     }
-  }, [])
+  }, [film])
 
   useEffect(() => {
     if (step < 1) return
@@ -152,7 +151,7 @@ export default function App() {
     el?.seek(comment.t)
     setPlaying(false)
     setTime(comment.t)
-  }, [step])
+  }, [step, comment.t])
 
   useEffect(() => {
     syncMarks()
@@ -170,7 +169,7 @@ export default function App() {
     if (!walking) return
     const id = window.setTimeout(() => {
       setStep((current) => {
-        if (current >= STEPS.length) {
+        if (current >= steps.length) {
           setWalking(false)
           return current
         }
@@ -178,7 +177,7 @@ export default function App() {
       })
     }, 2600)
     return () => window.clearTimeout(id)
-  }, [walking, step])
+  }, [walking, step, steps.length])
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -235,6 +234,22 @@ export default function App() {
     setPlaying(false)
   }
 
+  function selectFilm(next: FilmPack) {
+    if (next.id === film.id) return
+    setFilm(next)
+    setReady(false)
+    setError(null)
+    setPlaying(false)
+    setTime(0)
+    setDuration(next.scan.duration || next.fallbackDuration)
+    setScenes([])
+    setStep(0)
+    setWalking(false)
+    setRegion(null)
+    setPin(null)
+    setStillError(false)
+  }
+
   const currentScene = [...scenes].reverse().find((scene) => time >= scene.start - 1e-3)
   const shortCommit = provenance.commit.slice(0, 7)
 
@@ -243,7 +258,22 @@ export default function App() {
       <header className="top">
         <div>
           <p className="kicker">huashu-motion · MIT · v{provenance.version}</p>
-          <h1>{provenance.title}</h1>
+          <h1>Huashu Motion</h1>
+          <div className="switch" role="tablist" aria-label="Film">
+            {films.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                role="tab"
+                aria-selected={film.id === item.id}
+                className={film.id === item.id ? 'on' : ''}
+                onClick={() => selectFilm(item)}
+              >
+                {item.name}
+                {item.id === 'automat' ? <small>Featured</small> : null}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="badges">
           <span className="badge live">
@@ -258,17 +288,29 @@ export default function App() {
       </header>
 
       <p className="banner">
-        <strong>Press Play</strong> and this browser draws Tea Across the Ages, the published
-        showcase, through the official player. <strong>Walk the edit</strong> replays comment{' '}
-        {comment.id}: the note recorded for this capture, the packet <code>om inbox --wait</code>{' '}
-        printed, and the stills <code>om look</code> saved. The film file is the published
-        showcase. <code>om done</code> was not run.
+        {film.id === 'automat' ? (
+          <>
+            <strong>Press Play</strong> and this browser plays the Automat-it launch film that
+            huashu-motion {provenance.version} scored from the public homepage. The picture is that
+            composition. The sound is the wav <code>om sound</code> wrote. <strong>Walk the edit</strong>{' '}
+            replays comment {comment.id}, which was applied with <code>om set</code> and closed with{' '}
+            <code>om done</code>. The player shows the film after that edit. The stills are the before
+            and the after. This page does not re-run the tool.
+          </>
+        ) : (
+          <>
+            <strong>Press Play</strong> and this browser draws Tea Across the Ages, the published
+            showcase, through the official player. <strong>Walk the edit</strong> replays comment{' '}
+            {comment.id}: the note recorded for this capture, the packet <code>om inbox --wait</code>{' '}
+            printed, and the stills <code>om look</code> saved. <code>om done</code> was not run.
+          </>
+        )}
       </p>
 
       <div className="layout">
         <section>
           <div className="stage-wrap" ref={stageRef}>
-            <om-player ref={playerRef} src={filmUrl} />
+            <om-player key={film.id} ref={playerRef} src={film.filmUrl} />
             {region && (
               <div className="mark" style={region}>
                 <span>#{comment.target}</span>
@@ -283,7 +325,7 @@ export default function App() {
               <div className="veil">
                 <div>
                   <strong>Drawing the film…</strong>
-                  The published canvas engine is loading its fonts.
+                  The player is loading this film.
                 </div>
               </div>
             )}
@@ -347,15 +389,14 @@ export default function App() {
             )}
           </div>
           <p className="quiet">
-            Scene names are the film’s own GSAP labels. This copy has no soundtrack: the showcase
-            does not declare music, and <code>om sound</code> was not run.
+            Scene names are the film’s own GSAP labels. {film.soundtrack}
           </p>
         </section>
 
         <aside className="panel" aria-label="Point at the frame">
           <h2>Point at the frame</h2>
           <div className="step-row">
-            {STEPS.map((label, index) => (
+            {steps.map((label, index) => (
               <button
                 key={label}
                 type="button"
@@ -370,7 +411,24 @@ export default function App() {
             ))}
           </div>
 
-          {step === 0 && (
+          {step === 0 && film.id === 'automat' && (
+            <>
+              <p>
+                This film was made with huashu-motion {provenance.version}: <code>om grab</code> on
+                automat-it.com, an ABC score, <code>om sound</code>, <code>om check</code>,{' '}
+                <code>om render</code>, and <code>om qa</code>. Words and figures are from that
+                public homepage. The logo file is the one <code>om grab</code> saved.
+              </p>
+              <p>
+                Walk the edit replays comment {comment.id}. The note was written for that capture.
+                <code> om inbox</code> claimed it, <code>om look</code> saved the before,{' '}
+                <code>om set</code> changed only the closing-line variables, and <code>om done</code>{' '}
+                recorded the reply. The player is that after state.
+              </p>
+            </>
+          )}
+
+          {step === 0 && film.id === 'tea' && (
             <>
               <p>
                 In the studio, C selects the comment tool, a click records the time, the scene, the
@@ -393,7 +451,15 @@ export default function App() {
             </p>
           )}
 
-          {step === 2 && (
+          {step === 2 && film.id === 'automat' && (
+            <p>
+              The click is x={comment.x}, y={comment.y}, on #{comment.target}. The pin stays on that
+              click. The outline is the live <code>OM.region('{comment.target}')</code> after the
+              edit, so the line sits higher than the pin.
+            </p>
+          )}
+
+          {step === 2 && film.id === 'tea' && (
             <p>
               The click is x={comment.x}, y={comment.y}, on #{comment.target}. The outline is the
               live box from <code>OM.region('title')</code>, which exists while the time is under
@@ -416,39 +482,56 @@ export default function App() {
             <>
               <pre className="inbox">{inbox}</pre>
               <p>
-                <code>om inbox --wait</code> printed this and claimed {comment.id}. The SOURCE path
-                is the local copy of <code>examples/showcase/index.html</code>. Line 139 is that
-                file.{' '}
-                <a href={provenance.sourceLine}>Open the line on GitHub</a>.
+                <code>om inbox --wait</code> printed this and claimed {comment.id}.
+                {film.id === 'tea' ? (
+                  <>
+                    {' '}
+                    The SOURCE path is the local copy of <code>examples/showcase/index.html</code>.
+                    Line 139 is that file. <a href={provenance.sourceLine}>Open the line on GitHub</a>.
+                  </>
+                ) : (
+                  <>
+                    {' '}
+                    The SOURCE path is the local composition. The line it names is the closing line.
+                    A later opening-frame fix added one CSS rule, so that line sits one line lower in
+                    the shipped file than in this print.
+                  </>
+                )}
               </p>
             </>
           )}
 
           {step === 5 && (
             <>
-              <p>{provenance.look}. These are the files <code>om look</code> wrote.</p>
+              {film.id === 'automat' && comment.note ? (
+                <blockquote className="note">{comment.note}</blockquote>
+              ) : null}
+              <p>
+                {film.id === 'automat'
+                  ? 'om done wrote that note. The first pair is the full frame before and after. The second pair is om look on the same click: the line is in the before close-up, and gone from that spot after.'
+                  : `${provenance.look}. These are the files om look wrote. om done was not run.`}
+              </p>
               {stillError ? (
                 <p>The recorded stills could not be read.</p>
               ) : (
                 <div className="stills">
-                  <figure>
-                    <img
-                      src={zoomUrl}
-                      alt="Close-up om look saved around the click: the words Across the from the opening title."
-                      onError={() => setStillError(true)}
-                    />
-                    <figcaption>zoom.png · 480×270 at 2× around the click</figcaption>
-                  </figure>
-                  <figure>
-                    <img
-                      src={frameUrl}
-                      alt="Full frame om look saved at 0.55 seconds: the cave-painting era and the title Tea Across the Ages."
-                      onError={() => setStillError(true)}
-                    />
-                    <figcaption>frame.png · the frame at {formatTime(comment.t)}</figcaption>
-                  </figure>
+                  {film.stills.map((shot) => (
+                    <figure key={shot.src}>
+                      <img src={shot.src} alt={shot.alt} onError={() => setStillError(true)} />
+                      <figcaption>{shot.caption}</figcaption>
+                    </figure>
+                  ))}
                 </div>
               )}
+              {film.soundLog ? (
+                <>
+                  <pre className="inbox">{film.soundLog}</pre>
+                  <p>
+                    Those lines are the last <code>om sound</code> print. The cue is the score fitted
+                    to the picture. The closing line is a later render reusing the same wav.
+                  </p>
+                </>
+              ) : null}
             </>
           )}
 
@@ -466,8 +549,9 @@ export default function App() {
             ))}
           </div>
           <p className="quiet">
-            These are the fields the studio would edit in place. Changing them is <code>om set</code>,
-            which rewrites the source. They are read-only on this page.
+            {film.id === 'automat'
+              ? 'om scan read these after om set. They are the live film. The comment packet above still has the earlier closing-line values.'
+              : 'These are the fields the studio would edit in place. Changing them is om set, which rewrites the source. They are read-only on this page.'}
           </p>
 
           <div className="row-actions">
@@ -477,10 +561,10 @@ export default function App() {
             <button
               className="ghost"
               type="button"
-              disabled={step >= STEPS.length}
+              disabled={step >= steps.length}
               onClick={() => {
                 stopWalk()
-                if (ready) setStep((current) => Math.min(STEPS.length, current + 1))
+                if (ready) setStep((current) => Math.min(steps.length, current + 1))
               }}
             >
               Next
@@ -490,16 +574,11 @@ export default function App() {
       </div>
 
       <footer>
-        MIT · captured from{' '}
-        <a href={`${provenance.repo}/tree/${provenance.commit}`}>{shortCommit}</a>
-        {' · '}
-        <a href={provenance.repo}>huashu-motion</a>
-        {' · '}
-        <a href={`${provenance.repo}/blob/${provenance.commit}/examples/showcase/index.html`}>
-          showcase source
-        </a>
-        . GSAP stays under its own license, the art-motion engine is MIT, and the fonts are SIL OFL
-        1.1. Those notices ship in the film folder.
+        MIT · huashu-motion{' '}
+        <a href={`${provenance.repo}/tree/${provenance.commit}`}>{shortCommit}</a>. Automat-it facts
+        are from <a href="https://www.automat-it.com">automat-it.com</a>. Tea Across the Ages is the
+        published showcase. GSAP, Poppins, and the showcase fonts keep their own licenses in the film
+        folders.
       </footer>
     </div>
   )

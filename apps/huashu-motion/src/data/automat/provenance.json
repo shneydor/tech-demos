@@ -1,0 +1,30 @@
+{
+  "repo": "https://github.com/alchaincyf/huashu-motion",
+  "commit": "f4f38bfe295a3f768753857be9236cc3277c7dad",
+  "version": "0.6.1",
+  "film": "Automat-it launch film",
+  "title": "Automat-it",
+  "commentId": "c58da99",
+  "capturedAt": "2026-11-28T06:12:17.351Z",
+  "note": "The closing line was too low and too quiet. om set changed only taglineSize, taglineTop, taglineWeight, taglineColor, and taglineBar. om done recorded the note. The live film is that after state. After om done, the opening push was changed to a left origin so the wordmark stays inside the frame, then om render and om qa were run again. That re-render is the committed film. The end card at 14s is unchanged.",
+  "commands": [
+    "om grab https://www.automat-it.com",
+    "om new",
+    "om sound (ABC score, 112 bpm, marks on the picture, no warning score: lines)",
+    "om check (0 errors)",
+    "om render",
+    "om qa (no ✗ on the final render)",
+    "addComment via cli/lib/inbox.js",
+    "om inbox --wait",
+    "om look c58da99 (before)",
+    "om set taglineSize=84 taglineTop=420 taglineWeight=800 taglineColor=#111111 taglineBar=true",
+    "om done c58da99 --note \"Lifted the closing line and set it in Poppins 800 on the logo green. Numbers and logo unchanged.\"",
+    "om still --at 14 (after)",
+    "om look c58da99 (same click, after)",
+    "om export html"
+  ],
+  "look": "before: om look at 14.00s, close-up 480×270 at 2x around x=480 y=890. after: om still at 14s, and a second om look of the same click.",
+  "chrome": "Google Chrome 157.0.8103.50 via OM_CHROME=/tmp/chrome-nosandbox. The CLI was not modified. No sample pack was installed, so om sound used synths.",
+  "sourceLine": "https://www.automat-it.com",
+  "doneNote": "Lifted the closing line and set it in Poppins 800 on the logo green. Numbers and logo unchanged."
+}

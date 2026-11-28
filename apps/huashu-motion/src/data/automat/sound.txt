@@ -1,0 +1,8 @@
+sound    /tmp/ait/assets/sound.wav  17.14s  -14.1 LUFS, peak -1.5 dBFS
+music    om-score "Automat-it · launch cue" · 151 notes · PLK:synpluck PAD:pad BASS:synbass DR:drums · ends 17.16s
+print    112 BPM Amin · drums:808 pad synbass synpluck
+fit      marks on the picture: hook 0.00s · burst 4.29s · stop 6.43s · peak 8.57s · end 12.86s
+tempo    hook→burst 112.0 bpm (+0.0%) · burst→stop 112.0 bpm (+0.0%) · stop→peak 112.9 bpm (+0.8%) · peak→end 112.0 bpm (+0.0%)
+energy   hook -18.7 · burst -15.0 · stop -27.8 · peak -14.3 · end -18.7 dB RMS — should rise in steps, dip at the stop and peak at the drop (rhythm.md)
+effects  8 hits: whoosh×3, thud×2, chime×1, impact×1, subdrop×1
+took     0.3s — nothing changed since the last run, assets/sound.wav reused (--fresh rebuilds it)

@@ -1,0 +1,29 @@
+COMMENT c58da99  (14.00s, scene "end", on #tagline, at x=480 y=890 of 1920×1080)
+  “The closing line sits too low and too quiet. Lift it and give it more weight. Leave the numbers and the logo alone.”
+
+SOURCE /tmp/ait/index.html
+  137: <h2 class="tagline" data-om-id="tagline" data-om-var="tagline"></h2>
+  186: OM.region('tagline', (t) => {
+
+VARIABLES
+  kicker = "Your AWS Premier Partner and Managed Services Provider"
+  headline = "Helping Startups Grow with AI, DevOps, and Data on AWS"
+  tagline = "By your side at startup speed."
+  taglineSize = 36
+  taglineTop = 860
+  taglineWeight = 600
+  taglineColor = "#353535"
+  taglineBar = false
+  paper = "#f7f7f8"
+  ink = "#111111"
+  muted = "#353535"
+  accent = "#A7EB20"
+  blue = "#4C9AD4"
+  deep = "#01486D"
+
+SCENES  hook → line → burst → stop → peak → claim → end
+
+LOOK  om look c58da99 /tmp/ait   (saves the frame and a close-up of the clicked spot)
+
+NEXT  Edit index.html to do exactly this (keep everything else). The studio reloads on save.
+      Then: om done c58da99 --note "<one line on what changed>"   (from /tmp/ait)
