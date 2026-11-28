@@ -1,0 +1,130 @@
+{
+  "composition": "showcase",
+  "width": 1920,
+  "height": 1080,
+  "duration": 14.358125,
+  "variables": [
+    {
+      "id": "title",
+      "type": "string",
+      "label": "片头标题（拉丁字母）",
+      "value": "TEA ACROSS THE AGES"
+    },
+    {
+      "id": "signature",
+      "type": "string",
+      "label": "结尾署名（拉丁字母）",
+      "value": "Opus 5.5"
+    },
+    {
+      "id": "finaleYear",
+      "type": "number",
+      "label": "结尾年份牌",
+      "value": 2026
+    },
+    {
+      "id": "showCredit",
+      "type": "boolean",
+      "label": "片尾显示 made with huashu-motion",
+      "value": true
+    }
+  ],
+  "objects": [
+    {
+      "id": "painting",
+      "line": 33
+    },
+    {
+      "id": "credit",
+      "line": 34
+    },
+    {
+      "id": "cat",
+      "line": 136,
+      "canvas": true
+    },
+    {
+      "id": "girl",
+      "line": 137,
+      "canvas": true
+    },
+    {
+      "id": "year",
+      "line": 138,
+      "canvas": true
+    },
+    {
+      "id": "title",
+      "line": 139,
+      "canvas": true
+    },
+    {
+      "id": "signature",
+      "line": 140,
+      "canvas": true
+    }
+  ],
+  "scenes": [
+    {
+      "id": "01_cave",
+      "line": 146
+    },
+    {
+      "id": "02_egypt",
+      "line": 147
+    },
+    {
+      "id": "03_greek",
+      "line": 148
+    },
+    {
+      "id": "04_roman",
+      "line": 149
+    },
+    {
+      "id": "05_gothic",
+      "line": 150
+    },
+    {
+      "id": "06_renaissance",
+      "line": 151
+    },
+    {
+      "id": "08_impressionism",
+      "line": 152
+    },
+    {
+      "id": "09_postimp",
+      "line": 153
+    },
+    {
+      "id": "10_nouveau",
+      "line": 154
+    },
+    {
+      "id": "11_cubism",
+      "line": 155
+    },
+    {
+      "id": "12_bauhaus",
+      "line": 156
+    },
+    {
+      "id": "13_pop",
+      "line": 157
+    },
+    {
+      "id": "14_8bit",
+      "line": 158
+    },
+    {
+      "id": "15_raytrace",
+      "line": 159
+    },
+    {
+      "id": "16_2026",
+      "line": 160
+    }
+  ],
+  "lines": 171
+}

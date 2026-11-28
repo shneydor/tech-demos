@@ -1,0 +1,18 @@
+COMMENT c482676  (0.55s, scene "01_cave", on #title, at x=900 y=980 of 1920×1080)
+  “The opening title sits too low and too quiet. Lift it and give it more weight. Leave the cat and the year card alone.”
+
+SOURCE /tmp/tea/index.html
+  139: OM.region('title', (t) => (t < 1.13 ? [480, 945, 960, 100] : null), '片头标题');
+
+VARIABLES
+  title = "TEA ACROSS THE AGES"
+  signature = "Opus 5.5"
+  finaleYear = 2026
+  showCredit = true
+
+SCENES  01_cave → 02_egypt → 03_greek → 04_roman → 05_gothic → 06_renaissance → 08_impressionism → 09_postimp → 10_nouveau → 11_cubism → 12_bauhaus → 13_pop → 14_8bit → 15_raytrace → 16_2026
+
+LOOK  om look c482676 /tmp/tea   (saves the frame and a close-up of the clicked spot)
+
+NEXT  Edit index.html to do exactly this (keep everything else). The studio reloads on save.
+      Then: om done c482676 --note "<one line on what changed>"   (from /tmp/tea)
