@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anything2Explainer — Tech Demos</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%238d74ff'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07070b;
+      --card: #101218;
+      --ink: #f4f0e6;
+      --muted: #a39e93;
+      --line: #2c2e3a;
+      --purple: #8d74ff;
+      --purple-dim: rgba(141, 116, 255, 0.16);
+      --orange: #ff8a3d;
+      --good: #c6f59a;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      min-height: 100%;
+      color: var(--ink);
+      background:
+        radial-gradient(880px 420px at 0% -10%, rgba(141, 116, 255, 0.22), transparent 55%),
+        radial-gradient(640px 320px at 100% 0%, rgba(255, 138, 61, 0.08), transparent 46%),
+        var(--bg);
+      font-family: "Segoe UI", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
+      line-height: 1.5;
+    }
+    a { color: var(--purple); }
+    a:hover { color: #d5cbff; }
+    .wrap {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1.25rem 0 3rem;
+    }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .back, .kicker {
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+    h2.kicker {
+      margin: 0 0 0.6rem;
+      font-size: 0.72rem;
+      font-weight: 650;
+    }
+    .back:hover { color: var(--ink); }
+    h1 {
+      margin: 0.35rem 0 0.4rem;
+      font-size: clamp(1.8rem, 3vw, 2.45rem);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .lead {
+      margin: 0 0 1rem;
+      max-width: 44rem;
+      color: var(--muted);
+    }
+    .banner {
+      margin: 0 0 1.1rem;
+      padding: 0.75rem 0.95rem;
+      border: 1px solid rgba(141, 116, 255, 0.45);
+      background: var(--purple-dim);
+      border-radius: 0.85rem;
+    }
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 1rem;
+      align-items: start;
+      min-width: 0;
+    }
+    .player, .trail {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 1.1rem;
+      padding: 0.9rem;
+      min-width: 0;
+    }
+    .cuts { display: flex; gap: 0.4rem; margin-bottom: 0.7rem; }
+    .cuts button, .stages button, .controls button, .strip button {
+      font: inherit;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .cuts button, .stages button {
+      padding: 0.35rem 0.75rem;
+    }
+    .cuts button[aria-pressed="true"], .stages button[aria-selected="true"] {
+      background: var(--purple);
+      color: #140b2e;
+      border-color: var(--purple);
+      font-weight: 650;
+    }
+    video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 0.75rem;
+      display: block;
+    }
+    .film-meta, .film-note, .hint, .blurb, .source {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    .film-meta { margin: 0.7rem 0 0.2rem; color: var(--ink); }
+    .film-note { margin: 0.2rem 0 0.75rem; }
+    #film-error {
+      margin: 0.6rem 0 0;
+      color: var(--orange);
+    }
+    .strip {
+      display: flex;
+      gap: 0.4rem;
+      overflow-x: auto;
+      min-width: 0;
+      max-width: 100%;
+      padding-bottom: 0.2rem;
+    }
+    .strip button {
+      flex: 0 0 auto;
+      padding: 0;
+      border-radius: 0.45rem;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .strip button.on { outline: 2px solid var(--orange); outline-offset: 1px; }
+    .strip img { width: 92px; height: 52px; object-fit: cover; display: block; }
+    .stages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .blurb { margin: 0.75rem 0 0.2rem; }
+    .source { margin: 0 0 0.75rem; }
+    #card {
+      border-top: 1px solid var(--line);
+      padding-top: 0.85rem;
+      min-height: 22rem;
+      max-height: min(62vh, 40rem);
+      overflow: auto;
+    }
+    #card h2 {
+      margin: 0.2rem 0 0.7rem;
+      font-size: 1.18rem;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+    }
+    .blocks { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0 0 0.8rem; }
+    .blocks:empty, .stills:empty, .links:empty { display: none; margin: 0; }
+    .blocks span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.15rem 0.55rem;
+      font-size: 0.86rem;
+    }
+    .field { margin: 0 0 0.75rem; }
+    .field p { margin: 0; }
+    .field-label {
+      color: var(--orange);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+    .stills { display: grid; gap: 0.6rem; margin: 0.4rem 0 0.8rem; }
+    .stills img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      object-position: left center;
+      border-radius: 0.55rem;
+      background: #000;
+    }
+    .stills figcaption { color: var(--muted); font-size: 0.78rem; margin-top: 0.25rem; }
+    pre {
+      margin: 0 0 0.8rem;
+      max-height: 12rem;
+      overflow: auto;
+      background: #07070b;
+      border: 1px solid var(--line);
+      border-radius: 0.65rem;
+      padding: 0.8rem 0.9rem;
+      font-size: 0.75rem;
+      line-height: 1.45;
+    }
+    code, pre {
+      font-family: ui-monospace, "SFMono-Regular", "Noto Sans Mono CJK SC", "Noto Sans CJK SC", monospace;
+    }
+    .links { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 0.35rem 0.8rem; }
+    .links a { font-size: 0.82rem; overflow-wrap: anywhere; }
+    .controls {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 0.6rem;
+      align-items: center;
+      margin-top: 0.85rem;
+    }
+    .controls button {
+      padding: 0.55rem 1rem;
+      min-width: 6.5rem;
+      background: var(--ink);
+      color: #14120c;
+      border: 0;
+      font-weight: 650;
+    }
+    .controls button:disabled { opacity: 0.35; cursor: default; }
+    #next { background: var(--purple); color: #140b2e; }
+    #pos { margin: 0; text-align: center; color: var(--muted); font-size: 0.85rem; }
+    .hint { margin: 0.45rem 0 0; font-size: 0.78rem; }
+    footer {
+      margin-top: 1.4rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    footer p { margin: 0.3rem 0; }
+    @media (min-width: 881px) {
+      .player { position: sticky; top: 1rem; }
+    }
+    @media (max-width: 880px) {
+      main { grid-template-columns: 1fr; }
+      #card { max-height: none; }
+      .controls { grid-template-columns: 1fr 1fr; }
+      #pos { grid-column: 1 / -1; order: -1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="top">
+        <a class="back" href="../">← All demos</a>
+        <p class="kicker">Published example</p>
+      </div>
+      <h1>Anything2Explainer</h1>
+      <p class="lead">Vincent Wei’s RAG explainer, with the paper trail that sits beside the film: research, narration, storyboard, shots, and QC.</p>
+    </header>
+    <p class="banner">This page plays their published example and quotes <code>examples/rag</code>. The skill was not run. The toolkit is not in this demo.</p>
+    <main>
+      <section class="player" aria-label="Published film">
+        <div class="cuts" role="group" aria-label="Published cut">
+          <button type="button" id="cut-en" aria-pressed="true">English cut</button>
+          <button type="button" id="cut-zh" aria-pressed="false">Chinese v2</button>
+        </div>
+        <video id="film" controls playsinline preload="metadata" poster="media/frames/ref_title_f0058.jpg">
+          <source src="media/rag-en.mp4" type="video/mp4" />
+        </video>
+        <p id="film-error" hidden></p>
+        <p class="film-meta" id="film-meta"></p>
+        <p class="film-note" id="film-note"></p>
+        <div class="strip" id="strip" aria-label="Published stills"></div>
+      </section>
+      <section class="trail" aria-labelledby="trail-heading">
+        <h2 id="trail-heading" class="kicker">Paper trail</h2>
+        <div class="stages" id="stages" role="tablist"></div>
+        <p class="blurb" id="blurb"></p>
+        <p class="source" id="source"></p>
+        <article id="card">
+          <p class="kicker" id="card-kicker"></p>
+          <h2 id="card-title"></h2>
+          <div class="blocks" id="card-blocks"></div>
+          <div class="stills" id="card-stills"></div>
+          <pre id="card-code" hidden><code></code></pre>
+          <div id="card-body"></div>
+          <ul class="links" id="card-links"></ul>
+        </article>
+        <div class="controls">
+          <button type="button" id="back">Back</button>
+          <p id="pos" aria-live="polite"></p>
+          <button type="button" id="next">Next</button>
+        </div>
+        <p class="hint">Arrow keys step the trail. On the video, arrows still seek.</p>
+      </section>
+    </main>
+    <footer>
+      <p>Yihao Wei (Vincent Wei). The films belong to their author. Toolkit license: <a href="https://polyformproject.org/licenses/noncommercial/1.0.0">PolyForm Noncommercial 1.0.0</a>.</p>
+      <p>Required Notice: Copyright (c) 2026 Vincent Wei (<a href="https://github.com/Vincentwei1021/anything2explainer">github.com/Vincentwei1021/anything2explainer</a>).</p>
+      <p>
+        <a href="https://github.com/Vincentwei1021/anything2explainer">Repository</a>
+        · <a id="example-link" href="https://github.com/Vincentwei1021/anything2explainer/tree/main/examples/rag">examples/rag</a>
+        · <a href="https://x.com/eluchocha/status/2125741618435101096">Source post</a>
+      </p>
+    </footer>
+  </div>
+  <script src="trail.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
