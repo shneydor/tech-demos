@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Onetake — Tech Demos</title>
+  <!--
+    Plays published recordings from https://github.com/feitangyuan/onetake
+    Required Notice: Copyright (c) 2026 Patrick. onetake is free for noncommercial use only.
+    PolyForm Noncommercial 1.0.0 — https://polyformproject.org/licenses/noncommercial/1.0.0
+  -->
+  <style>
+    :root {
+      --bg: #0c0c0b;
+      --ink: #f4f0e6;
+      --muted: #a39e92;
+      --faint: #6f6b62;
+      --line: #2c2b27;
+      --card: #161614;
+      --accent: #f4f0e6;
+      --accent-ink: #14120e;
+      --warn: #e6d7a8;
+      --stage: #050505;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      min-height: 100%;
+      font-family: "Segoe UI", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+      background:
+        radial-gradient(900px 420px at 70% -10%, #221f18 0%, transparent 55%),
+        radial-gradient(700px 380px at 0% 0%, #16181c 0%, transparent 50%),
+        var(--bg);
+      color: var(--ink);
+    }
+    a { color: inherit; }
+    .wrap {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1.75rem 0 2.5rem;
+    }
+    .kicker {
+      margin: 0 0 0.55rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+    h1 {
+      margin: 0;
+      font-family: "Iowan Old Style", Palatino, Georgia, serif;
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 560;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+    }
+    .lead {
+      max-width: 38rem;
+      margin: 0.85rem 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(16rem, 0.85fr);
+      gap: 1.5rem 1.75rem;
+      align-items: start;
+      margin-top: 1.6rem;
+    }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin: 0 0 0.75rem;
+    }
+    .tabs button,
+    #play {
+      font: inherit;
+      cursor: pointer;
+    }
+    .tabs button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 0.4rem 0.8rem;
+      line-height: 1.2;
+    }
+    .tabs button[aria-selected="true"] {
+      background: var(--accent);
+      color: var(--accent-ink);
+      border-color: var(--accent);
+    }
+    .tabs button:focus-visible,
+    #play:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+    .stage {
+      position: relative;
+      background: var(--stage);
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+    }
+    video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: var(--stage);
+      opacity: 0;
+    }
+    video.is-shown { opacity: 1; }
+    .stage-status {
+      position: absolute;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--warn);
+    }
+    .stage.failed .stage-status { display: grid; }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-top: 0.85rem;
+    }
+    #play {
+      appearance: none;
+      border: 0;
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-weight: 650;
+      border-radius: 999px;
+      padding: 0.8rem 1.25rem;
+      min-width: 10.5rem;
+    }
+    #play:disabled {
+      cursor: not-allowed;
+      opacity: 0.45;
+    }
+    #play:not(:disabled):hover { filter: brightness(1.06); }
+    #play:not(:disabled):active { transform: translateY(1px); }
+    #clock {
+      margin: 0;
+      font-variant-numeric: tabular-nums;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .recording {
+      margin: 0.85rem 0 0;
+      color: var(--warn);
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+    .recording a { color: var(--warn); }
+    .panel h2 {
+      margin: 0 0 0.7rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 650;
+      color: var(--muted);
+    }
+    .panel p {
+      margin: 0 0 0.8rem;
+      line-height: 1.55;
+      color: var(--ink);
+    }
+    .panel p.quiet {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    ol.beats {
+      list-style: none;
+      margin: 0.2rem 0 0;
+      padding: 0;
+    }
+    ol.beats li {
+      display: grid;
+      grid-template-columns: 5.4rem 1fr;
+      gap: 0.65rem;
+      padding: 0.45rem 0;
+      border-top: 1px solid var(--line);
+      line-height: 1.4;
+    }
+    ol.beats time {
+      color: var(--faint);
+      font-variant-numeric: tabular-nums;
+      font-size: 0.88rem;
+    }
+    footer.credit {
+      margin-top: 1.75rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      color: var(--faint);
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+    footer.credit a { color: var(--muted); }
+    .back {
+      display: inline-block;
+      margin-top: 0.9rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .back:hover { color: var(--ink); }
+    code {
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .wrap { width: min(1120px, calc(100% - 1.25rem)); }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="kicker">Tech demos</p>
+    <h1>Onetake</h1>
+    <p class="lead">Product films with no cuts. One camera holds the whole take, and every beat grows out of the one before it.</p>
+
+    <div class="layout">
+      <section aria-label="Film">
+        <div class="tabs" role="tablist" aria-label="Published cases">
+          <button type="button" role="tab" id="tab-one-dot" aria-controls="panel" aria-selected="true">One dot</button>
+          <button type="button" role="tab" id="tab-clearing" aria-controls="panel" aria-selected="false">Clearing</button>
+          <button type="button" role="tab" id="tab-skill-demo" aria-controls="panel" aria-selected="false">Skill demo</button>
+        </div>
+        <div class="stage" id="stage">
+          <video id="film" src="films/one-dot.mp4" preload="auto" playsinline></video>
+          <p class="stage-status" id="stage-status" role="status"></p>
+        </div>
+        <div class="controls">
+          <button type="button" id="play">Play the take</button>
+          <p id="clock">15s</p>
+        </div>
+        <p class="recording" id="recording"></p>
+      </section>
+
+      <section class="panel" id="panel" aria-live="polite">
+        <h2>How this shot is built</h2>
+        <div id="notes"></div>
+      </section>
+    </div>
+
+    <footer class="credit">
+      <p>
+        Onetake by Patrick
+        (<a href="https://github.com/feitangyuan/onetake">github.com/feitangyuan/onetake</a>).
+        Required Notice: Copyright (c) 2026 Patrick. onetake is free for noncommercial use only.
+        <a href="https://polyformproject.org/licenses/noncommercial/1.0.0">PolyForm Noncommercial 1.0.0</a>
+        · <a href="LICENSE">license text</a>.
+      </p>
+      <a class="back" href="../">← All demos</a>
+    </footer>
+  </main>
+  <noscript>
+    <p>This page plays the published films with one button. JavaScript is required to start the take.</p>
+  </noscript>
+  <script>
+    const CASES = {
+      "one-dot": {
+        title: "One dot",
+        src: "films/one-dot.mp4",
+        rest: 10.3,
+        file: "cases/one-dot-15s/one-dot.mp4",
+        href: "https://github.com/feitangyuan/onetake/tree/main/cases/one-dot-15s",
+        paragraphs: [
+          "One mark plays the whole fifteen seconds. It pops in as a dot, stretches into the caret, splits into the skill menu, hollows into a loading ring, unrolls into a spring curve, drops as a ball, and lands as the dot on the i in ohmymotion. That same mark is what crosses each boundary, so the next beat is the object changing shape. The case notes score that continuity at 1.00.",
+          "The camera is one operator rig, OM.rig. A spring holds the subject on screen, and a second spring eases the log of the zoom. Both are integrated once at 240 Hz. It leads the glide to the caret, because that move outruns a chase, then rides a fraction of a second ahead of the typing caret, whips home when the prompt is swallowed, and ends on a slow push into the name. A faint lattice of dots sits on the black so the move has a ground to read against. Landings shake the frame, then decay."
+        ],
+        beats: [
+          ["0.5s", "The dot pops in on black. It is the only subject."],
+          ["1.0–2.8s", "It becomes the caret, then the four dots of the skill list. The camera is already waiting on the line."],
+          ["5–7s", "The prompt is swallowed. The dot hollows into a ring as the skill loads."],
+          ["7–10s", "The ring unrolls into the spring curve, then a bead that drops and bounces."],
+          ["10–15s", "The second bounce opens the result film. It folds back into the dot on the i."]
+        ],
+        aside: "The picture still says ohmymotion. That was the skill’s name when this film was made."
+      },
+      clearing: {
+        title: "Clearing",
+        src: "films/clearing.mp4",
+        rest: 7.8,
+        file: "cases/clearing-15s/clearing.mp4",
+        href: "https://github.com/feitangyuan/onetake/tree/main/cases/clearing-15s",
+        paragraphs: [
+          "A year of a calendar, then one Wednesday, then a free half hour. The camera falls from about 1× to 300× and whips back, and the take never cuts, because each level is drawn inside the cell before it. The yellow found at the bottom of the dive is the yellow the year ends in: the kept days spell CLEARING across the grid.",
+          "OM.rig chases where the anchor should sit on screen, and the logarithm of the zoom. At 300× a world-space spring would throw the target a frame-width for every pixel of lag. A screen-space spring lags by the same amount at every scale. Two holds are actually still: the breath on the gap, and the landing inside the half hour. The way out is a step in the aim. The log-zoom spring covers 300× down to 1× in about six tenths of a second."
+        ],
+        beats: [
+          ["0.2–1.8s", "The year fills, then the header holds."],
+          ["1.8–3.6s", "The camera dives into Wednesday 28 July. The day’s hours resolve as the cell grows."],
+          ["3.6–7.0s", "A line finds 15:00. The camera falls again, 50× toward 300×, into that half hour."],
+          ["7.6–9.0s", "A yellow block lands: Clear. The frame holds dead still."],
+          ["9–15s", "A whip back to the year. Kept days light the name, then the line about hours kept."]
+        ],
+        aside: "Clearing is a fictional calendar in the case notes. Nothing in the frame is a screen recording."
+      },
+      "skill-demo": {
+        title: "Skill demo",
+        src: "films/skill-demo.mp4",
+        rest: 7.4,
+        file: "cases/skill-demo-15s/skill-demo.mp4",
+        href: "https://github.com/feitangyuan/onetake/tree/main/cases/skill-demo-15s",
+        paragraphs: [
+          "An operation demo drawn with no footage and no images. Every pixel is DOM, and every move is a function of time from the motion library. The line about one prompt slides into the field and the box grows around it. The chosen menu row flies up into that field as a chip. The chip grows into the loading card, the card folds down to one row, and the result grows into the player.",
+          "The camera is quieter here than in the other two films. What holds the take together is the rectangle that survives: a container transform, so the next shot is the same shape, larger. About a third of the film is still, then the hits bunch up, and the interface stays small on a large ground. A short burst of three hard words near the end is the one place a cut replaces the frame."
+        ],
+        beats: [
+          ["0.2–1.4s", "The opening line, then a hold. That line slides into the input."],
+          ["2–4.7s", "Focus, the skill menu, the prompt, send. The chosen row becomes a chip in the field."],
+          ["4.7–8.3s", "The sent line becomes the card. Tool calls tick through. The card folds to one row."],
+          ["8.3–12s", "Play. A sun lands on the headline and the stage opens out of it."],
+          ["12–15s", "Three hard words, then the name settles."]
+        ],
+        aside: "This film also shows the earlier name, ohmymotion, inside the interface it rebuilds."
+      }
+    };
+
+    const video = document.getElementById("film");
+    const playBtn = document.getElementById("play");
+    const clock = document.getElementById("clock");
+    const notes = document.getElementById("notes");
+    const recording = document.getElementById("recording");
+    const stage = document.getElementById("stage");
+    const stageStatus = document.getElementById("stage-status");
+
+    let token = 0;
+    let mode = "still";
+    let loadedSrc = video.getAttribute("src");
+    let seekSerial = 0;
+
+    function fmt(seconds) {
+      const s = Math.max(0, Math.floor(seconds));
+      return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+    }
+
+    function renderClock() {
+      if (mode === "playing") clock.textContent = fmt(video.currentTime || 0);
+      else clock.textContent = "15s";
+    }
+
+    function renderNotes(item) {
+      const beats = item.beats.map(([t, text]) =>
+        `<li><time>${t}</time><span>${text}</span></li>`).join("");
+      notes.innerHTML =
+        item.paragraphs.map((p) => `<p>${p}</p>`).join("") +
+        `<p class="quiet">${item.aside}</p>` +
+        `<ol class="beats">${beats}</ol>`;
+      recording.innerHTML =
+        `Published recording of <a href="${item.href}">${item.file}</a>. ` +
+        `The public case ships this mp4. Its composition HTML is unpublished.`;
+    }
+
+    function fail(message) {
+      mode = "still";
+      stage.classList.add("failed");
+      stageStatus.textContent = message;
+      playBtn.disabled = true;
+      playBtn.textContent = "Play the take";
+      renderClock();
+    }
+
+    function clearFail() {
+      stage.classList.remove("failed");
+      stageStatus.textContent = "";
+    }
+
+    function reveal() {
+      video.classList.add("is-shown");
+    }
+
+    function seekTo(time, then) {
+      const serial = ++seekSerial;
+      let settled = false;
+      const finish = () => {
+        if (settled || serial !== seekSerial) return;
+        if (Math.abs((video.currentTime || 0) - time) > 0.25) return;
+        settled = true;
+        video.removeEventListener("seeked", onSeeked);
+        then();
+      };
+      const onSeeked = () => finish();
+      const attempt = () => {
+        if (settled || serial !== seekSerial) return;
+        if (video.readyState < 1 || !Number.isFinite(video.duration)) return;
+        const range = video.seekable;
+        const end = range.length ? range.end(range.length - 1) : 0;
+        if (end + 0.05 < time) return;
+        if (Math.abs((video.currentTime || 0) - time) < 0.04) {
+          finish();
+          return;
+        }
+        video.currentTime = time;
+      };
+      video.addEventListener("seeked", onSeeked);
+      video.addEventListener("progress", attempt);
+      video.addEventListener("loadeddata", attempt);
+      attempt();
+      setTimeout(() => {
+        video.removeEventListener("progress", attempt);
+        video.removeEventListener("loadeddata", attempt);
+        if (settled || serial !== seekSerial) return;
+        settled = true;
+        video.removeEventListener("seeked", onSeeked);
+        then();
+      }, 4000);
+    }
+
+    function holdStill(my, item) {
+      if (my !== token || mode === "playing") return;
+      video.pause();
+      seekTo(item.rest, () => {
+        if (my !== token || mode === "playing") return;
+        reveal();
+      });
+    }
+
+    function beginPlayback() {
+      const my = token;
+      video.pause();
+      reveal();
+      seekTo(0, () => {
+        if (my !== token || mode !== "playing") return;
+        const pending = video.play();
+        const started = () => {
+          if (my !== token || mode !== "playing") return;
+          const frame = () => {
+            if (mode !== "playing") return;
+            clock.textContent = fmt(video.currentTime || 0);
+            requestAnimationFrame(frame);
+          };
+          frame();
+        };
+        if (pending && typeof pending.then === "function") {
+          pending.then(started).catch(() => {
+            if (my !== token) return;
+            mode = "still";
+            playBtn.textContent = "Play the take";
+            fail("Playback was blocked. Press the button again.");
+          });
+        } else {
+          started();
+        }
+      });
+    }
+
+    function selectCase(id) {
+      const item = CASES[id];
+      if (!item) return;
+      const my = ++token;
+      mode = "still";
+      clearFail();
+      playBtn.disabled = true;
+      playBtn.textContent = "Play the take";
+      video.classList.remove("is-shown");
+      video.pause();
+      renderNotes(item);
+      renderClock();
+      for (const key of Object.keys(CASES)) {
+        const tab = document.getElementById("tab-" + key);
+        const on = key === id;
+        tab.setAttribute("aria-selected", on ? "true" : "false");
+        tab.tabIndex = on ? 0 : -1;
+      }
+      const ready = () => {
+        if (my !== token) return;
+        playBtn.disabled = false;
+        if (mode === "playing") beginPlayback();
+        else holdStill(my, item);
+      };
+      if (loadedSrc !== item.src) {
+        loadedSrc = item.src;
+        video.addEventListener("loadeddata", ready, { once: true });
+        video.src = item.src;
+      } else if (video.readyState >= 2) {
+        ready();
+      } else {
+        video.addEventListener("loadeddata", ready, { once: true });
+      }
+    }
+
+    playBtn.addEventListener("click", () => {
+      if (playBtn.disabled) return;
+      mode = "playing";
+      clearFail();
+      playBtn.textContent = "Playing";
+      if (video.readyState >= 2) beginPlayback();
+    });
+
+    video.addEventListener("timeupdate", renderClock);
+    video.addEventListener("ended", () => {
+      mode = "still";
+      playBtn.textContent = "Play the take";
+      clock.textContent = fmt(video.duration || 15);
+    });
+    video.addEventListener("error", () => {
+      fail("This recording failed to load.");
+    });
+
+    document.querySelectorAll("[role='tab']").forEach((tab) => {
+      tab.addEventListener("click", () => selectCase(tab.id.replace("tab-", "")));
+    });
+
+    selectCase("one-dot");
+  </script>
+</body>
+</html>
