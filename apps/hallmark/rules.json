@@ -1,0 +1,331 @@
+{
+  "skill": "Hallmark 2.0.0",
+  "skillUrl": "https://github.com/Nutlope/hallmark",
+  "theme": "Dose",
+  "render": "ran at build time across five widths; these counts are the static tier",
+  "agent": "A coding agent followed Hallmark's full redesign while this demo was built and dealt the Dose theme. This browser does not call a model.",
+  "before": { "fails": 101, "reflex": 23, "warns": 16 },
+  "after": { "fails": 0, "reflex": 0, "warns": 0 },
+  "rules": [
+    {
+      "gate": "54",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "hero",
+      "count": 4,
+      "evidence": "eyebrow \"Introducing Lumenboard · Beta\" before <h1>",
+      "change": "The eyebrow, the Beta pill, and the section kickers are gone. Each block opens on its heading.",
+      "stillOpen": false
+    },
+    {
+      "gate": "38i",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "hero",
+      "count": 1,
+      "evidence": "<em>/<i> inside <h1>",
+      "change": "The italic word in the headline is gone. The line is roman: \"Monday stays written.\"",
+      "stillOpen": false
+    },
+    {
+      "gate": "38iii",
+      "tier": "Reflex",
+      "grade": "REFLEX",
+      "section": "hero",
+      "count": 1,
+      "evidence": "accented word inside a heading (h1 em)",
+      "change": "No word in the headline is set in a second colour or a gradient.",
+      "stillOpen": false
+    },
+    {
+      "gate": "38ii",
+      "tier": "Reflex",
+      "grade": "REFLEX",
+      "section": "hero",
+      "count": 1,
+      "evidence": "italic display type on h1 em",
+      "change": "The display face is roman Schibsted Grotesk, from the Dose theme.",
+      "stillOpen": false
+    },
+    {
+      "gate": "2a",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "hero",
+      "count": 6,
+      "evidence": "purple-to-blue gradient text on .wordmark",
+      "change": "The purple-to-blue gradient is gone from the wordmark, the headline, and the buttons. Ink is solid, and the button is the theme green.",
+      "stillOpen": false
+    },
+    {
+      "gate": "1",
+      "tier": "Reflex",
+      "grade": "REFLEX",
+      "section": "hero",
+      "count": 1,
+      "evidence": "display font \"inter\" (h1)",
+      "change": "The headline no longer uses Inter. Dose sets Schibsted Grotesk for display and Instrument Sans for text.",
+      "stillOpen": false
+    },
+    {
+      "gate": "48",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "hero",
+      "count": 54,
+      "evidence": "font-family literal \"Inter, system-ui, sans-serif\" on body",
+      "change": "Colour and type now live in tokens.css. The page stylesheet refers to those tokens.",
+      "stillOpen": false
+    },
+    {
+      "gate": "19",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "hero",
+      "count": 15,
+      "evidence": "dash \"—\" in copy",
+      "change": "The em dash, the buzzwords, Acme, Nexus, and Jane Doe are gone. The hero sentence is the studio and the three columns.",
+      "stillOpen": false
+    },
+    {
+      "gate": "58",
+      "tier": "Floor",
+      "grade": "WARN",
+      "section": "hero",
+      "count": 1,
+      "evidence": "hero paragraph runs 25 words",
+      "change": "The hero sentence is twelve words: \"A small studio writes the week's calls in three columns.\"",
+      "stillOpen": false
+    },
+    {
+      "gate": "63",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "hero",
+      "count": 5,
+      "evidence": "arrow glued to the label \"Get started →\"",
+      "change": "Labels are verbs with no arrow. \"Fast · Secure · AI-native\" and the green status dots are gone.",
+      "stillOpen": false
+    },
+    {
+      "gate": "67",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "hero",
+      "count": 4,
+      "evidence": ".eyebrow: uppercase tracked 0.16em at 12px in a label role",
+      "change": "Labels are sentence case in the body face, without letter-spacing.",
+      "stillOpen": false
+    },
+    {
+      "gate": "47a",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "hero",
+      "count": 2,
+      "evidence": "re-drawn chrome selector .browser-bar",
+      "change": "The traffic-light browser frame is gone. The board is the three sentences, set as type.",
+      "stillOpen": false
+    },
+    {
+      "gate": "6a",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "hero",
+      "count": 1,
+      "evidence": "hero sized in vh: min-height: 100vh on .hero",
+      "change": "The hero is a ledge on the theme's paper, not a 100vh block.",
+      "stillOpen": false
+    },
+    {
+      "gate": "29",
+      "tier": "Reflex",
+      "grade": "WARN",
+      "section": "hero",
+      "count": 1,
+      "evidence": "glass panel: backdrop-filter blur over a translucent white on nav",
+      "change": "The nav is a solid ink bar. The blur and the hairline are gone.",
+      "stillOpen": false
+    },
+    {
+      "gate": "42",
+      "tier": "Reflex",
+      "grade": "WARN",
+      "section": "hero",
+      "count": 1,
+      "evidence": "default nav shape: 6 links + CTA + 1px hairline",
+      "change": "The nav is the Dose slab, and the stamp names it. The footer is a statement, not four link columns.",
+      "stillOpen": false
+    },
+    {
+      "gate": "20",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "hero",
+      "count": 1,
+      "evidence": "no Hallmark stamp on the first non-empty line of any CSS",
+      "change": "board.css opens with the Hallmark stamp: Dose, full redesign, job sign up.",
+      "stillOpen": false
+    },
+    {
+      "gate": "34",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "hero",
+      "count": 2,
+      "evidence": "no overflow-x: clip on html and body",
+      "change": "html and body use overflow-x: clip. The hero is not 100vw.",
+      "stillOpen": false
+    },
+    {
+      "gate": "10a",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "hero",
+      "count": 2,
+      "evidence": "transition: all on .btn",
+      "change": "Nothing uses transition: all. The button transition lists its properties.",
+      "stillOpen": false
+    },
+    {
+      "gate": "27",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "hero",
+      "count": 1,
+      "evidence": "motion present, no prefers-reduced-motion block",
+      "change": "A reduced-motion rule cuts animation and transition time.",
+      "stillOpen": false
+    },
+    {
+      "gate": "24b",
+      "tier": "Reflex",
+      "grade": "REFLEX",
+      "section": "hero",
+      "count": 18,
+      "evidence": "padding: 14px 32px (off the 4px scale) on nav",
+      "change": "Spacing comes from the theme scale in tokens.css.",
+      "stillOpen": false
+    },
+    {
+      "gate": "F3",
+      "tier": "Finish",
+      "grade": "WARN",
+      "section": "hero",
+      "count": 1,
+      "evidence": "no text-wrap: balance on any display head",
+      "change": "Display headings use text-wrap: balance.",
+      "stillOpen": false
+    },
+    {
+      "gate": "F4",
+      "tier": "Finish",
+      "grade": "WARN",
+      "section": "hero",
+      "count": 1,
+      "evidence": "two filled buttons side by side in the hero",
+      "change": "The hero has one filled button. The other action is a text link.",
+      "stillOpen": false
+    },
+    {
+      "gate": "F24",
+      "tier": "Finish",
+      "grade": "WARN",
+      "section": "hero",
+      "count": 1,
+      "evidence": "a hairline border under a wide soft shadow on .browser-bar",
+      "change": "The browser bar and its shadow are gone with the fake window.",
+      "stillOpen": false
+    },
+    {
+      "gate": "46a",
+      "tier": "Floor",
+      "grade": "WARN",
+      "section": "proof",
+      "count": 3,
+      "evidence": "metric \"12,000+ teams\": verify the user supplied this number",
+      "change": "12,000+ teams, 99.99% uptime, and 4.9/5 are gone. Nobody supplied a number, so the board does not invent one.",
+      "stillOpen": false
+    },
+    {
+      "gate": "F6",
+      "tier": "Finish",
+      "grade": "WARN",
+      "section": "proof",
+      "count": 1,
+      "evidence": "numeric selector .stat b at display size without tabular figures",
+      "change": "The stat row is gone. The theme's figure style still sets tabular numbers.",
+      "stillOpen": false
+    },
+    {
+      "gate": "30a",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "features",
+      "count": 3,
+      "evidence": "emoji icon \"✨\" in <span class=\"icon\">",
+      "change": "The spark, bolt, and lock emoji are gone. Each column is a heading and its sentence.",
+      "stillOpen": false
+    },
+    {
+      "gate": "3",
+      "tier": "Reflex",
+      "grade": "WARN",
+      "section": "features",
+      "count": 2,
+      "evidence": "3 equal icon-tile columns on .grid",
+      "change": "The three columns are stacked stages, not a row of equal icon cards.",
+      "stillOpen": false
+    },
+    {
+      "gate": "4",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "quote",
+      "count": 1,
+      "evidence": "card nested in card: class=\"card inner\"",
+      "change": "The quote card inside a card is gone, along with Jane Doe. The note is one form.",
+      "stillOpen": false
+    },
+    {
+      "gate": "70",
+      "tier": "Floor",
+      "grade": "WARN",
+      "section": "signup",
+      "count": 1,
+      "evidence": "a script prints success (\"You're on the list\") with no request behind it",
+      "change": "Submitting says the list is not wired. It does not say you joined.",
+      "stillOpen": false
+    },
+    {
+      "gate": "26a",
+      "tier": "Floor",
+      "grade": "FAIL",
+      "section": "signup",
+      "count": 1,
+      "evidence": "no :focus-visible styling anywhere",
+      "change": "Links, the email field, and the button show an instant focus ring.",
+      "stillOpen": false
+    },
+    {
+      "gate": "26b",
+      "tier": "Reflex",
+      "grade": "REFLEX",
+      "section": "signup",
+      "count": 2,
+      "evidence": "no :active styling anywhere",
+      "change": "The button and the field have an active state.",
+      "stillOpen": false
+    },
+    {
+      "gate": "F23",
+      "tier": "Finish",
+      "grade": "WARN",
+      "section": "close",
+      "count": 1,
+      "evidence": "the document lacks a meta description",
+      "change": "The Hallmark page has a meta description. The footer no longer says \"All rights reserved.\"",
+      "stillOpen": false
+    }
+  ]
+}

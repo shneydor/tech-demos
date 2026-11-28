@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lumenboard, the Monday board</title>
+  <meta name="description" content="A Monday board for a small studio. Three columns hold the calls, and an email takes the note." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700&family=Instrument+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./tokens.css" />
+  <link rel="stylesheet" href="./base.css" />
+  <link rel="stylesheet" href="./board.css" />
+</head>
+<body>
+  <a class="skip" href="#hero">Skip to the board</a>
+  <nav class="slab" aria-label="Page">
+    <a class="wordmark" id="wordmark" href="#hero">Lumenboard</a>
+    <div class="slab-links">
+      <a href="#proof">The Monday board</a>
+      <a href="#features">The three columns</a>
+      <a href="#quote">The Monday note</a>
+      <a id="join" href="#signup">Leave an email</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="hero">
+    <div class="daylight" aria-hidden="true">
+      <span class="pane pane-a"></span>
+      <span class="pane pane-b"></span>
+      <span class="pane pane-c"></span>
+      <span class="pane pane-d"></span>
+    </div>
+    <div class="ledge">
+      <div class="container">
+        <h1>Monday stays written.</h1>
+        <p class="lead">A small studio writes the week’s calls in three columns.</p>
+        <div class="note-block" id="quote">
+          <div id="signup">
+            <form id="join-form" onsubmit="joinWait(event)" data-endpoint="">
+              <label class="field-name" for="email">Email</label>
+              <div class="signup-row">
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@studio.com" required />
+                <button class="btn" id="join-submit" type="submit">Request the Monday note</button>
+              </div>
+              <p id="join-note" role="status"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="proof">
+    <section class="stage stage-decided">
+      <div class="container">
+        <h2>1. Decided</h2>
+        <p class="statement">The calls the room already made, written in one column so next Monday does not reopen them.</p>
+        <a class="more" id="see-board" href="#features">Read the three columns</a>
+      </div>
+    </section>
+
+    <section class="stage stage-waiting" id="features">
+      <div class="container split">
+        <h2>2. Waiting</h2>
+        <div class="plastic">
+          <p class="tray-copy">The calls still open. One line each, with the name of the person who owes the answer.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stage stage-carried">
+      <div class="container">
+        <h2>3. From last Monday</h2>
+        <p class="statement">Whatever was still open last week stays on the board until somebody closes it.</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="close-band">
+    <div class="container">
+      <h2>Join the Monday note</h2>
+      <p class="statement">Leave an email. The note is the three columns: decided, waiting, and carried from last Monday.</p>
+      <a class="more" id="see-quote" href="#signup">Request the Monday note</a>
+    </div>
+  </section>
+
+  <footer class="colophon" id="close">
+    <div class="container">
+      <p class="statement">Three columns hold the calls until somebody closes them.</p>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="#hero">Lumenboard</a>
+        <a href="#proof">The Monday board</a>
+        <a href="#features">The three columns</a>
+        <a href="#quote">The Monday note</a>
+        <a href="#signup">Leave an email</a>
+      </nav>
+      <p class="fine">Lumenboard, a Monday board for a small studio.</p>
+    </div>
+  </footer>
+
+  <script>
+    function joinWait(event) {
+      event.preventDefault();
+      var note = document.getElementById("join-note");
+      note.textContent = "This list is not wired, so the Monday note was not sent.";
+    }
+  </script>
+</body>
+</html>

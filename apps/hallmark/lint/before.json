@@ -1,0 +1,1276 @@
+{
+  "summary": {
+    "fails": 101,
+    "reflex": 23,
+    "warns": 16,
+    "waived": 0,
+    "rejected": 0,
+    "answered": 0,
+    "dismissed": 0,
+    "notes": 0,
+    "files": 1,
+    "render": "off"
+  },
+  "findings": [
+    {
+      "gate": "2a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 39,
+      "evidence": "purple-to-blue gradient text on .wordmark",
+      "fix": "One anchor hue, solid ink"
+    },
+    {
+      "gate": "2a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 54,
+      "evidence": "purple-to-blue gradient on .btn",
+      "fix": "One anchor hue; drop the gradient"
+    },
+    {
+      "gate": "2a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 71,
+      "evidence": "purple-to-blue gradient on .hero",
+      "fix": "One anchor hue; drop the gradient"
+    },
+    {
+      "gate": "2a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 110,
+      "evidence": "purple-to-blue gradient text on h1 em",
+      "fix": "One anchor hue, solid ink"
+    },
+    {
+      "gate": "2a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 193,
+      "evidence": "purple-to-blue gradient text on .stat b",
+      "fix": "One anchor hue, solid ink"
+    },
+    {
+      "gate": "2a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 220,
+      "evidence": "purple-to-blue gradient on .avatar",
+      "fix": "One anchor hue; drop the gradient"
+    },
+    {
+      "gate": "4",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 338,
+      "evidence": "card nested in card: class=\"card inner\"",
+      "fix": "Keep one containment layer"
+    },
+    {
+      "gate": "6a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 68,
+      "evidence": "hero sized in vh: min-height: 100vh on .hero",
+      "fix": "dvh or svh"
+    },
+    {
+      "gate": "10a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 53,
+      "evidence": "transition: all on .btn",
+      "fix": "List the transitioned properties explicitly"
+    },
+    {
+      "gate": "10a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 207,
+      "evidence": "transition: all on .card",
+      "fix": "List the transitioned properties explicitly"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 6,
+      "evidence": "dash \"—\" in copy",
+      "fix": "A comma, a colon, a full stop or parentheses; never a dash"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 266,
+      "evidence": "buzzword \"Built for the modern\"",
+      "fix": "Say what the product does, in its own nouns"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 266,
+      "evidence": "buzzword \"seamlessly\"",
+      "fix": "Say what the product does, in its own nouns"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 266,
+      "evidence": "buzzword \"unlocks\"",
+      "fix": "Say what the product does, in its own nouns"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 266,
+      "evidence": "buzzword \"next-generation\"",
+      "fix": "Say what the product does, in its own nouns"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 266,
+      "evidence": "template line: \"No credit card required\"",
+      "fix": "Say what the product does, in its own nouns"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 289,
+      "evidence": "buzzword \"Quietly trusted\"",
+      "fix": "Say what the product does, in its own nouns"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 298,
+      "evidence": "startup cliche name: \"Acme\"",
+      "fix": "Use plausible audience-fitting names"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 299,
+      "evidence": "startup cliche name: \"Nexus\"",
+      "fix": "Use plausible audience-fitting names"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 310,
+      "evidence": "buzzword \"supercharge\"",
+      "fix": "Say what the product does, in its own nouns"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 339,
+      "evidence": "buzzword \"seamless\"",
+      "fix": "Say what the product does, in its own nouns"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 339,
+      "evidence": "buzzword \"robust\"",
+      "fix": "Say what the product does, in its own nouns"
+    },
+    {
+      "gate": "19",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 343,
+      "evidence": "placeholder name: \"Jane Doe\"",
+      "fix": "Use plausible audience-fitting names"
+    },
+    {
+      "gate": "20",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 1,
+      "evidence": "no Hallmark stamp on the first non-empty line of any CSS",
+      "fix": "The stamp comment is line 1 of the CSS; only @charset may precede it"
+    },
+    {
+      "gate": "26a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 1,
+      "evidence": "no :focus-visible styling anywhere",
+      "fix": "A focus ring at 3:1 or better, instant"
+    },
+    {
+      "gate": "27",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 1,
+      "evidence": "motion present, no prefers-reduced-motion block",
+      "fix": "Add a prefers-reduced-motion fallback"
+    },
+    {
+      "gate": "30a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 313,
+      "evidence": "emoji icon \"✨\" in <span class=\"icon\">",
+      "fix": "One icon library or custom SVG"
+    },
+    {
+      "gate": "30a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 319,
+      "evidence": "emoji icon \"⚡\" in <span class=\"icon\">",
+      "fix": "One icon library or custom SVG"
+    },
+    {
+      "gate": "30a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 325,
+      "evidence": "emoji icon \"🔒\" in <span class=\"icon\">",
+      "fix": "One icon library or custom SVG"
+    },
+    {
+      "gate": "34",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 1,
+      "evidence": "no overflow-x: clip on html and body",
+      "fix": "overflow-x: clip on both html and body"
+    },
+    {
+      "gate": "34",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 67,
+      "evidence": "width: 100vw on .hero (scrollbar overflow)",
+      "fix": "width: 100% with container padding"
+    },
+    {
+      "gate": "38i",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 265,
+      "evidence": "<em>/<i> inside <h1>",
+      "fix": "Roman headers; emphasis via weight or accent"
+    },
+    {
+      "gate": "47a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 128,
+      "evidence": "re-drawn chrome selector .browser-bar",
+      "fix": "Use a real screenshot in a figure"
+    },
+    {
+      "gate": "47a",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 272,
+      "evidence": "re-drawn chrome class \"browser-bar\" (class=\"browser-bar\")",
+      "fix": "Use a real screenshot in a figure"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 14,
+      "evidence": "font-family literal \"Inter, system-ui, sans-serif\" on body",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 15,
+      "evidence": "colour literal #0f172a outside tokens (color on body)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 16,
+      "evidence": "colour literal #ffffff outside tokens (background on body)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 28,
+      "evidence": "colour literal rgba(255, 255, 255, 0.8) outside tokens (background on nav)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 30,
+      "evidence": "colour literal #e2e8f0 outside tokens (border-bottom on nav)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 33,
+      "evidence": "colour literal #475569 outside tokens (color on .links a)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 38,
+      "evidence": "colour literal #7c3aed outside tokens (background on .wordmark)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 38,
+      "evidence": "colour literal #2563eb outside tokens (background on .wordmark)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 54,
+      "evidence": "colour literal #7c3aed outside tokens (background on .btn)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 54,
+      "evidence": "colour literal #2563eb outside tokens (background on .btn)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 56,
+      "evidence": "colour literal rgba(124, 58, 237, 0.35) outside tokens (box-shadow on .btn)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 61,
+      "evidence": "colour literal #6d28d9 outside tokens (color on .btn.ghost)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 62,
+      "evidence": "colour literal #ddd6fe outside tokens (border on .btn.ghost)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 71,
+      "evidence": "colour literal rgba(124, 58, 237, 0.35) outside tokens (background on .hero)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 71,
+      "evidence": "colour literal rgba(37, 99, 235, 0.35) outside tokens (background on .hero)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 71,
+      "evidence": "colour literal #f5f3ff outside tokens (background on .hero)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 71,
+      "evidence": "colour literal #ffffff outside tokens (background on .hero)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 84,
+      "evidence": "colour literal #ede9fe outside tokens (background on .eyebrow)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 85,
+      "evidence": "colour literal #6d28d9 outside tokens (color on .eyebrow)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 95,
+      "evidence": "colour literal #22c55e outside tokens (background on .dot)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 96,
+      "evidence": "colour literal rgba(34, 197, 94, 0.2) outside tokens (box-shadow on .dot)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 101,
+      "evidence": "font-family literal \"Inter, system-ui, sans-serif\" on h1",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 109,
+      "evidence": "colour literal #7c3aed outside tokens (background on h1 em)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 109,
+      "evidence": "colour literal #2563eb outside tokens (background on h1 em)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 117,
+      "evidence": "colour literal #475569 outside tokens (color on .lede)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 122,
+      "evidence": "colour literal #64748b outside tokens (color on .meta)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 133,
+      "evidence": "colour literal #e2e8f0 outside tokens (border on .browser-bar)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 134,
+      "evidence": "colour literal rgba(15, 23, 42, 0.12) outside tokens (box-shadow on .browser-bar)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 143,
+      "evidence": "colour literal #f8fafc outside tokens (background on .traffic-lights)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 144,
+      "evidence": "colour literal #e2e8f0 outside tokens (border-bottom on .traffic-lights)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 152,
+      "evidence": "colour literal #f87171 outside tokens (background on .traffic-lights i:nth-child(1))",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 153,
+      "evidence": "colour literal #fbbf24 outside tokens (background on .traffic-lights i:nth-child(2))",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 154,
+      "evidence": "colour literal #34d399 outside tokens (background on .traffic-lights i:nth-child(3))",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 161,
+      "evidence": "colour literal #64748b outside tokens (color on .url-pill)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 162,
+      "evidence": "colour literal #e2e8f0 outside tokens (border on .url-pill)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 165,
+      "evidence": "colour literal #f8fafc outside tokens (background on .fake-ui div)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 167,
+      "evidence": "colour literal #e2e8f0 outside tokens (background on .fake-ui span)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 176,
+      "evidence": "colour literal #7c3aed outside tokens (color on .kicker)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 182,
+      "evidence": "colour literal #e2e8f0 outside tokens (border on .stat)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 186,
+      "evidence": "colour literal rgba(15, 23, 42, 0.04) outside tokens (box-shadow on .stat)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 192,
+      "evidence": "colour literal #7c3aed outside tokens (background on .stat b)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 192,
+      "evidence": "colour literal #2563eb outside tokens (background on .stat b)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 197,
+      "evidence": "colour literal #94a3b8 outside tokens (color on .logos)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 200,
+      "evidence": "colour literal #fafafa outside tokens (background on .features)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 204,
+      "evidence": "colour literal #e2e8f0 outside tokens (border on .card)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 208,
+      "evidence": "colour literal #7c3aed outside tokens (border-left on .card)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 210,
+      "evidence": "colour literal rgba(15, 23, 42, 0.08) outside tokens (box-shadow on .card:hover)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 215,
+      "evidence": "colour literal #f5f3ff outside tokens (background on .card.inner)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 220,
+      "evidence": "colour literal #7c3aed outside tokens (background on .avatar)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 220,
+      "evidence": "colour literal #2563eb outside tokens (background on .avatar)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 231,
+      "evidence": "colour literal #cbd5e1 outside tokens (border on input[type=\"email\"])",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 237,
+      "evidence": "colour literal #6d28d9 outside tokens (color on #join-note)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 241,
+      "evidence": "colour literal #94a3b8 outside tokens (color on footer)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "48",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 243,
+      "evidence": "colour literal #e2e8f0 outside tokens (border-top on footer)",
+      "fix": "Lift the value into the token block"
+    },
+    {
+      "gate": "54",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 264,
+      "evidence": "eyebrow \"Introducing Lumenboard · Beta\" before <h1>",
+      "fix": "Cut it; the heading already says this (craft.md § 7 has twelve other openings)"
+    },
+    {
+      "gate": "54",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 287,
+      "evidence": "eyebrow \"Trusted by innovators\" before <h2>",
+      "fix": "Cut it; the heading already says this (craft.md § 7 has twelve other openings)"
+    },
+    {
+      "gate": "54",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 309,
+      "evidence": "eyebrow \"Features\" before <h2>",
+      "fix": "Cut it; the heading already says this (craft.md § 7 has twelve other openings)"
+    },
+    {
+      "gate": "54",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 355,
+      "evidence": "eyebrow \"Get started\" before <h2>",
+      "fix": "Cut it; the heading already says this (craft.md § 7 has twelve other openings)"
+    },
+    {
+      "gate": "63",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 259,
+      "evidence": "arrow glued to the label \"Get started →\"",
+      "fix": "A verb as the label; the link already says it goes somewhere"
+    },
+    {
+      "gate": "63",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 267,
+      "evidence": "middle-dot meta string \"Fast · Secure · AI-native\"",
+      "fix": "Line breaks, columns or hairlines; one dot in a byline at most"
+    },
+    {
+      "gate": "63",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 269,
+      "evidence": "arrow glued to the label \"Get started →\"",
+      "fix": "A verb as the label; the link already says it goes somewhere"
+    },
+    {
+      "gate": "63",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 322,
+      "evidence": "decorative status dots (dot) repeated across the page",
+      "fix": "Delete them; a dot means live state, and only where it is one"
+    },
+    {
+      "gate": "63",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 360,
+      "evidence": "arrow glued to the label \"Get started →\"",
+      "fix": "A verb as the label; the link already says it goes somewhere"
+    },
+    {
+      "gate": "67",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 77,
+      "evidence": ".eyebrow: uppercase tracked 0.16em at 12px in a label role",
+      "fix": "Labels, captions, table heads, nav links and meta are the body face (or the theme's label face), a step smaller, sentence case, untracked"
+    },
+    {
+      "gate": "67",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 120,
+      "evidence": ".meta: uppercase tracked 0.08em at 13px in a label role",
+      "fix": "Labels, captions, table heads, nav links and meta are the body face (or the theme's label face), a step smaller, sentence case, untracked"
+    },
+    {
+      "gate": "67",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 170,
+      "evidence": ".kicker: uppercase tracked 0.18em at 12px in a label role",
+      "fix": "Labels, captions, table heads, nav links and meta are the body face (or the theme's label face), a step smaller, sentence case, untracked"
+    },
+    {
+      "gate": "67",
+      "grade": "FAIL",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 198,
+      "evidence": ".logos p: uppercase tracked 0.16em at 12px in a label role",
+      "fix": "Labels, captions, table heads, nav links and meta are the body face (or the theme's label face), a step smaller, sentence case, untracked"
+    },
+    {
+      "gate": "1",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 101,
+      "evidence": "display font \"inter\" (h1)",
+      "fix": "Pick a display face from the typography catalog"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 27,
+      "evidence": "padding: 14px 32px (off the 4px scale) on nav",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 32,
+      "evidence": "gap: 22px (off the 4px scale) on .links",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 46,
+      "evidence": "gap: 6px (off the 4px scale) on .btn",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 52,
+      "evidence": "padding: 12px 18px (off the 4px scale) on .btn",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 82,
+      "evidence": "padding: 6px 12px (off the 4px scale) on .eyebrow",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 115,
+      "evidence": "margin: 0 auto 22px (off the 4px scale) on .lede",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 121,
+      "evidence": "margin: 0 0 22px (off the 4px scale) on .meta",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 140,
+      "evidence": "gap: 6px (off the 4px scale) on .traffic-lights",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 142,
+      "evidence": "padding: 10px 14px (off the 4px scale) on .traffic-lights",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 156,
+      "evidence": "margin-left: 10px (off the 4px scale) on .url-pill",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 164,
+      "evidence": "gap: 10px (off the 4px scale) on .fake-ui",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 167,
+      "evidence": "margin: 6px 0 (off the 4px scale) on .fake-ui span",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 184,
+      "evidence": "padding: 22px (off the 4px scale) on .stat",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 206,
+      "evidence": "padding: 22px (off the 4px scale) on .card",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 212,
+      "evidence": "margin: 0 0 6px (off the 4px scale) on .card h3",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 216,
+      "evidence": "margin-top: 14px (off the 4px scale) on .who",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 224,
+      "evidence": "margin: 22px auto 0 (off the 4px scale) on form",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 247,
+      "evidence": "gap: 10px (off the 4px scale) on nav",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "26b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 1,
+      "evidence": "no :active styling anywhere",
+      "fix": "All eight states; guard: not a form control, no aria-disabled anywhere"
+    },
+    {
+      "gate": "26b",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 1,
+      "evidence": "no :disabled styling anywhere",
+      "fix": "All eight states; guard: not a form control, no aria-disabled anywhere"
+    },
+    {
+      "gate": "38iii",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 107,
+      "evidence": "accented word inside a heading (h1 em)",
+      "fix": "Set the whole head one way: a line break, a second line at a second size, or the whole head in the accent. Guard: the theme names the coloured word as its signature and it appears once on the page, in the hero"
+    },
+    {
+      "gate": "38ii",
+      "grade": "REFLEX",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 108,
+      "evidence": "italic display type on h1 em",
+      "fix": "Roman headers; emphasis via weight or accent"
+    },
+    {
+      "gate": "3",
+      "grade": "WARN",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 201,
+      "evidence": "3 equal icon-tile columns on .grid",
+      "fix": "Vary column widths or drop the icon tiles"
+    },
+    {
+      "gate": "3",
+      "grade": "WARN",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 208,
+      "evidence": "side stripe border-left: 4px solid #7c3aed on .card",
+      "fix": "Hairline all round, none, or an accent square"
+    },
+    {
+      "gate": "19",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 270,
+      "evidence": "stock link label \"Learn more\" x2",
+      "fix": "Say where each link goes: the thing it opens, in its own noun"
+    },
+    {
+      "gate": "19",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 367,
+      "evidence": "template footer line: \"All rights reserved\"",
+      "fix": "A stock line with no legal effect; cut it unless the owner wants it"
+    },
+    {
+      "gate": "29",
+      "grade": "WARN",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 29,
+      "evidence": "glass panel: backdrop-filter blur over a translucent white on nav",
+      "fix": "Solid or grained surface; elevation by lightness"
+    },
+    {
+      "gate": "42",
+      "grade": "WARN",
+      "tier": "reflex",
+      "file": "before/index.html",
+      "line": 252,
+      "evidence": "default nav shape: 6 links + CTA + 1px hairline",
+      "fix": "Give the nav a shape of its own (layout.md, navs)"
+    },
+    {
+      "gate": "46a",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 291,
+      "evidence": "metric \"12,000+     teams\": verify the user supplied this number",
+      "fix": "Confirm the metric or drop the slot"
+    },
+    {
+      "gate": "46a",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 292,
+      "evidence": "metric \"99.99%\": verify the user supplied this number",
+      "fix": "Confirm the metric or drop the slot"
+    },
+    {
+      "gate": "46a",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 296,
+      "evidence": "metric \"Trusted by 12,000+\": verify the user supplied this number",
+      "fix": "Confirm the metric or drop the slot"
+    },
+    {
+      "gate": "58",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 266,
+      "evidence": "hero paragraph runs 25 words",
+      "fix": "One sentence, twelve words or fewer"
+    },
+    {
+      "gate": "70",
+      "grade": "WARN",
+      "tier": "floor",
+      "file": "before/index.html",
+      "line": 374,
+      "evidence": "a script prints success (\"Youre on the list. Welcome ab…\") with no request behind it",
+      "fix": "No success state until the form posts somewhere; an empty data-endpoint and a handoff note"
+    },
+    {
+      "gate": "F3",
+      "grade": "WARN",
+      "tier": "finish",
+      "file": "before/index.html",
+      "line": 98,
+      "evidence": "no text-wrap: balance on any display head (3 head rule(s), e.g. h1)",
+      "fix": "Add text-wrap: balance to h1/h2-level heads"
+    },
+    {
+      "gate": "F4",
+      "grade": "WARN",
+      "tier": "finish",
+      "file": "before/index.html",
+      "line": 270,
+      "evidence": "two filled buttons side by side in the hero: \"Get started →\" and \"Learn more\"",
+      "fix": "One filled primary per screen; the second action is outlined or a typographic link"
+    },
+    {
+      "gate": "F6",
+      "grade": "WARN",
+      "tier": "finish",
+      "file": "before/index.html",
+      "line": 190,
+      "evidence": "numeric selector .stat b at display size without tabular figures",
+      "fix": "Add font-variant-numeric: tabular-nums"
+    },
+    {
+      "gate": "F23",
+      "grade": "WARN",
+      "tier": "finish",
+      "file": "before/index.html",
+      "line": 1,
+      "evidence": "the document lacks a meta description",
+      "fix": "Name the language, title the page in its own words, and describe it in one sentence for link previews"
+    },
+    {
+      "gate": "F24",
+      "grade": "WARN",
+      "tier": "finish",
+      "file": "before/index.html",
+      "line": 134,
+      "evidence": "a hairline border under a wide soft shadow on .browser-bar",
+      "fix": "Commit to one: a defined edge, or elevation by shadow"
+    }
+  ]
+}

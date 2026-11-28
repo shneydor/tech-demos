@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hallmark — before and after</title>
+  <link rel="stylesheet" href="./demo.css" />
+</head>
+<body>
+  <header class="bar">
+    <div class="bar-top">
+      <div>
+        <p class="kicker">Tech Demos</p>
+        <h1>Hallmark</h1>
+      </div>
+      <div class="jumps">
+        <a href="../">All demos</a>
+        <a href="./before/index.html">Open specimen</a>
+        <a href="./after/index.html">Open Hallmark page</a>
+        <a href="https://github.com/Nutlope/hallmark">Skill source</a>
+      </div>
+    </div>
+    <p id="honesty" class="honesty">
+      The left page was written as a specimen of generated landing-page tells.
+      The right page was written once, while this demo was built, by a coding agent following Hallmark 2.0.0.
+      This page does not call a model.
+    </p>
+    <p id="counts" class="counts">Rule notes load from the lint recorded at build time.</p>
+    <div class="controls">
+      <button type="button" id="show-before">Specimen</button>
+      <label class="slider">
+        <input id="split" type="range" min="0" max="100" value="46" aria-valuemin="0" aria-valuemax="100" aria-label="Reveal the Hallmark page. Left is the specimen, right is the Hallmark page." />
+      </label>
+      <button type="button" id="show-after">Hallmark</button>
+    </div>
+    <p id="rule-status" class="rule-status" role="status"></p>
+  </header>
+
+  <div class="layout">
+    <div class="stage" id="stage">
+      <div class="pair" id="pair">
+        <iframe id="frame-after" title="Hallmark page, produced at build time" src="./after/index.html"></iframe>
+        <iframe id="frame-before" title="Specimen page, written to look generated" src="./before/index.html"></iframe>
+        <div class="divider" id="divider" aria-hidden="true"></div>
+        <div class="outline" id="outline" hidden><span id="outline-label"></span></div>
+      </div>
+      <p class="frame-error" id="frame-error" hidden>One of the two documents did not load.</p>
+    </div>
+    <aside id="rail" aria-label="Rules that fired">
+      <p class="rail-label">Rules reported on the specimen</p>
+      <div id="rail-list"></div>
+    </aside>
+  </div>
+  <script src="./demo.js"></script>
+</body>
+</html>
